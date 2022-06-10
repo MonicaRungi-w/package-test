@@ -1,5 +1,5 @@
 {
-  "name": "@MonicaRungi-w/package-test",
+  "name": "package-test",
   "version": "0.0.4",
   "description": "React Component Library",
   "scripts": {
@@ -28,8 +28,5 @@
   "files": [
     "dist"
   ],
-  "types": "dist/index.d.ts",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/MonicaRungi-w"
-  }
+  "types": "dist/index.d.ts"
 }
