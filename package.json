@@ -1,6 +1,6 @@
 {
   "name": "package-test",
-  "version": "0.0.4",
+  "version": "0.0.1",
   "description": "React Component Library",
   "scripts": {
     "rollup": "rollup -c",
