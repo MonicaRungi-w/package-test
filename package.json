@@ -1,12 +1,9 @@
 {
-  "name": "package-test",
-  "version": "0.0.1",
+  "name": "@MonicaRungi-w/package-test",
+  "version": "0.0.2",
   "description": "React Component Library",
   "scripts": {
-    "rollup": "rollup -c",
-    "test": "jest",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "rollup": "rollup -c"
   },
   "author": "ITAUROS",
   "license": "ISC",
@@ -28,5 +25,8 @@
   "files": [
     "dist"
   ],
-  "types": "dist/index.d.ts"
+  "types": "dist/index.d.ts",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/MonicaRungi-w"
+  }
 }
