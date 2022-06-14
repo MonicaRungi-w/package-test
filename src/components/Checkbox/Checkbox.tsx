@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Checkbox.css";
 
 export interface CheckboxProps {
   label: string;
   disable?: boolean;
+  checked?: boolean;
+  //onClick: (e: boolean) => void;
 }
 
 const Checkbox = (props: CheckboxProps) => {
@@ -15,8 +17,10 @@ const Checkbox = (props: CheckboxProps) => {
       <input
         id={props.label}
         type="checkbox"
-        className={['check-box', disable].join(" ")}
+        className={["check-box", disable].join(" ")}
         disabled={isDisabled}
+        checked={props.checked}
+        onChange={(e) => console.log(e.target.checked)}
         {...props}
       />
       {props.label}

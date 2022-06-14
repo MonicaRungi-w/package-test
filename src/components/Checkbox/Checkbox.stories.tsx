@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import Checkbox from "./Checkbox";
@@ -18,4 +18,13 @@ export const Enabled = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Enabled.args = {
   label: "Enabled Checkbox",
+};
+
+export const Disabled = Template.bind({});
+const [isChecked, setIsChecked] = useState(false);
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+Disabled.args = {
+  label: "Disabled Checkbox",
+  disable: true,
+  checked: isChecked,
 };
