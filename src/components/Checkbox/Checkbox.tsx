@@ -5,7 +5,7 @@ export interface CheckboxProps {
   label: string;
   disable?: boolean;
   checked?: boolean;
-  //onClick: (e: boolean) => void;
+  onChange: () => void;
 }
 
 const Checkbox = (props: CheckboxProps) => {
@@ -20,7 +20,7 @@ const Checkbox = (props: CheckboxProps) => {
         className={["check-box", disable].join(" ")}
         disabled={isDisabled}
         checked={props.checked}
-        onChange={(e) => console.log(e.target.checked)}
+        onClick={props.onChange}
         {...props}
       />
       {props.label}

@@ -36,7 +36,7 @@ label {
     color: var(--primary);
 }
 
-.checkmark--disabled .check-box {
+.checkmark--disabled {
     background-color: var(--grey1);
     border: 1px solid var(--grey3);
     cursor: default;
