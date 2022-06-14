@@ -5,26 +5,26 @@ export interface CheckboxProps {
   label: string;
   disable?: boolean;
   checked?: boolean;
-  onChange: () => void;
+  onClick: () => void;
 }
 
 const Checkbox = (props: CheckboxProps) => {
-  const disable = props.disable ? "checkmark--disabled" : "";
+  const disable = props.disable ? "checkmark-disabled" : "";
   const isDisabled = props.disable ? props.disable : false;
 
   return (
-    <label className="checkbox-container">
+    <div className={["checkbox-container"].join(" ")}>
       <input
         id={props.label}
         type="checkbox"
         className={["check-box", disable].join(" ")}
         disabled={isDisabled}
         checked={props.checked}
-        onClick={props.onChange}
         {...props}
+        onClick={props.onClick}
       />
-      {props.label}
-    </label>
+      <label className={props.disable ? "label-disabled" : ""}>{props.label}</label>
+    </div>
   );
 };
 

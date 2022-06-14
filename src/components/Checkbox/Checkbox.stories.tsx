@@ -8,9 +8,12 @@ export default {
   component: Checkbox,
 } as ComponentMeta<typeof Checkbox>;
 
-const Template: ComponentStory<typeof Checkbox> = (args) => (
-  <Checkbox {...args} />
-);
+const Template: ComponentStory<typeof Checkbox> = (args) => {
+  const [value, setValue] = useState(false);
+  return (
+    <Checkbox {...args} checked={value} onClick={() => setValue(!value)} />
+  );
+};
 
 export const Enabled = Template.bind({});
 Enabled.args = {
