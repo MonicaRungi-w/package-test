@@ -49,5 +49,8 @@
   "types": "dist/index.d.ts",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/MonicaRungi-w"
+  },
+  "dependencies": {
+    "moment": "^2.29.3"
   }
 }

@@ -1,0 +1,231 @@
+@import "../../utils/colors.css";
+
+.date-picker {
+    position: relative;
+    width: 100%;
+    max-width: 220px;
+    height: 40px;
+    background-color: var(--white);
+    border-radius: 8px;
+    border: 1px solid var(--grey1);
+    user-select: none;
+}
+
+.date-picker .selected-date {
+    height: 100%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 15px;
+}
+
+.date-picker .date-picker-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.date-picker-text-field {
+    border-width: 0px;
+}
+
+.date-picker-text-field:-webkit-autofill,
+.date-picker-text-field:-webkit-autofill:hover,
+.date-picker-text-field:-webkit-autofill:focus,
+.date-picker-text-field:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+.date-picker .dates-close {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+}
+
+.date-picker .dates-open {
+    width: inherit;
+    display: block;
+    border: 1px solid var(--grey1);
+    border-radius: 15px;
+}
+
+.date-picker .dates-open .month-selected {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    border-bottom: 1px solid var(--grey1);
+}
+
+.date-picker .dates-open .month-selected .arrows {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+}
+
+.date-picker .dates-open .month-selected .arrows {
+    font-size: 16px;
+    color: var(--primary);
+    border-radius: 8px;
+}
+
+.date-picker .dates-open .month-selected .arrows:hover {
+    background-color: var(--grey-transparent);
+}
+
+.date-picker .dates-open .month-selected .arrows:active {
+    transform: scale(0.8);
+}
+
+.date-picker .dates-open .month-selected .mth {
+    font-size: 16px;
+    color: var(--primary);
+    display: flex;
+}
+
+.mth-btn {
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.year-btn {
+    cursor: pointer;
+}
+
+.mth-btn:hover {
+    opacity: 0.8;
+}
+
+.year-btn:hover {
+    opacity: 0.8;
+}
+
+.date-picker .dates-open .days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    height: 200px;
+}
+
+.date-picker .dates-open .months {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    height: 200px;
+}
+
+.date-picker .dates-open .years {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    height: 200px;
+}
+
+.date-picker .dates-open .days .day {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--grey4);
+    cursor: pointer;
+}
+
+.date-picker .dates-open .months .month {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--grey4);
+    cursor: pointer;
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.date-picker .dates-open .years .year {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--grey4);
+    cursor: pointer;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.date-picker .dates-open .days .day:hover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--grey4);
+    cursor: pointer;
+    background-color: var(--grey0);
+}
+
+.date-picker .dates-open .months .month:hover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--grey4);
+    cursor: pointer;
+    background-color: var(--grey0);
+}
+
+.date-picker .dates-open .years .year:hover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--grey4);
+    cursor: pointer;
+    background-color: var(--grey0);
+}
+
+.date-picker .dates-open .days .selected {
+    background-color: var(--primary);
+    border-radius: 8px;
+    color: var(--white);
+}
+
+.date-picker .dates-open .months .selected {
+    background-color: var(--primary);
+    border-radius: 8px;
+    color: var(--white);
+}
+
+.date-picker .dates-open .years .selected {
+    background-color: var(--primary);
+    border-radius: 8px;
+    color: var(--white);
+}
+
+.date-picker .dates-open .days .selected:hover {
+    background-color: var(--primary);
+    opacity: 0.9;
+    border-radius: 8px;
+    color: var(--white);
+}
+
+.date-picker .dates-open .months .selected:hover {
+    background-color: var(--primary);
+    opacity: 0.9;
+    border-radius: 8px;
+    color: var(--white);
+}
+
+.date-picker .dates-open .years .selected:hover {
+    background-color: var(--primary);
+    opacity: 0.9;
+    border-radius: 8px;
+    color: var(--white);
+}
+
+.date-picker .dates-open .days .week {
+    color: var(--primary);
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 0.5px solid var(--grey1);
+}

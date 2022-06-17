@@ -1,8 +1,12 @@
 :root {
   --primary: #2b468a;
   --white: #ffffff;
+  --grey0: #eceff1;
   --grey1: #cacece;
   --grey2: #a1a1a1;
   --grey3: #787878;
+  --grey4: #313131;
   --black: #000;
+  --black-transparent: rgba(0, 0, 0, 0.2);
+  --grey-transparent: rgba(200, 200, 200, 0.2);
 }
