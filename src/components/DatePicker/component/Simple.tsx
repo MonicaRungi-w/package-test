@@ -24,12 +24,13 @@ export interface SimpleProps {
   placeholder?: string;
   value?: string;
   icon: string;
-  onChange: (value: string) => void;
-  dateFormat?: string[];
+  onChange: (value: Date) => void;
+  dateFormat: string[];
 }
 
 const Simple = (props: SimpleProps) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const setDate = props.onChange;
   const [selected, setSelected] = useState<"day" | "month" | "year">("day");
   const [isOpen, setIsOpen] = useState(false);
   const [value, setValue] = useState(props.value);
@@ -45,7 +46,7 @@ const Simple = (props: SimpleProps) => {
   );
   const [decade, setDecade] = useState<number[]>([]);
   const [blanks, setBlanks] = useState<string[]>();
-  const format = props.dateFormat ? props.dateFormat : ["DD/MM/YYYY"];
+  const format = props.dateFormat;
 
   const toggleDatePicker = () => {
     setIsOpen(true);
@@ -63,7 +64,6 @@ const Simple = (props: SimpleProps) => {
     ) {
       setIsOpen(false);
       if (value && !moment(value, format).isValid()) {
-        console.log("invalid");
         setValue("");
         setSelectedDay(null);
         setMonth(new Date().getMonth());
@@ -86,6 +86,7 @@ const Simple = (props: SimpleProps) => {
       setSelectedDay(date.toDate());
       setMonth(date.toDate().getMonth());
       setYear(date.toDate().getFullYear());
+      setDate(date.toDate());
     }
   };
 
@@ -94,6 +95,7 @@ const Simple = (props: SimpleProps) => {
     setSelectedDay(date);
     setValue(formatDate(date));
     setIsOpen(false);
+    setDate(date);
   };
 
   return (

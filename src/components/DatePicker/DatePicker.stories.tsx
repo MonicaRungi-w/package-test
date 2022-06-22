@@ -9,13 +9,15 @@ export default {
 } as ComponentMeta<typeof DatePicker>;
 
 const Template: ComponentStory<typeof DatePicker> = (args) => {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState<Date>();
   return (
-    <DatePicker
-      value={value}
-      {...args}
-      onChange={(date: string) => setValue(date)}
-    />
+    <>
+      <DatePicker
+        value={value?.toDateString()}
+        {...args}
+        onChange={(date: Date) => setValue(date)}
+      />
+    </>
   );
 };
 
@@ -26,6 +28,7 @@ Simple.args = {
 
 export const Range = Template.bind({});
 Range.args = {
-  placeholder: "Pick a date",
+  placeholder: "Pick start date",
+  placeholderEnd: "Pick end date",
   type: "range",
 };

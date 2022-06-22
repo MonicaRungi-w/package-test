@@ -21,10 +21,14 @@ const months = moment.monthsShort();
 const week = moment.weekdaysShort();
 
 export interface RangeProps {
-  placeholder?: string;
+  placeholderStart?: string;
+  placeholderEnd?: string;
   startDate?: string;
   endDate?: string;
+  onChangeStart: (date: Date) => void;
+  onChangeEnd: (date: Date) => void;
   icon: string;
+  dateFormat: string[];
 }
 
 const Range = (props: RangeProps) => {
@@ -32,13 +36,15 @@ const Range = (props: RangeProps) => {
   const [selected, setSelected] = useState<"day" | "month" | "year">("day");
   const [startDate, setStartDate] = useState(props.startDate);
   const [endDate, setEndDate] = useState(props.endDate);
+  const onStartDate = props.onChangeStart;
+  const onEndDate = props.onChangeEnd;
   const [selectedStartDay, setSelectedStartDay] = useState(
     startDate ? new Date(startDate) : null
   );
   const [selectedEndDay, setSelectedEndDay] = useState(
     endDate ? new Date(endDate) : null
   );
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [isStartOpen, setIsStartOpen] = useState(true);
   const [days, setDays] = useState<number[]>();
   const [startMonth, setStartMonth] = useState(
@@ -58,6 +64,7 @@ const Range = (props: RangeProps) => {
   const [blanks, setBlanks] = useState<string[]>();
 
   const [hoveredDate, setHoveredDate] = useState<Date>();
+  const format = props.dateFormat;
 
   const toggleDatePicker = () => {
     setIsOpen(true);
@@ -68,15 +75,23 @@ const Range = (props: RangeProps) => {
       wrapperRef.current &&
       !wrapperRef.current.contains(event.target as Node)
     ) {
+      if (isStartOpen) {
+        if (startDate && !moment(startDate, format).isValid()) {
+          setStartDate("");
+          setSelectedStartDay(null);
+          setStartMonth(new Date().getMonth());
+          setStartYear(new Date().getFullYear());
+        }
+      } else {
+        if (endDate && !moment(endDate, format).isValid()) {
+          setEndDate("");
+          setSelectedEndDay(null);
+          setEndMonth(new Date().getMonth());
+          setEndYear(new Date().getFullYear());
+        }
+      }
       setIsOpen(false);
       setIsStartOpen(true);
-      //   if (value && !moment(value, format).isValid()) {
-      //     console.log("invalid");
-      //     setValue("");
-      //     setSelectedDay(null);
-      //     setMonth(new Date().getMonth());
-      //     setYear(new Date().getFullYear());
-      //   }
     }
   };
 
@@ -157,13 +172,37 @@ const Range = (props: RangeProps) => {
       setSelectedStartDay(date);
       setStartDate(formatDate(date));
       setIsOpen(false);
+      onStartDate(date);
     } else {
       const date = new Date(endYear, endMonth, day);
       if (selectedStartDay && date > selectedStartDay) {
         setSelectedEndDay(date);
         setEndDate(formatDate(date));
         setIsOpen(false);
+        onEndDate(date);
       }
+    }
+  };
+
+  const handleStartInputString = (text: string) => {
+    setStartDate(text);
+    if (moment(text, format).isValid()) {
+      const date = moment(text, format);
+      setSelectedStartDay(date.toDate());
+      setStartMonth(date.toDate().getMonth());
+      setStartYear(date.toDate().getFullYear());
+      onStartDate(date.toDate());
+    }
+  };
+
+  const handleEndInputString = (text: string) => {
+    setEndDate(text);
+    if (moment(text, format).isValid()) {
+      const date = moment(text, format);
+      setSelectedEndDay(date.toDate());
+      setEndMonth(date.toDate().getMonth());
+      setEndYear(date.toDate().getFullYear());
+      onEndDate(date.toDate());
     }
   };
 
@@ -246,13 +285,14 @@ const Range = (props: RangeProps) => {
             }}
           >
             <input
-              id={props.placeholder}
+              id={props.placeholderStart}
+              placeholder={props.placeholderStart}
               type="text"
               className="date-picker-text-field"
               autoComplete="hidden"
               {...props}
               value={startDate ? startDate : ""}
-              onChange={(e) => {}}
+              onChange={(e) => handleStartInputString(e.target.value)}
               onKeyPress={(e) => {
                 if (e.key === "Enter") {
                   setIsOpen(false);
@@ -269,13 +309,14 @@ const Range = (props: RangeProps) => {
             }}
           >
             <input
-              id={props.placeholder}
+              id={props.placeholderEnd}
+              placeholder={props.placeholderEnd}
               type="text"
               className="date-picker-text-field"
               autoComplete="false"
               {...props}
               value={endDate ? endDate : ""}
-              onChange={(e) => {}}
+              onChange={(e) => handleEndInputString(e.target.value)}
               onKeyPress={(e) => {
                 if (e.key === "Enter") {
                   setIsOpen(false);

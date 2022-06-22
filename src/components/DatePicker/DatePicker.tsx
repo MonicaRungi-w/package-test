@@ -8,9 +8,12 @@ import Range from "./component/Range";
 
 export interface DatePickerProps {
   placeholder?: string;
+  placeholderEnd?: string;
   value?: string;
+  valueEnd?: string;
   icon?: string;
-  onChange: (date: string) => void;
+  onChange: (date: Date) => void;
+  onChangeEnd: (date: Date) => void;
   dateFormat?: string[];
   type?: "simple" | "range";
 }
@@ -18,6 +21,11 @@ export interface DatePickerProps {
 const DatePicker = (props: DatePickerProps) => {
   const type = props.type ? props.type : "simple";
   const icon = props.icon ? props.icon : DatePickerIcon;
+  const dateFormat =
+    props.dateFormat && props.dateFormat?.length > 0
+      ? props.dateFormat
+      : ["DD/MM/YYYY"];
+
   return (
     <>
       {type === "simple" ? (
@@ -26,10 +34,19 @@ const DatePicker = (props: DatePickerProps) => {
           value={props.value}
           icon={icon}
           onChange={props.onChange}
-          dateFormat={props.dateFormat}
+          dateFormat={dateFormat}
         />
       ) : (
-        <Range placeholder={props.placeholder} icon={icon} />
+        <Range
+          placeholderStart={props.placeholder}
+          placeholderEnd={props.placeholderEnd}
+          startDate={props.value}
+          endDate={props.valueEnd}
+          onChangeStart={props.onChange}
+          onChangeEnd={props.onChangeEnd}
+          icon={icon}
+          dateFormat={dateFormat}
+        />
       )}
     </>
   );
