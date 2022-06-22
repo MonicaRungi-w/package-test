@@ -11,6 +11,32 @@
     user-select: none;
 }
 
+.date-picker-range {
+    max-width: 375px;
+}
+
+.range-picker-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    padding-right: 15px;
+}
+
+.input-container {
+    width: 100px;
+    display: flex;
+    align-items: center;
+}
+
+.date-picker .date-divider {
+    width: 0.1px;
+    height: 30px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: 0.5px solid var(--grey1);
+}
+
 .date-picker .selected-date {
     height: 100%;
     cursor: pointer;
@@ -45,10 +71,21 @@
 }
 
 .date-picker .dates-open {
-    width: inherit;
     display: block;
     border: 1px solid var(--grey1);
     border-radius: 15px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.dates-open-range-start {
+    width: 60%;
+}
+
+.dates-open-range-end {
+    width: 60%;
+    right: 0px;
+    position: absolute;
 }
 
 .date-picker .dates-open .month-selected {
@@ -130,6 +167,13 @@
     color: var(--grey4);
     cursor: pointer;
 }
+.date-picker .dates-open .days .day-disabled {
+    opacity: 0.7;
+    cursor: default;
+}
+.date-picker .dates-open .days .day-enabled {
+    background-color: var(--primary-transparent);
+}
 
 .date-picker .dates-open .months .month {
     display: flex;
@@ -164,6 +208,11 @@
     background-color: var(--grey0);
 }
 
+.date-picker .dates-open .days .day-disabled:hover {
+    background-color: transparent;
+    cursor: default;
+}
+
 .date-picker .dates-open .months .month:hover {
     display: flex;
     justify-content: center;
@@ -185,6 +234,20 @@
 .date-picker .dates-open .days .selected {
     background-color: var(--primary);
     border-radius: 8px;
+    color: var(--white);
+}
+
+.date-picker .dates-open .days .selected-start {
+    background-color: var(--primary);
+    border-bottom-left-radius: 8px;
+    border-top-left-radius: 8px;
+    color: var(--white);
+}
+
+.date-picker .dates-open .days .selected-end {
+    background-color: var(--primary);
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
     color: var(--white);
 }
 

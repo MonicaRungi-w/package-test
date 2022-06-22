@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import DatePicker from "./DatePicker";
@@ -9,10 +9,23 @@ export default {
 } as ComponentMeta<typeof DatePicker>;
 
 const Template: ComponentStory<typeof DatePicker> = (args) => {
-  return <DatePicker {...args} />;
+  const [value, setValue] = useState("");
+  return (
+    <DatePicker
+      value={value}
+      {...args}
+      onChange={(date: string) => setValue(date)}
+    />
+  );
 };
 
 export const Simple = Template.bind({});
 Simple.args = {
   placeholder: "Pick a date",
+};
+
+export const Range = Template.bind({});
+Range.args = {
+  placeholder: "Pick a date",
+  type: "range",
 };
