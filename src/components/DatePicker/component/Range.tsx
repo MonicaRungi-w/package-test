@@ -285,7 +285,6 @@ const Range = (props: RangeProps) => {
             }}
           >
             <input
-              id={props.placeholderStart}
               placeholder={props.placeholderStart}
               type="text"
               className="date-picker-text-field"
@@ -309,7 +308,6 @@ const Range = (props: RangeProps) => {
             }}
           >
             <input
-              id={props.placeholderEnd}
               placeholder={props.placeholderEnd}
               type="text"
               className="date-picker-text-field"
