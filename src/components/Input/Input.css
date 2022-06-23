@@ -1,0 +1,116 @@
+@import "../../utils/colors.css";
+
+.text-field {
+    border-width: 0px;
+    width: 100%;
+}
+
+.text-area {
+    min-width: 100%;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+}
+
+.text-field:-webkit-autofill,
+.text-field:-webkit-autofill:hover,
+.text-field:-webkit-autofill:focus,
+.text-field:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px var(--white) inset !important;
+}
+
+.text-field-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 35px;
+    background-color: var(--white);
+    border-radius: 8px;
+    border: 1px solid var(--grey1);
+    user-select: none;
+    padding: 5px;
+}
+
+.full-width {
+    width: 100% !important;
+}
+
+.number-input-width {
+    width: 120px;
+}
+
+.number-arrows {
+    width: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.number-arrows-item {
+    background-color: var(--primary);
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.up-arrow {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.down-arrow {
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.number-arrows-item:hover {
+    opacity: 0.8;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.number-arrows-item:active {
+    transform: scale(1);
+}
+
+.icon-img {
+    width: 16px;
+    height: 16px;
+}
+
+.rotate-img {
+    transform: rotate(180deg);
+}
+
+.text-area-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    background-color: var(--white);
+    border-radius: 8px;
+    border: 1px solid var(--grey1);
+    user-select: none;
+    padding: 5px;
+}
+
+.password-image-container {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.password-image-container:hover {
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+.password-image-container:active {
+    transform: scale(0.9);
+}

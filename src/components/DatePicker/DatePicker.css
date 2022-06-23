@@ -59,7 +59,7 @@
 .date-picker-text-field:-webkit-autofill:hover,
 .date-picker-text-field:-webkit-autofill:focus,
 .date-picker-text-field:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 30px white inset !important;
+    -webkit-box-shadow: 0 0 0 30px var(--white) inset !important;
 }
 
 .date-picker .dates-close {
