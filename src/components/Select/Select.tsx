@@ -38,17 +38,18 @@ const Select = ({
   };
 
   const search = (value: { id: string; label: string }) => {
+    setIsSearching(true);
     if (value.label.length !== 0) {
-      setIsSearching(true);
       const newArray = values.filter(
         (v) => v.label.includes(value.label) || v.id.includes(value.id)
       );
       setValuesArray(newArray);
       if (newArray.length === 0) {
         setEmptyState("La ricerca non ha prodotto risultati.");
+      } else {
+        setEmptyState("");
       }
     } else {
-      setIsSearching(false);
       setValuesArray(values);
       setEmptyState("");
     }
@@ -81,7 +82,10 @@ const Select = ({
   });
 
   return (
-    <div className="dd-wrapper" ref={wrapperRef}>
+    <div
+      className={["dd-wrapper", fullWidth && "full-width"].join(" ")}
+      ref={wrapperRef}
+    >
       <div className="dd-header" onClick={() => toggleList()}>
         <div
           className={[

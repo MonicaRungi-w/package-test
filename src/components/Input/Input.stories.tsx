@@ -35,3 +35,14 @@ Password.args = {
   placeholder: "Enter password",
   type: InputType.password,
 };
+
+export const Search = Template.bind({});
+Search.args = {
+  placeholder: "Search...",
+  type: InputType.search,
+  searchValues: [
+    { id: "1", label: "prova1" },
+    { id: "2", label: "prova2" },
+    { id: "3", label: "prova1" },
+  ],
+};

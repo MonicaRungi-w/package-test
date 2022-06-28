@@ -6,6 +6,10 @@
     user-select: none;
 }
 
+.full-width {
+    width: 100% !important;
+}
+
 .dd-header {
     color: var(--grey3);
     display: flex;

@@ -6,13 +6,14 @@ import Text from "./components/text";
 import NumberInput from "./components/number";
 import TextArea from "./components/text-area";
 import Password from "./components/password";
+import Search from "./components/search";
 
 export enum InputType {
   text = "text",
   textArea = "text-area",
   number = "number",
   password = "password",
-  telephone = "tel",
+  search = "search",
 }
 
 export interface InputProps {
@@ -22,6 +23,7 @@ export interface InputProps {
   type?: InputType;
   fullWidth?: boolean;
   icon?: string;
+  searchValues: { id: string; label: string }[];
   prefix?: ReactNode;
   suffix?: ReactNode;
 }
@@ -33,6 +35,7 @@ const Input = ({
   type = InputType.text,
   fullWidth = false,
   icon = "",
+  searchValues,
   prefix,
   suffix,
   ...props
@@ -69,8 +72,20 @@ const Input = ({
           onChange={onChange}
         />
       );
-    case InputType.telephone:
-      return <></>;
+    case InputType.search:
+      return (
+        searchValues && (
+          <Search
+            placeholder={placeholder}
+            fullWidth={fullWidth}
+            icon={icon}
+            searchValues={searchValues}
+            {...props}
+            value={value}
+            onChange={onChange}
+          />
+        )
+      );
     case InputType.textArea:
       return (
         <TextArea
