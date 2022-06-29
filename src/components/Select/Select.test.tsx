@@ -5,6 +5,13 @@ import Select from "./Select";
 
 describe("Select", () => {
   test("renders the Select component", () => {
-    render(<Select placeholder="test" value="test" onChange={() => {}} />);
+    render(
+      <Select
+        placeholder="test"
+        values={[{ id: "1", label: "test" }]}
+        selectedValue={{ id: "1", label: "test" }}
+        onChange={() => {}}
+      />
+    );
   });
 });

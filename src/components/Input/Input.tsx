@@ -23,7 +23,7 @@ export interface InputProps {
   type?: InputType;
   fullWidth?: boolean;
   icon?: string;
-  searchValues: { id: string; label: string }[];
+  searchValues?: { id: string; label: string }[];
   prefix?: ReactNode;
   suffix?: ReactNode;
 }

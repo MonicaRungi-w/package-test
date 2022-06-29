@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
+import { AngleUp } from "../../assets";
 
 import "./Select.css";
 import "../common.css";
-import { AngleUp } from "../../assets";
 
 export interface SelectProps {
   placeholder: string;
