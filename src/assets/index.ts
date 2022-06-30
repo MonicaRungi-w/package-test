@@ -10,6 +10,7 @@ import WarningIcon from "./svg-file/warning.svg";
 import InfoIcon from "./svg-file/info.svg";
 import XIcon from "./svg-file/x.svg";
 import TestImage from "./svg-file/test-image.svg";
+import Check from "./svg-file/check.svg";
 
 export {
   DatePickerIcon,
@@ -24,4 +25,5 @@ export {
   WarningIcon,
   XIcon,
   TestImage,
+  Check,
 };

@@ -36,6 +36,12 @@ Password.args = {
   type: InputType.password,
 };
 
+export const Email = Template.bind({});
+Email.args = {
+  placeholder: "Enter email",
+  type: InputType.email,
+};
+
 export const Search = Template.bind({});
 Search.args = {
   placeholder: "Search...",

@@ -7,6 +7,7 @@ import NumberInput from "./components/number";
 import TextArea from "./components/text-area";
 import Password from "./components/password";
 import Search from "./components/search";
+import Email from "./components/email";
 
 export enum InputType {
   text = "text",
@@ -14,6 +15,7 @@ export enum InputType {
   number = "number",
   password = "password",
   search = "search",
+  email = "email",
 }
 
 export interface InputProps {
@@ -24,8 +26,6 @@ export interface InputProps {
   fullWidth?: boolean;
   icon?: string;
   searchValues?: { id: string; label: string }[];
-  prefix?: ReactNode;
-  suffix?: ReactNode;
 }
 
 const Input = ({
@@ -36,8 +36,6 @@ const Input = ({
   fullWidth = false,
   icon = "",
   searchValues,
-  prefix,
-  suffix,
   ...props
 }: InputProps) => {
   switch (type) {
@@ -89,6 +87,16 @@ const Input = ({
     case InputType.textArea:
       return (
         <TextArea
+          placeholder={placeholder}
+          fullWidth={fullWidth}
+          {...props}
+          value={value}
+          onChange={onChange}
+        />
+      );
+    case InputType.email:
+      return (
+        <Email
           placeholder={placeholder}
           fullWidth={fullWidth}
           {...props}
