@@ -12,4 +12,13 @@
   --primary-transparent: rgba(43, 70, 138, 0.2);
   --text-light: #ffffff;
   --text-dark: #000;
+
+  --error: #bb2124;
+  --error-bg: #bb212369;
+  --warning: #f0ad4e;
+  --warning-bg: #f0ac4e6b;
+  --success: #22bb33;
+  --success-bg: #22bb346b;
+  --info: var(--primary);
+  --info-bg: #2b468a6c;
 }

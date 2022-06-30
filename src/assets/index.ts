@@ -4,5 +4,24 @@ import EyeShow from "./svg-file/eye-show.svg";
 import EyeHide from "./svg-file/eye-hide.svg";
 import AngleUp from "./svg-file/angle-up.svg";
 import SearchIcon from "./svg-file/search.svg";
+import ErrorIcon from "./svg-file/error.svg";
+import SuccessIcon from "./svg-file/success.svg";
+import WarningIcon from "./svg-file/warning.svg";
+import InfoIcon from "./svg-file/info.svg";
+import XIcon from "./svg-file/x.svg";
+import TestImage from "./svg-file/test-image.svg";
 
-export { DatePickerIcon, Arrow, EyeHide, EyeShow, AngleUp, SearchIcon };
+export {
+  DatePickerIcon,
+  Arrow,
+  EyeHide,
+  EyeShow,
+  AngleUp,
+  SearchIcon,
+  ErrorIcon,
+  InfoIcon,
+  SuccessIcon,
+  WarningIcon,
+  XIcon,
+  TestImage,
+};
