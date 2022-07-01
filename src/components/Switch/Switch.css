@@ -6,6 +6,10 @@
     width: 50px;
     height: 25px;
 }
+.toggle-switch .switch-disabled {
+    opacity: 0.8;
+    cursor: default !important;
+}
 .toggle-switch input[type="checkbox"] {
     display: none;
 }
