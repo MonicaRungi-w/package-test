@@ -1,0 +1,34 @@
+@import "../../utils/colors.css";
+
+.tabs {
+    display: flex;
+    align-items: center;
+}
+
+.tabs-tab {
+    font-size: 15px;
+    padding: 10px 20PX;
+    cursor: pointer;
+    opacity: 0.6;
+    background: var(--white);
+    border: 0;
+    outline: 0;
+}
+
+.tabs-tab-active {
+    border-bottom: 2px solid var(--primary);
+    background-color: var(--primary-transparent);
+    color: var(--primary);
+    opacity: 0.6;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.tab-content {
+    padding: 20px;
+}
+
+.show {
+    transition: opacity 400ms;
+    opacity: 1;
+}

@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import Switch from "./Switch";
+import Switch from ".";
 
 export default {
   title: "ReactComponentLibrary/Switch",

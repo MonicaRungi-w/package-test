@@ -5,6 +5,6 @@ import Switch from "./Switch";
 
 describe("Switch", () => {
   test("renders the Switch component", () => {
-    render(<Switch name={"test"} />);
+    render(<Switch isToggled={true} setIsToggled={() => {}} />);
   });
 });
