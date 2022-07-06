@@ -5,6 +5,8 @@ import Toast from "./Toast";
 
 describe("Toast", () => {
   test("renders the Toast component", () => {
-    render(<Toast title="test" description="test" />);
+    render(
+      <Toast toastList={[{ id: "0", title: "test", description: "test" }]} />
+    );
   });
 });

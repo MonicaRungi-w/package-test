@@ -5,6 +5,12 @@ import Input from "./Input";
 
 describe("Input", () => {
   test("renders the Input component", () => {
-    render(<Input placeholder="test" value="test" onChange={() => {}} />);
+    render(
+      <Input
+        placeholder="test"
+        value="test"
+        onChange={() => console.log("test")}
+      />
+    );
   });
 });

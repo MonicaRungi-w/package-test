@@ -5,6 +5,6 @@ import Badge from "./Badge";
 
 describe("Badge", () => {
   test("renders the Badge component", () => {
-    render(<Badge />);
+    render(<Badge text="test"/>);
   });
 });

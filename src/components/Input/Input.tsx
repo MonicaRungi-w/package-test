@@ -104,7 +104,10 @@ const Input = ({
           onChange={onChange}
         />
       );
+    default:
+      <></>;
   }
+  return <></>;
 };
 
 export default Input;

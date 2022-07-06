@@ -6,8 +6,8 @@ import "../../utils/colors.css";
 
 export interface BadgeProps extends PropsWithChildren {
   text: string;
-  colorBadge: string;
-  colorText: string;
+  colorBadge?: string;
+  colorText?: string;
 }
 
 const Badge = ({ text, colorBadge, colorText, ...props }: BadgeProps) => {

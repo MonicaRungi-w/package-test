@@ -5,6 +5,14 @@ import Modal from "./Modal";
 
 describe("Modal", () => {
   test("renders the Modal component", () => {
-    render(<Modal />);
+    render(
+      <Modal
+        open={true}
+        setOpen={() => {}}
+        onSubmit={() => {}}
+        title="test"
+        content="test"
+      />
+    );
   });
 });

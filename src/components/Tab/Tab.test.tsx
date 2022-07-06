@@ -5,6 +5,6 @@ import Tab from "./Tab";
 
 describe("Tab", () => {
   test("renders the Tab component", () => {
-    render(<Tab />);
+    render(<Tab title={"title"} className="" onClick={() => {}} />);
   });
 });

@@ -5,6 +5,11 @@ import DatePicker from "./DatePicker";
 
 describe("DatePicker", () => {
   test("renders the DatePicker component", () => {
-    render(<DatePicker />);
+    render(
+      <DatePicker
+        onChange={() => console.log("test")}
+        onChangeEnd={() => console.log("test")}
+      />
+    );
   });
 });
