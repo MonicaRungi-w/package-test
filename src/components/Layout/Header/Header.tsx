@@ -15,7 +15,7 @@ const Header = ({
   ...props
 }: HeaderProps) => {
   return (
-    <header className="header" {...props}>
+    <header className="header-custom" {...props}>
       <div className="logo-title-container">
         <div>{logoComponent}</div>
         <div>{titleComponent}</div>
