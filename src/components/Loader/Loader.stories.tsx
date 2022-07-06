@@ -15,7 +15,7 @@ const Template: ComponentStory<typeof Loader> = (args) => {
 const OverlayTemplate: ComponentStory<typeof Loader> = (args) => {
   return (
     <>
-      <Loader {...args} /> <div style={{color: "red"}}>test overlay</div>
+      <Loader {...args} /> <div style={{ color: "red" }}>test overlay</div>
     </>
   );
 };
