@@ -169,6 +169,10 @@ const Range = (props: RangeProps) => {
   const handleSelectedDate = (day: number) => {
     if (isStartOpen) {
       const date = new Date(startYear, startMonth, day);
+      if (selectedEndDay && date > selectedEndDay) {
+        setSelectedEndDay(null);
+        setEndDate("");
+      }
       setSelectedStartDay(date);
       setStartDate(formatDate(date));
       setIsOpen(false);
