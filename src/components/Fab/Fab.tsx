@@ -23,7 +23,7 @@ const Fab = ({ actions, ...props }: FabProps) => {
       {...props}
     >
       <li className="fab-button">
-        <img src={Add} />
+        <img src={Add} className="fab-icon"/>
       </li>
       {actions.map((action, index) => (
         <li
@@ -32,7 +32,7 @@ const Fab = ({ actions, ...props }: FabProps) => {
           key={action.label}
           onClick={action.onClick}
         >
-          <img src={action.icon} />
+          <img src={action.icon}/>
           <span className="tooltip">{action.label}</span>
         </li>
       ))}

@@ -19,7 +19,7 @@
     box-shadow: 0 3px 6px var(--grey1);
     display: grid;
     place-items: center;
-    margin: 4px 0;
+    margin: 4px;
     font-size: 28px;
     padding: 12px;
     cursor: pointer;
@@ -27,8 +27,10 @@
 }
 .fab-container .fab-button {
     background-color: var(--primary);
+    width: 24px;
+    min-height: 24px;
 }
-.fab-container .fab-button img {
+.fab-container .fab-button .fab-icon {
     width: 20px;
     height: 20px;
 }
