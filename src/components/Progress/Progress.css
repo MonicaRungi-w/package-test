@@ -1,0 +1,79 @@
+@import "../../utils/colors.css";
+
+@keyframes moveToRight {
+    from {
+        left: -70px;
+    }
+    to {
+        left: 100%;
+    }
+}
+
+.progress-outer {
+    display: flex;
+    align-items: center;
+}
+
+.progress-outer-fix {
+    display: flex;
+    align-items: center;
+    width: 220px;
+}
+
+.progress-info {
+    width: 30px;
+    padding-left: 5px;
+}
+
+.progress {
+    width: 100%;
+    background: var(--grey0);
+    min-height: 1px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.progress.progress--small {
+    height: 3px;
+}
+
+.progress.progress--medium {
+    height: 5px;
+}
+
+.progress.progress--large {
+    height: 10px;
+}
+.progress-bar {
+    background: var(--primary);
+    height: 100%;
+    position: absolute;
+    left: 0;
+    border-radius: 8px;
+    overflow-x: hidden;
+}
+
+.progress.progress--loading .progress-bar {
+    width: 40%;
+    animation: moveToRight 1s infinite linear;
+    border-radius: 8px;
+}
+
+.progress-uploading {
+    position: absolute;
+    background: linear-gradient(
+        to right,
+        transparent,
+        var(--secondary-transparent),
+        var(--secondary),
+        var(--secondary-transparent),
+        transparent
+    );
+    height: 100%;
+}
+
+.progress-uploading-animation {
+    width: 70px;
+    animation: moveToRight 0.5s infinite linear;
+}

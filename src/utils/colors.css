@@ -1,5 +1,9 @@
 :root {
   --primary: #2b468a;
+  --primary-transparent: rgba(43, 70, 138, 0.2);
+  --secondary: #6c86ca;
+  --secondary-transparent: rgba(108, 134, 202, 0.7);
+
   --white: #ffffff;
   --grey0: #eceff1;
   --grey1: #cacece;
@@ -9,7 +13,6 @@
   --black: #000;
   --black-transparent: rgba(0, 0, 0, 0.2);
   --grey-transparent: rgba(200, 200, 200, 0.2);
-  --primary-transparent: rgba(43, 70, 138, 0.2);
   --text-light: #ffffff;
   --text-dark: #000;
 
