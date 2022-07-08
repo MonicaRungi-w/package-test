@@ -3,12 +3,12 @@ import React from "react";
 import "../common.css";
 import "./Checkbox.css";
 
-export interface CheckboxProps {
+type CheckboxProps = JSX.IntrinsicElements["input"] & {
   label: string;
   disable?: boolean;
   checked?: boolean;
   onClick: () => void;
-}
+};
 
 const Checkbox = (props: CheckboxProps) => {
   const disable = props.disable ? "checkmark-disabled" : "";
@@ -25,7 +25,9 @@ const Checkbox = (props: CheckboxProps) => {
         {...props}
         onClick={props.onClick}
       />
-      <label className={props.disable ? "label-disabled" : ""}>{props.label}</label>
+      <label className={props.disable ? "label-disabled" : ""}>
+        {props.label}
+      </label>
     </div>
   );
 };

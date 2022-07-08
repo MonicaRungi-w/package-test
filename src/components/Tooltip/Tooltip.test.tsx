@@ -5,6 +5,6 @@ import Tooltip from "./Tooltip";
 
 describe("Tooltip", () => {
   test("renders the Tooltip component", () => {
-    render(<Tooltip />);
+    render(<Tooltip content="test" />);
   });
 });

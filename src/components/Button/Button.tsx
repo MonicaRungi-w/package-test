@@ -1,15 +1,16 @@
 import React from "react";
+import { CSSProperties } from "react";
 
 import "./Button.css";
 import "../common.css";
 
-export interface ButtonProps {
+type ButtonProps = JSX.IntrinsicElements["button"] & {
   children?: React.ReactNode;
   variant: "primary" | "secondary";
   disable?: boolean;
   size?: "small" | "large";
   onClick: () => void;
-}
+};
 
 const Button = (props: ButtonProps) => {
   const disable = props.disable ? "button--disabled" : "";

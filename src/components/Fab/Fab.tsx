@@ -4,9 +4,9 @@ import { Add } from "../../assets";
 import "./../common.css";
 import "./Fab.css";
 
-export interface FabProps extends PropsWithChildren {
+type FabProps = JSX.IntrinsicElements["ul"] & {
   actions: { label: string; icon: string; onClick: () => void }[];
-}
+};
 
 const Fab = ({ actions, ...props }: FabProps) => {
   const [open, setOpen] = useState(false);
@@ -23,7 +23,7 @@ const Fab = ({ actions, ...props }: FabProps) => {
       {...props}
     >
       <li className="fab-button">
-        <img src={Add} className="fab-icon"/>
+        <img src={Add} className="fab-icon" />
       </li>
       {actions.map((action, index) => (
         <li
@@ -32,7 +32,7 @@ const Fab = ({ actions, ...props }: FabProps) => {
           key={action.label}
           onClick={action.onClick}
         >
-          <img src={action.icon}/>
+          <img src={action.icon} />
           <span className="tooltip">{action.label}</span>
         </li>
       ))}

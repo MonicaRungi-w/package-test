@@ -33,6 +33,7 @@ const Tooltip = ({
       className="tooltip-wrapper"
       onMouseEnter={showTip}
       onMouseLeave={hideTip}
+      {...props}
     >
       {props.children}
       {active && (

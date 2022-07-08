@@ -4,11 +4,11 @@ import "./../common.css";
 import "./Badge.css";
 import "../../utils/colors.css";
 
-export interface BadgeProps extends PropsWithChildren {
+type BadgeProps = JSX.IntrinsicElements["div"] & {
   text: string;
   colorBadge?: string;
   colorText?: string;
-}
+};
 
 const Badge = ({ text, colorBadge, colorText, ...props }: BadgeProps) => {
   return (
@@ -19,6 +19,7 @@ const Badge = ({ text, colorBadge, colorText, ...props }: BadgeProps) => {
         style={{
           backgroundColor: colorBadge ? colorBadge : `var(--primary)`,
         }}
+        {...props}
       >
         <text
           className="badge-text"

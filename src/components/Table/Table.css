@@ -1,0 +1,33 @@
+@import "../../utils/colors.css";
+
+.table-container {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0px auto;
+}
+
+.table-body tr:nth-of-type(odd) {
+    background: var(--grey0);
+}
+
+.table-head {
+    background: var(--primary);
+    color: var(--white);
+    font-weight: bold;
+    height: 50px;
+}
+
+.table-body,
+.table-head {
+    border: 1px solid var(--grey1);
+    text-align: left;
+    font-size: 15px;
+}
+
+.table-head tr th {
+    padding-left: 10px;
+}
+
+.table-body tr td {
+    padding-inline: 10px;
+}
