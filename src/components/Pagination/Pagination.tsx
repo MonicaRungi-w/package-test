@@ -99,7 +99,7 @@ const Pagination = ({
   };
 
   return (
-    <ul className="pageNumbers" {...props}>
+    <ul className="page-numbers" {...props}>
       <li>
         <button
           onClick={handlePrevButton}

@@ -1,26 +1,25 @@
 @import "../../utils/colors.css";
 
-.pageNumbers {
+.page-numbers {
     list-style: none;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    max-width: 300px;
+    padding-left: 0px;
 }
 
-.pageNumbers li {
+.page-numbers li {
     padding: 10px;
     cursor: pointer;
     font-size: 16px;
 }
 
-.pageNumbers li.active {
+.page-numbers li.active {
     background-color: var(--primary);
     border-radius: 8px;
     color: var(--white);
 }
 
-.pageNumbers li button {
+.page-numbers li button {
     background-color: transparent;
     border: none;
     color: var(--primary);
@@ -30,26 +29,26 @@
     padding-right: 5px;
 }
 
-.pageNumbers li button:hover {
+.page-numbers li button:hover {
     background-color: var(--primary);
     border-radius: 8px;
     color: var(--white);
 }
 
-.pageNumbers li button:active {
+.page-numbers li button:active {
     transform: scale(0.9);
 }
 
-.pageNumbers li button:disabled {
+.page-numbers li button:disabled {
     opacity: 0.5;
     cursor: default;
 }
 
-.pageNumbers li button:disabled:hover {
+.page-numbers li button:disabled:hover {
     background-color: transparent;
     color: var(--primary);
 }
 
-.pageNumbers li button:disabled:active {
+.page-numbers li button:disabled:active {
     transform: scale(1);
 }
