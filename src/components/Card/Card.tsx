@@ -9,15 +9,23 @@ type CardProps = JSX.IntrinsicElements["div"] & {
   children?: ReactNode;
   titleStyle?: React.CSSProperties;
   captionStyle?: React.CSSProperties;
+  width?: string;
+  height?: string;
 };
 
 const Card = (props: CardProps) => {
   const title = props.title;
   const caption = props.caption;
   const children = props.children;
+  const width = props.width;
+  const height = props.height;
 
   return (
-    <div className="box primary" {...props}>
+    <div
+      className="box primary"
+      style={{ width: width, height: height }}
+      {...props}
+    >
       {title && (
         <h2 className={["header-card"].join(" ")} style={props.titleStyle}>
           {title}

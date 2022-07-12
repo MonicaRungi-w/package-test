@@ -98,6 +98,12 @@ const Pagination = ({
     setMinPageNumberLimit(pages.length - pageNumberLimit);
   };
 
+  const setFirstPage = () => {
+    setCurrentPage(1);
+    setMaxPageNumberLimit(pageNumberLimit);
+    setMinPageNumberLimit(0);
+  };
+
   return (
     <ul className="page-numbers" {...props}>
       <li>
@@ -109,7 +115,10 @@ const Pagination = ({
         </button>
       </li>
       {minPageNumberLimit >= 1 && (
-        <li onClick={handleGoBackButton}>&hellip;</li>
+        <>
+          <li onClick={setFirstPage}>{1}</li>
+          <li onClick={handleGoBackButton}>&hellip;</li>
+        </>
       )}
       {renderPageNumbers}
       {pages.length > maxPageNumberLimit && (

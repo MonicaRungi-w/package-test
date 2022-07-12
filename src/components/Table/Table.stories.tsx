@@ -60,6 +60,19 @@ const Template: ComponentStory<typeof Table> = (args) => {
         show: false,
       },
       {
+        id: "company",
+        fieldName: "Company",
+        Cell: (row: any, idx: number) => {
+          return <text key={idx}>{row.company.name}</text>;
+        },
+        show: false,
+      },
+      {
+        id: "website",
+        fieldName: "Website",
+        show: false,
+      },
+      {
         id: "edit",
         fieldName: "Actions",
         Cell: (row: any, idx: number) => {

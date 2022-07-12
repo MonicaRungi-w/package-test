@@ -89,7 +89,6 @@ const Table = ({ data, columns, setColumns, ...props }: TableProps) => {
         open={open}
         setOpen={setOpen}
         onSubmit={() => setOpen(false)}
-        style={{ height: "450px" }}
       />
     </>
   );
