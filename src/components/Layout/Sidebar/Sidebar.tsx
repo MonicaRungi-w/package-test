@@ -32,7 +32,7 @@ const Sidebar = ({
   };
 
   return (
-    <header
+    <div
       className={["sidebar-container"].join(" ")}
       role={"banner"}
       style={{ left: isSideMenu ? "0" : "-200px" }}
@@ -62,7 +62,7 @@ const Sidebar = ({
           </ul>
         </nav>
       </div>
-    </header>
+    </div>
   );
 };
 
