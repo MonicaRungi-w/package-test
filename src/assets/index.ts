@@ -12,6 +12,7 @@ import XIcon from "./svg-file/x.svg";
 import TestImage from "./svg-file/test-image.svg";
 import Check from "./svg-file/check.svg";
 import Add from "./svg-file/add.svg";
+import Option from "./svg-file/option.svg";
 
 export {
   DatePickerIcon,
@@ -28,4 +29,5 @@ export {
   TestImage,
   Check,
   Add,
+  Option,
 };

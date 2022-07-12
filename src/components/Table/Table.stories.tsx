@@ -26,6 +26,7 @@ const Template: ComponentStory<typeof Table> = (args) => {
       {
         id: "id",
         fieldName: "ID",
+        show: false,
       },
       {
         id: "name",
@@ -34,14 +35,17 @@ const Template: ComponentStory<typeof Table> = (args) => {
           return <h4 key={idx}>{row.name}</h4>;
         },
         sortable: true,
+        show: true,
       },
       {
         id: "username",
         fieldName: "Username",
+        show: true,
       },
       {
         id: "email",
         fieldName: "Email",
+        show: true,
       },
       {
         id: "address",
@@ -53,6 +57,7 @@ const Template: ComponentStory<typeof Table> = (args) => {
             </text>
           );
         },
+        show: false,
       },
       {
         id: "edit",
@@ -63,7 +68,7 @@ const Template: ComponentStory<typeof Table> = (args) => {
               <Button
                 variant="primary"
                 onClick={() => console.log("clicked", row.name)}
-                style={{marginRight: "10px"}}
+                style={{ marginRight: "10px" }}
               >
                 edit
               </Button>
@@ -76,12 +81,19 @@ const Template: ComponentStory<typeof Table> = (args) => {
             </div>
           );
         },
+        show: true,
       },
     ];
     setColumns(columns);
   }, [data]);
 
-  return <>{columns && <Table data={data} columns={columns} />}</>;
+  return (
+    <>
+      {columns && data && (
+        <Table data={data} columns={columns} setColumns={setColumns} />
+      )}
+    </>
+  );
 };
 
 export const TableComponent = Template.bind({});

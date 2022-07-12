@@ -1,5 +1,14 @@
 @import "../../utils/colors.css";
 
+.table-paginator {
+    position: relative;
+}
+
+.table-paginator .paginator {
+    position: absolute;
+    right: 0;
+}
+
 .table-container {
     width: 100%;
     border-collapse: collapse;
@@ -14,7 +23,7 @@
     background: var(--primary);
     color: var(--white);
     font-weight: bold;
-    height: 50px;
+    height: 70px;
 }
 
 .table-body,
@@ -29,5 +38,31 @@
 }
 
 .table-body tr td {
-    padding-inline: 10px;
+    padding: 10px;
+}
+
+.table-head .options-row {
+    height: 20px;
+}
+
+.table-head .options-row th {
+    text-align: right;
+}
+
+.option-logo {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.option-logo:active {
+    transform: scale(0.9);
+}
+
+.content-render .pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

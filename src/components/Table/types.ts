@@ -5,6 +5,7 @@ export type ColumnType = {
   fieldName: string;
   Cell?: (r: any, idx: number) => ReactNode;
   sortable?: boolean;
+  show?: boolean;
 };
 
 export type RowType = {};

@@ -38,76 +38,79 @@ const Input = ({
   searchValues,
   ...props
 }: InputProps) => {
-  switch (type) {
-    case InputType.text:
-      return (
-        <Text
-          placeholder={placeholder}
-          fullWidth={fullWidth}
-          {...props}
-          value={value}
-          onChange={onChange}
-        />
-      );
-    case InputType.number:
-      return (
-        <NumberInput
-          placeholder={placeholder}
-          fullWidth={fullWidth}
-          {...props}
-          value={value}
-          onChange={onChange}
-        />
-      );
-    case InputType.password:
-      return (
-        <Password
-          placeholder={placeholder}
-          fullWidth={fullWidth}
-          icon={icon}
-          {...props}
-          value={value}
-          onChange={onChange}
-        />
-      );
-    case InputType.search:
-      return (
-        searchValues && (
-          <Search
+  const component = () => {
+    switch (type) {
+      case InputType.text:
+        return (
+          <Text
             placeholder={placeholder}
             fullWidth={fullWidth}
-            icon={icon}
-            searchValues={searchValues}
             {...props}
             value={value}
             onChange={onChange}
           />
-        )
-      );
-    case InputType.textArea:
-      return (
-        <TextArea
-          placeholder={placeholder}
-          fullWidth={fullWidth}
-          {...props}
-          value={value}
-          onChange={onChange}
-        />
-      );
-    case InputType.email:
-      return (
-        <Email
-          placeholder={placeholder}
-          fullWidth={fullWidth}
-          {...props}
-          value={value}
-          onChange={onChange}
-        />
-      );
-    default:
-      <></>;
-  }
-  return <></>;
+        );
+      case InputType.number:
+        return (
+          <NumberInput
+            placeholder={placeholder}
+            fullWidth={fullWidth}
+            {...props}
+            value={value}
+            onChange={onChange}
+          />
+        );
+      case InputType.password:
+        return (
+          <Password
+            placeholder={placeholder}
+            fullWidth={fullWidth}
+            icon={icon}
+            {...props}
+            value={value}
+            onChange={onChange}
+          />
+        );
+      case InputType.search:
+        return (
+          searchValues && (
+            <Search
+              placeholder={placeholder}
+              fullWidth={fullWidth}
+              icon={icon}
+              searchValues={searchValues}
+              {...props}
+              value={value}
+              onChange={onChange}
+            />
+          )
+        );
+      case InputType.textArea:
+        return (
+          <TextArea
+            placeholder={placeholder}
+            fullWidth={fullWidth}
+            {...props}
+            value={value}
+            onChange={onChange}
+          />
+        );
+      case InputType.email:
+        return (
+          <Email
+            placeholder={placeholder}
+            fullWidth={fullWidth}
+            {...props}
+            value={value}
+            onChange={onChange}
+          />
+        );
+      default:
+        <></>;
+    }
+  };
+
+  return <div>{component()}</div>;
 };
 
 export default Input;

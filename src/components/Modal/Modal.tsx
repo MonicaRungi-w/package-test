@@ -5,7 +5,7 @@ import "./../common.css";
 import "./Modal.css";
 import ModalContent from "./ModalContent";
 
-export interface ModalProps extends PropsWithChildren {
+type ModalProps = JSX.IntrinsicElements["div"] & {
   open: boolean;
   setOpen: (b: boolean) => void;
   onSubmit: () => void;
