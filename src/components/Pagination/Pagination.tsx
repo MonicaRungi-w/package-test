@@ -92,6 +92,12 @@ const Pagination = ({
     }
   };
 
+  const setLastPage = () => {
+    setCurrentPage(pages.length);
+    setMaxPageNumberLimit(pages.length);
+    setMinPageNumberLimit(pages.length - pageNumberLimit);
+  };
+
   return (
     <ul className="pageNumbers" {...props}>
       <li>
@@ -107,7 +113,10 @@ const Pagination = ({
       )}
       {renderPageNumbers}
       {pages.length > maxPageNumberLimit && (
-        <li onClick={handleGoOnButton}>&hellip;</li>
+        <>
+          <li onClick={handleGoOnButton}>&hellip;</li>
+          <li onClick={setLastPage}>{pages.length}</li>
+        </>
       )}
       <li>
         <button
