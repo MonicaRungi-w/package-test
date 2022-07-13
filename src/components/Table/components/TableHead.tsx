@@ -2,7 +2,7 @@ import React, { PropsWithChildren } from "react";
 import { ColumnType } from "../types";
 
 import "../Table.css";
-import { Option } from "../../../assets";
+import OptionIcon from "../../../assets/svg-components/option-icon";
 
 export interface TableHeadProps extends PropsWithChildren {
   columns: ColumnType[];
@@ -14,7 +14,11 @@ const TableHead = ({ columns, openOptions }: TableHeadProps) => {
     <thead className="table-head">
       <tr className="options-row">
         <th colSpan={columns.length}>
-          <img src={Option} className="option-logo" onClick={openOptions} />
+          <OptionIcon
+            className="option-logo"
+            fill="white"
+            onClick={openOptions}
+          />
         </th>
       </tr>
       <tr>{columns.map((c) => c.show && <th key={c.id}>{c.fieldName}</th>)}</tr>

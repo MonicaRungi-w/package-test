@@ -9,20 +9,11 @@ import Password from "./components/password";
 import Search from "./components/search";
 import Email from "./components/email";
 
-export enum InputType {
-  text = "text",
-  textArea = "text-area",
-  number = "number",
-  password = "password",
-  search = "search",
-  email = "email",
-}
-
 export interface InputProps {
   placeholder: string;
   value: string;
   onChange: (t: string) => void;
-  type?: InputType;
+  type?: "text" | "text-area" | "number" | "password" | "search" | "email";
   fullWidth?: boolean;
   icon?: string;
   searchValues?: { id: string; label: string }[];
@@ -32,7 +23,7 @@ const Input = ({
   placeholder,
   value,
   onChange,
-  type = InputType.text,
+  type = "text",
   fullWidth = false,
   icon = "",
   searchValues,
@@ -40,7 +31,7 @@ const Input = ({
 }: InputProps) => {
   const component = () => {
     switch (type) {
-      case InputType.text:
+      case "text":
         return (
           <Text
             placeholder={placeholder}
@@ -50,7 +41,7 @@ const Input = ({
             onChange={onChange}
           />
         );
-      case InputType.number:
+      case "number":
         return (
           <NumberInput
             placeholder={placeholder}
@@ -60,7 +51,7 @@ const Input = ({
             onChange={onChange}
           />
         );
-      case InputType.password:
+      case "password":
         return (
           <Password
             placeholder={placeholder}
@@ -71,7 +62,7 @@ const Input = ({
             onChange={onChange}
           />
         );
-      case InputType.search:
+      case "search":
         return (
           searchValues && (
             <Search
@@ -85,7 +76,7 @@ const Input = ({
             />
           )
         );
-      case InputType.textArea:
+      case "text-area":
         return (
           <TextArea
             placeholder={placeholder}
@@ -95,7 +86,7 @@ const Input = ({
             onChange={onChange}
           />
         );
-      case InputType.email:
+      case "email":
         return (
           <Email
             placeholder={placeholder}

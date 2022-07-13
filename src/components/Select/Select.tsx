@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-import { AngleUp } from "../../assets";
 
 import "./Select.css";
 import "../common.css";
+import AngleUp from "../../assets/svg-components/angle-up";
 
 export interface SelectProps {
   placeholder: string;
@@ -102,11 +102,11 @@ const Select = ({
             }
           />
         </div>
-        <img
-          src={AngleUp}
+        <AngleUp
           className={["angle", isListOpen ? "angle-down" : "angle-up"].join(
             " "
           )}
+          fill="#2b468a"
         />
       </div>
       <div
@@ -115,8 +115,9 @@ const Select = ({
           isListOpen ? "dd-list-show" : "dd-list-hide",
         ].join(" ")}
       >
-        {valuesArray.map((value) => (
+        {valuesArray.map((value, idx) => (
           <div
+            key={idx}
             className="dd-list-item"
             onClick={() => {
               selectItem(value);

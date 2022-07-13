@@ -2,6 +2,7 @@ import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import DatePicker from "./DatePicker";
+import DatePickerIcon from "../../assets/svg-components/date-picker-icon";
 
 export default {
   title: "ReactComponentLibrary/DatePicker",

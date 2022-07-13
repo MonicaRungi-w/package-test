@@ -15,6 +15,7 @@ import {
 
 import "../DatePicker.css";
 import "../../common.css";
+import DatePickerIcon from "../../../assets/svg-components/date-picker-icon";
 
 const months = moment.monthsShort();
 
@@ -23,13 +24,14 @@ const week = moment.weekdaysShort();
 export interface SimpleProps {
   placeholder?: string;
   value?: string;
-  icon: string;
+  icon?: string;
   onChange: (value: Date) => void;
-  dateFormat: string[];
+  dateformat: string[];
 }
 
 const Simple = (props: SimpleProps) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const Icon = props.icon;
   const setDate = props.onChange;
   const [selected, setSelected] = useState<"day" | "month" | "year">("day");
   const [isOpen, setIsOpen] = useState(false);
@@ -46,7 +48,7 @@ const Simple = (props: SimpleProps) => {
   );
   const [decade, setDecade] = useState<number[]>([]);
   const [blanks, setBlanks] = useState<string[]>();
-  const format = props.dateFormat;
+  const format = props.dateformat;
 
   const toggleDatePicker = () => {
     setIsOpen(true);
@@ -114,7 +116,11 @@ const Simple = (props: SimpleProps) => {
             }
           }}
         />
-        <img src={props.icon} className="date-picker-icon" />
+        {typeof Icon === "string" ? (
+          <img src={Icon} className="date-picker-icon" />
+        ) : (
+          <DatePickerIcon className="date-picker-icon" fill="#2b468a" />
+        )}
       </div>
       <div className={isOpen ? "dates-open" : "dates-close"}>
         <div className="month-selected">
@@ -163,14 +169,17 @@ const Simple = (props: SimpleProps) => {
         </div>
         {selected === "day" && (
           <div className="days">
-            {week.map((day) => (
-              <div className="week">{day}</div>
+            {week.map((day, idx) => (
+              <div key={idx} className="week">
+                {day}
+              </div>
             ))}
-            {blanks?.map((blank) => (
-              <div>{blank}</div>
+            {blanks?.map((blank, idx) => (
+              <div key={idx}>{blank}</div>
             ))}
-            {days?.map((day) => (
+            {days?.map((day, idx) => (
               <div
+                key={idx}
                 className={[
                   "day",
                   selectedDay &&
@@ -192,6 +201,7 @@ const Simple = (props: SimpleProps) => {
           <div className="months">
             {months.map((m, idx) => (
               <div
+                key={idx}
                 className={[
                   "month",
                   (month || month === 0) && month === idx ? "selected" : "",
@@ -209,8 +219,9 @@ const Simple = (props: SimpleProps) => {
 
         {selected === "year" && (
           <div className="years">
-            {decade.map((d) => (
+            {decade.map((d, idx) => (
               <div
+                key={idx}
                 className={["year", year && year === d ? "selected" : ""].join(
                   " "
                 )}

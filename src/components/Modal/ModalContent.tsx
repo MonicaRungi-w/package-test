@@ -1,5 +1,5 @@
 import React, { PropsWithChildren, ReactNode, useEffect, useRef } from "react";
-import { XIcon } from "../../assets";
+import XIcon from "../../assets/svg-components/x-icon";
 
 import Button from "../Button";
 
@@ -36,13 +36,12 @@ const ModalContent = ({
   });
 
   return (
-    <div
-      className="modal-content"
-      ref={ref}
-      id="modal-content"
-      {...props}
-    >
-      <img src={XIcon} className="close-icon" onClick={() => setOpen(false)} />
+    <div className="modal-content" ref={ref} id="modal-content" {...props}>
+      <XIcon
+        className="close-icon"
+        fill="#2b468a"
+        onClick={() => setOpen(false)}
+      />
       <div className="header">
         <div className="title">{title}</div>
       </div>

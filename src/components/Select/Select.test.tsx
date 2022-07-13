@@ -10,7 +10,7 @@ describe("Select", () => {
         placeholder="test"
         values={[{ id: "1", label: "test" }]}
         selectedValue={{ id: "1", label: "test" }}
-        onChange={() => {}}
+        onChange={() => console.log("running test")}
       />
     );
   });

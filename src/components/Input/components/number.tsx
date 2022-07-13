@@ -2,8 +2,7 @@ import React, { ReactNode, useState } from "react";
 
 import "../Input.css";
 import "../../common.css";
-import { InputType } from "../Input";
-import { Arrow } from "../../../assets";
+import Arrow from "../../../assets/svg-components/arrow";
 
 export interface NumberProps {
   placeholder: string;
@@ -63,7 +62,7 @@ const NumberInput = ({
       ].join(" ")}
     >
       <input
-        type={InputType.text}
+        type={"text"}
         className="text-field"
         placeholder={placeholder}
         {...props}
@@ -75,13 +74,13 @@ const NumberInput = ({
           className="number-arrows-item up-arrow"
           onClick={() => addNumber()}
         >
-          <img src={Arrow} className="icon-img rotate-img" />
+          <Arrow className="icon-img rotate-img" fill="white"/>
         </div>
         <div
           className="number-arrows-item down-arrow"
           onClick={() => subtractNumber()}
         >
-          <img src={Arrow} className="icon-img" />
+          <Arrow className="icon-img" fill="white"/>
         </div>
       </div>
     </div>

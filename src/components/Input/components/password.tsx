@@ -1,6 +1,6 @@
 import React, { ReactNode, useState } from "react";
-import { EyeHide, EyeShow } from "../../../assets";
-import { InputType } from "../Input";
+import EyeHide from "../../../assets/svg-components/eye-hide";
+import EyeShow from "../../../assets/svg-components/eye-show";
 
 export interface PasswordProps {
   placeholder: string;
@@ -31,7 +31,7 @@ const Password = ({
       )}
     >
       <input
-        type={show ? InputType.text : InputType.password}
+        type={show ? "text" : "password"}
         className="text-field"
         placeholder={placeholder}
         {...props}
@@ -39,7 +39,11 @@ const Password = ({
         onChange={(e) => onChange(e.target.value)}
       />
       <div className="password-image-container" onClick={() => setShow(!show)}>
-        <img src={show ? EyeShow : EyeHide} className="icon-img" />
+        {show ? (
+          <EyeShow className="icon-img" fill="#2b468a" />
+        ) : (
+          <EyeHide className="icon-img" fill="#2b468a" />
+        )}
       </div>
     </div>
   );

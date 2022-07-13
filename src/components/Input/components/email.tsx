@@ -1,6 +1,5 @@
-import React, { ReactNode, useState } from "react";
-import { Check, EyeHide, EyeShow } from "../../../assets";
-import { InputType } from "../Input";
+import React, { useState } from "react";
+import Check from "../../../assets/svg-components/check";
 
 export interface EmailProps {
   placeholder: string;
@@ -35,7 +34,7 @@ const Email = ({
       )}
     >
       <input
-        type={InputType.text}
+        type={"text"}
         className="text-field"
         placeholder={placeholder}
         {...props}
@@ -43,7 +42,7 @@ const Email = ({
         onChange={(e) => emailValidator(e.target.value)}
       />
       <div className="valid-image-container">
-        {isValid && <img src={Check} className="icon-img" />}
+        {isValid && <Check className="icon-img" />}
       </div>
     </div>
   );

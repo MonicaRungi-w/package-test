@@ -5,6 +5,6 @@ import Skeleton from "./Skeleton";
 
 describe("Skeleton", () => {
   test("renders the Skeleton component", () => {
-    render(<Skeleton />);
+    render(<Skeleton type="text" />);
   });
 });

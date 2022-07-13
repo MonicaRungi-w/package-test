@@ -1,5 +1,4 @@
 import React from "react";
-import { CSSProperties } from "react";
 
 import "./Button.css";
 import "../common.css";

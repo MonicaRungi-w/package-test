@@ -5,6 +5,6 @@ import Table from "./Table";
 
 describe("Table", () => {
   test("renders the Table component", () => {
-    render(<Table />);
+    render(<Table data={[]} columns={[]} setColumns={() => {}} />);
   });
 });

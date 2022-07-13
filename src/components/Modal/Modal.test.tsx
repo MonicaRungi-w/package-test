@@ -8,8 +8,8 @@ describe("Modal", () => {
     render(
       <Modal
         open={true}
-        setOpen={() => {}}
-        onSubmit={() => {}}
+        setOpen={() => console.log("running test")}
+        onSubmit={() => console.log("running test")}
         title="test"
         content="test"
       />

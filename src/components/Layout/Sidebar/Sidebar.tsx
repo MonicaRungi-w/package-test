@@ -1,5 +1,5 @@
 import React, { PropsWithChildren, useRef, useState } from "react";
-import { AngleUp } from "../../../assets";
+import AngleUp from "../../../assets/svg-components/angle-up";
 
 import "./Sidebar.css";
 
@@ -40,12 +40,12 @@ const Sidebar = ({
       <div className="menu-bar">
         <img src={iconTitle} />
         <h1>{title}</h1>
-        <img
-          src={AngleUp}
+        <AngleUp
           className={["back", isSideMenu ? "back-open" : "back-close"].join(
             " "
           )}
           onClick={() => open()}
+          fillcolor="white"
         />
       </div>
       <div className="nav-wrap" style={{ left: isSideMenu ? "0" : "-200px" }}>

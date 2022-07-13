@@ -11,7 +11,6 @@ import Pagination from "../Pagination";
 import Modal from "../Modal";
 import Input from "../Input";
 import Checkbox from "../Checkbox/Checkbox";
-import { InputType } from "../Input/Input";
 
 import "./Table.css";
 import "../common.css";
@@ -33,7 +32,7 @@ const Table = ({ data, columns, setColumns, ...props }: TableProps) => {
         <div className="pagination">
           <div>Page Limit:</div>
           <Input
-            type={InputType.number}
+            type={"number"}
             placeholder="Page limit"
             value={paginator.toString()}
             onChange={(e: string) => setPaginator(Number(e))}

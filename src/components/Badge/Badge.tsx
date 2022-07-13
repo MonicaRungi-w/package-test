@@ -21,14 +21,14 @@ const Badge = ({ text, colorBadge, colorText, ...props }: BadgeProps) => {
         }}
         {...props}
       >
-        <text
+        <div
           className="badge-text"
           style={{
             color: colorText ? colorText : `var(--white)`,
           }}
         >
           {text}
-        </text>
+        </div>
       </span>
     </div>
   );

@@ -3,22 +3,11 @@ import React, { useEffect, useState } from "react";
 import "./Toast.css";
 import "../common.css";
 import "../../utils/colors.css";
-import { ErrorIcon, InfoIcon, SuccessIcon, WarningIcon } from "../../assets";
-import XIcon from "./XIcon";
-
-export enum ErrorType {
-  error = "error",
-  warning = "warning",
-  success = "success",
-  info = "info",
-}
-
-export enum PositionType {
-  topRight = "top-right",
-  bottomRight = "bottom-right",
-  topLeft = "top-left",
-  bottomLeft = "bottom-left",
-}
+import XIcon from "../../assets/svg-components/x-icon";
+import ErrorIcon from "../../assets/svg-components/error-icon";
+import InfoIcon from "../../assets/svg-components/info-icon";
+import WarningIcon from "../../assets/svg-components/warning-icon";
+import SuccessIcon from "../../assets/svg-components/success-icon";
 
 export interface ToastProps {
   toastList: {
@@ -28,16 +17,16 @@ export interface ToastProps {
     backgroundColor?: string;
     textColor?: string;
     icon?: string;
-    type?: ErrorType;
+    type?: "error" | "warning" | "success" | "info";
   }[];
-  position?: PositionType;
+  position?: "top-right" | "bottom-right" | "top-left" | "bottom-left";
   autoDelete?: boolean;
   autoDeleteTime?: number;
 }
 
 const Toast = ({
   toastList,
-  position = PositionType.topRight,
+  position = "top-right",
   autoDelete = true,
   autoDeleteTime,
 }: ToastProps) => {
@@ -85,26 +74,32 @@ const Toast = ({
               deleteToast(toast.id);
             }}
           >
-            <XIcon fillColor={toast.textColor} />
+            <XIcon fill={toast.textColor} />
           </div>
           <div className="notification-image">
-            <img
-              src={
-                toast.type === ErrorType.error
-                  ? ErrorIcon
-                  : toast.type === ErrorType.info
-                  ? InfoIcon
-                  : toast.type === ErrorType.success
-                  ? SuccessIcon
-                  : toast.type === ErrorType.warning
-                  ? WarningIcon
-                  : toast.icon
-                  ? toast.icon
-                  : ""
-              }
-              alt={toast.type}
-              className={`${toast.type}-filter`}
-            />
+            {toast.type === "error" ? (
+              <ErrorIcon
+                className={`${toast.type}-filter`}
+                fill="#bb2124"
+              />
+            ) : toast.type === "info" ? (
+              <InfoIcon
+                className={`${toast.type}-filter`}
+                fill="#2b468a"
+              />
+            ) : toast.type === "warning" ? (
+              <WarningIcon
+                className={`${toast.type}-filter`}
+                fill="#f0ad4e"
+              />
+            ) : toast.type === "success" ? (
+              <SuccessIcon
+                className={`${toast.type}-filter`}
+                fill="#22bb33"
+              />
+            ) : (
+              <img src={toast.icon}/>
+            )}
           </div>
           <div>
             <p className="notification-title">{toast.title}</p>

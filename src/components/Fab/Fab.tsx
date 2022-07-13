@@ -1,5 +1,5 @@
 import React, { PropsWithChildren, useState } from "react";
-import { Add } from "../../assets";
+import Add from "../../assets/svg-components/add";
 
 import "./../common.css";
 import "./Fab.css";
@@ -23,7 +23,7 @@ const Fab = ({ actions, ...props }: FabProps) => {
       {...props}
     >
       <li className="fab-button">
-        <img src={Add} className="fab-icon" />
+        <Add className="fab-icon" fill="white"/>
       </li>
       {actions.map((action, index) => (
         <li

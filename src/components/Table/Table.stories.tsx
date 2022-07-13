@@ -52,9 +52,9 @@ const Template: ComponentStory<typeof Table> = (args) => {
         fieldName: "Address",
         Cell: (row: any, idx: number) => {
           return (
-            <text key={idx}>
+            <div key={idx}>
               {row.address.street + " - " + row.address.city}
-            </text>
+            </div>
           );
         },
         show: false,
@@ -63,7 +63,7 @@ const Template: ComponentStory<typeof Table> = (args) => {
         id: "company",
         fieldName: "Company",
         Cell: (row: any, idx: number) => {
-          return <text key={idx}>{row.company.name}</text>;
+          return <div key={idx}>{row.company.name}</div>;
         },
         show: false,
       },

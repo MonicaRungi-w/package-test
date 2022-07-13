@@ -3,21 +3,14 @@ import React, { PropsWithChildren } from "react";
 import "./../common.css";
 import "./Loader.css";
 
-export enum SizeType {
-  sm = "small",
-  md = "medium",
-  lg = "large",
-  xl = "extra-large",
-}
-
 export interface LoaderProps extends PropsWithChildren {
   overlay?: boolean;
-  size?: SizeType;
+  size?: "small" | "medium" | "large" | "extra-large";
 }
 
 const Loader = ({
   overlay = false,
-  size = SizeType.md,
+  size = "medium",
   ...props
 }: LoaderProps) => {
   return (

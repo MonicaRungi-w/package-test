@@ -1,6 +1,5 @@
-import React, { ReactNode, useEffect, useRef, useState } from "react";
-import { SearchIcon } from "../../../assets";
-import { InputType } from "../Input";
+import React, { useEffect, useRef, useState } from "react";
+import SearchIcon from "../../../assets/svg-components/search-icon";
 
 export interface SearchProps {
   placeholder: string;
@@ -82,7 +81,7 @@ const Search = ({
         className={["search-header", fullWidth ? "full-width" : ""].join(" ")}
       >
         <input
-          type={InputType.text}
+          type={"text"}
           className="text-field"
           placeholder={placeholder}
           {...props}
@@ -90,7 +89,11 @@ const Search = ({
           onChange={(e) => toggleSearch(e.target.value)}
         />
         <div className="">
-          <img src={icon ? icon : SearchIcon} className="icon-img" />
+          {icon ? (
+            <img src={icon} className="icon-img" />
+          ) : (
+            <SearchIcon className="icon-img" fill="#2b468a" />
+          )}
         </div>
       </div>
       {isSearching && (

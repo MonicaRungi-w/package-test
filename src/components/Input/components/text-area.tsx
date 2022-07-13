@@ -1,5 +1,4 @@
 import React, { ReactNode } from "react";
-import { InputType } from "../Input";
 
 export interface TextProps {
   placeholder: string;

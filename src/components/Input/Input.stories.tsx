@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import Input, { InputType } from "./Input";
+import Input from "./Input";
 
 export default {
   title: "ReactComponentLibrary/Input",
@@ -15,37 +15,37 @@ const Template: ComponentStory<typeof Input> = (args) => {
 export const Text = Template.bind({});
 Text.args = {
   placeholder: "Enter simple text",
-  type: InputType.text,
+  type: "text",
 };
 
 export const Number = Template.bind({});
 Number.args = {
   placeholder: "Enter number",
-  type: InputType.number,
+  type: "number",
 };
 
 export const TextArea = Template.bind({});
 TextArea.args = {
   placeholder: "Enter text",
-  type: InputType.textArea,
+  type: "text-area",
 };
 
 export const Password = Template.bind({});
 Password.args = {
   placeholder: "Enter password",
-  type: InputType.password,
+  type: "password",
 };
 
 export const Email = Template.bind({});
 Email.args = {
   placeholder: "Enter email",
-  type: InputType.email,
+  type: "email",
 };
 
 export const Search = Template.bind({});
 Search.args = {
   placeholder: "Search...",
-  type: InputType.search,
+  type: "search",
   searchValues: [
     { id: "1", label: "prova1" },
     { id: "2", label: "prova2" },

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { ReactNode, useEffect, useRef, useState } from "react";
 import moment from "moment";
 import {
   firstDayOfMonth,
@@ -15,6 +15,7 @@ import {
 
 import "../DatePicker.css";
 import "../../common.css";
+import DatePickerIcon from "../../../assets/svg-components/date-picker-icon";
 
 const months = moment.monthsShort();
 
@@ -27,12 +28,13 @@ export interface RangeProps {
   endDate?: string;
   onChangeStart: (date: Date) => void;
   onChangeEnd: (date: Date) => void;
-  icon: string;
-  dateFormat: string[];
+  icon?: string;
+  dateformat: string[];
 }
 
 const Range = (props: RangeProps) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const Icon = props.icon;
   const [selected, setSelected] = useState<"day" | "month" | "year">("day");
   const [startDate, setStartDate] = useState(props.startDate);
   const [endDate, setEndDate] = useState(props.endDate);
@@ -64,7 +66,7 @@ const Range = (props: RangeProps) => {
   const [blanks, setBlanks] = useState<string[]>();
 
   const [hoveredDate, setHoveredDate] = useState<Date>();
-  const format = props.dateFormat;
+  const format = props.dateformat;
 
   const toggleDatePicker = () => {
     setIsOpen(true);
@@ -327,7 +329,11 @@ const Range = (props: RangeProps) => {
             />
           </div>
         </div>
-        <img src={props.icon} className="date-picker-icon" />
+        {typeof Icon === "string" ? (
+          <img src={Icon} className="date-picker-icon" />
+        ) : (
+          <DatePickerIcon className="date-picker-icon" fill="#2b468a" />
+        )}
       </div>
       <div
         className={[
@@ -371,15 +377,18 @@ const Range = (props: RangeProps) => {
         </div>
         {selected === "day" && (
           <div className="days">
-            {week.map((day) => (
-              <div className="week">{day}</div>
+            {week.map((day, idx) => (
+              <div key={idx} className="week">
+                {day}
+              </div>
             ))}
-            {blanks?.map((blank) => (
-              <div>{blank}</div>
+            {blanks?.map((blank, idx) => (
+              <div key={idx}>{blank}</div>
             ))}
-            {days?.map((day) => {
+            {days?.map((day, idx) => {
               return (
                 <div
+                  key={idx}
                   className={["day", handleRangeStyle(day)].join(" ")}
                   onClick={() => handleSelectedDate(day)}
                   onMouseOver={() =>
@@ -398,6 +407,7 @@ const Range = (props: RangeProps) => {
           <div className="months">
             {months.map((m, idx) => (
               <div
+                key={idx}
                 className={[
                   "month",
                   isStartOpen
@@ -421,8 +431,9 @@ const Range = (props: RangeProps) => {
 
         {selected === "year" && (
           <div className="years">
-            {(isStartOpen ? startDecade : endDecade).map((d) => (
+            {(isStartOpen ? startDecade : endDecade).map((d, idx) => (
               <div
+                key={idx}
                 className={[
                   "year",
                   isStartOpen

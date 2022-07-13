@@ -1,8 +1,8 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import Toast, { ErrorType, PositionType } from "./Toast";
-import { TestImage } from "../../assets";
+import Toast from "./Toast";
+import testImage from "../../assets/svg-file/test-image.svg";
 
 export default {
   title: "ReactComponentLibrary/Toast",
@@ -18,10 +18,10 @@ InfoComponent.args = {
       id: "1",
       title: "Info Toast",
       description: "This is an info Toast",
-      type: ErrorType.info,
+      type: "info",
     },
   ],
-  position: PositionType.bottomLeft,
+  position: "bottom-left",
   autoDelete: true,
 };
 
@@ -32,10 +32,10 @@ ErrorComponent.args = {
       id: "1",
       title: "Error Toast",
       description: "This is an error Toast",
-      type: ErrorType.error,
+      type: "error",
     },
   ],
-  position: PositionType.bottomRight,
+  position: "bottom-right",
   autoDelete: true,
 };
 
@@ -46,10 +46,10 @@ WarningComponent.args = {
       id: "1",
       title: "Warning Toast",
       description: "This is a warning Toast",
-      type: ErrorType.warning,
+      type: "warning",
     },
   ],
-  position: PositionType.topLeft,
+  position: "top-left",
   autoDelete: true,
 };
 
@@ -60,10 +60,10 @@ SuccessComponent.args = {
       id: "1",
       title: "Success Toast",
       description: "This is a success Toast",
-      type: ErrorType.success,
+      type: "success",
     },
   ],
-  position: PositionType.topRight,
+  position: "top-right",
   autoDelete: true,
 };
 
@@ -74,7 +74,7 @@ MultipleToast.args = {
       id: "1",
       title: "Success Toast",
       description: "This is a success Toast",
-      type: ErrorType.success,
+      type: "success",
     },
     {
       id: "2",
@@ -82,7 +82,7 @@ MultipleToast.args = {
       description: "This is a generic Toast",
       backgroundColor: "rgba(153, 2, 216, 0.43)",
       textColor: "rgba(153, 2, 216, 1)",
-      icon: TestImage,
+      icon: testImage,
     },
     {
       id: "3",
@@ -90,9 +90,9 @@ MultipleToast.args = {
       description: "This is another generic Toast",
       backgroundColor: "rgba(1, 2, 216, 0.43)",
       textColor: "rgba(1, 2, 216, 1)",
-      icon: TestImage,
+      icon: testImage,
     },
   ],
-  position: PositionType.bottomRight,
+  position: "bottom-right",
   autoDelete: true,
 };

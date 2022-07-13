@@ -1,5 +1,4 @@
 import React from "react";
-import { DatePickerIcon } from "../../assets";
 import Simple from "./component/Simple";
 
 import "./DatePicker.css";
@@ -14,16 +13,16 @@ export interface DatePickerProps {
   icon?: string;
   onChange: (date: Date) => void;
   onChangeEnd: (date: Date) => void;
-  dateFormat?: string[];
+  dateformat?: string[];
   type?: "simple" | "range";
 }
 
 const DatePicker = (props: DatePickerProps) => {
   const type = props.type ? props.type : "simple";
-  const icon = props.icon ? props.icon : DatePickerIcon;
+  const icon = props.icon;
   const dateFormat =
-    props.dateFormat && props.dateFormat?.length > 0
-      ? props.dateFormat
+    props.dateformat && props.dateformat?.length > 0
+      ? props.dateformat
       : ["DD/MM/YYYY"];
 
   return (
@@ -34,7 +33,7 @@ const DatePicker = (props: DatePickerProps) => {
           value={props.value}
           icon={icon}
           onChange={props.onChange}
-          dateFormat={dateFormat}
+          dateformat={dateFormat}
         />
       ) : (
         <Range
@@ -45,7 +44,7 @@ const DatePicker = (props: DatePickerProps) => {
           onChangeStart={props.onChange}
           onChangeEnd={props.onChangeEnd}
           icon={icon}
-          dateFormat={dateFormat}
+          dateformat={dateFormat}
         />
       )}
     </>
