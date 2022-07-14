@@ -2,17 +2,25 @@
   "name": "@MonicaRungi-w/package-test",
   "version": "0.1.1",
   "description": "React Component Library",
+  "private": false,
+  "babel": {
+    "presets": [
+      "@babel/preset-react"
+    ]
+  },
   "scripts": {
     "rollup": "rollup -c",
     "test": "jest",
     "test:watch": "jest --watch",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "publish:npm": "rm -rf dist && mkdir dist &&  npx babel src/components -d dist --copy-files"
   },
   "author": "ITAUROS",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.18.2",
+    "@babel/cli": "^7.18.6",
+    "@babel/core": "^7.18.6",
     "@babel/preset-env": "^7.18.2",
     "@babel/preset-react": "^7.17.12",
     "@babel/preset-typescript": "^7.17.12",

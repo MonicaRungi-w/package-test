@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React from "react";
 
 import "./Card.css";
 import "../common.css";
@@ -6,7 +6,7 @@ import "../common.css";
 type CardProps = JSX.IntrinsicElements["div"] & {
   title?: string;
   caption?: string;
-  children?: ReactNode;
+  children?: React.ElementType;
   titleStyle?: React.CSSProperties;
   captionStyle?: React.CSSProperties;
   width?: string;
