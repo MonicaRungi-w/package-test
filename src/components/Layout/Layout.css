@@ -1,1 +1,13 @@
 @import "../../utils/colors.css";
+
+html,
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 100% !important;
+}
+
+.layout-container {
+    min-height: 100%;
+    position: relative;
+}

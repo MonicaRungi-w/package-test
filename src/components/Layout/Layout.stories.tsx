@@ -5,11 +5,12 @@ import Layout from "./Layout";
 import Header from "./Header";
 import Footer from "./Footer";
 import Sidebar from "./Sidebar";
+import Content from "./Content";
 
 export default {
   title: "ReactComponentLibrary/Layout",
   component: Layout,
-  subcomponents: { Header, Footer, Sidebar },
+  subcomponents: { Header, Footer, Sidebar, Content },
 } as ComponentMeta<typeof Layout>;
 
 const HeaderTemplate: ComponentStory<typeof Header> = (args) => (
@@ -64,8 +65,18 @@ SidebarComponent.args = {
   ],
 };
 
-const LayoutTemplate: ComponentStory<typeof Layout> = (args) => {
-  return <Layout {...args} />;
-};
+const ContentTemplate: ComponentStory<typeof Content> = (args) => (
+  <Content {...args}>
+    <div>content template</div>
+  </Content>
+);
+
+export const ContentComponent = ContentTemplate.bind({});
+ContentComponent.args = {};
+
+const LayoutTemplate: ComponentStory<typeof Layout> = (args) => (
+  <Layout {...args}></Layout>
+);
+
 export const LayoutComponent = LayoutTemplate.bind({});
 LayoutComponent.args = {};

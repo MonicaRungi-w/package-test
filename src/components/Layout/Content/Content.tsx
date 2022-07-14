@@ -1,14 +1,14 @@
-import React, { PropsWithChildren, ReactNode } from "react";
+import React, { PropsWithChildren } from "react";
 
 import "./Content.css";
 
-export interface ContentProps extends PropsWithChildren {}
+type ContentProps = JSX.IntrinsicElements["div"] & {};
 
 const Content = ({ ...props }: ContentProps) => {
   return (
-    <div className="container" {...props}>
-      {props.children}
-    </div>
+    <article className="container" {...props}>
+      <div className="content">{props.children}</div>
+    </article>
   );
 };
 

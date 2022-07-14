@@ -2,11 +2,11 @@ import React, { PropsWithChildren, ReactNode } from "react";
 
 import "./Header.css";
 
-export interface HeaderProps extends PropsWithChildren {
+type HeaderProps = JSX.IntrinsicElements["header"] & {
   logoComponent: ReactNode;
   titleComponent: ReactNode;
   rightComponent: ReactNode;
-}
+};
 
 const Header = ({
   logoComponent,

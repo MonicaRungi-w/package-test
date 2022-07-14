@@ -1,8 +1,9 @@
 @import "../../../utils/colors.css";
 
 .container {
-    background-color: var(--white);
-    width: 80%;
-    margin: auto;
-    margin-top: 20px;
+    flex-grow: 1;
+}
+
+.content {
+    padding: 2rem;
 }

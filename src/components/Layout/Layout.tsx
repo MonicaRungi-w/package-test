@@ -4,20 +4,15 @@ import "./Layout.css";
 import "../common.css";
 import Header from "./Header";
 import Footer from "./Footer";
+import Content from "./Content";
 
-export interface LayoutProps extends PropsWithChildren {}
+type LayoutProps = JSX.IntrinsicElements["div"] & {};
 
 const Layout = ({ ...props }: LayoutProps) => {
   return (
-    <>
-      <Header
-        titleComponent={"prova"}
-        logoComponent={<img src="prova" />}
-        rightComponent={<div>RightComponent</div>}
-      />
-      <main style={{height:'300px'}}>{props.children}</main>
-      <Footer>footer template</Footer>
-    </>
+    <div className="layout-container" {...props}>
+      {props.children}
+    </div>
   );
 };
 
