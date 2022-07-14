@@ -1,10 +1,7 @@
-import React, { PropsWithChildren } from "react";
+import React from "react";
 
 import "./Layout.css";
 import "../common.css";
-import Header from "./Header";
-import Footer from "./Footer";
-import Content from "./Content";
 
 type LayoutProps = JSX.IntrinsicElements["div"] & {};
 

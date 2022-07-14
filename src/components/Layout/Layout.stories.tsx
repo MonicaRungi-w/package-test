@@ -75,7 +75,19 @@ export const ContentComponent = ContentTemplate.bind({});
 ContentComponent.args = {};
 
 const LayoutTemplate: ComponentStory<typeof Layout> = (args) => (
-  <Layout {...args}></Layout>
+  <Layout {...args}>
+    <Header
+      logoComponent={""}
+      titleComponent={
+        <div style={{ height: "80px", color: "white" }}>Header Template</div>
+      }
+      rightComponent={""}
+    />
+    <Content>
+      <div>content template</div>
+    </Content>
+    <Footer>footer template</Footer>
+  </Layout>
 );
 
 export const LayoutComponent = LayoutTemplate.bind({});
