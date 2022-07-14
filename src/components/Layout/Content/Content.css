@@ -1,0 +1,8 @@
+@import "../../../utils/colors.css";
+
+.container {
+    background-color: var(--white);
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+}
