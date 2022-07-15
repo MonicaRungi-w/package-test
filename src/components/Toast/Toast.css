@@ -34,7 +34,7 @@
     animation: toast-in-left 0.7s;
 }
 
-.notification {
+.notification-content {
     transition: 0.3s ease;
     position: relative;
     pointer-events: auto;
@@ -52,7 +52,7 @@
     border-radius: 8px;
 }
 
-.notification:hover {
+.notification-content:hover {
     box-shadow: 0 0 12px var(--white);
     opacity: 1;
 }
@@ -92,16 +92,20 @@
     height: 30px;
 }
 
-.toast {
-    height: 50px;
+.toast-item {
     width: 365px;
-    padding: 20px 15px 10px 10px;
+    padding: 15px 15px 15px 10px;
+}
+
+.logo-title-wrapper {
+    display: flex;
+    align-items: center;
 }
 
 .notification-container .img-close {
     position: relative;
-    right: -0.3em;
-    top: -15px;
+    right: -10px;
+    top: -10px;
     float: right;
     font-weight: 700;
     outline: none;

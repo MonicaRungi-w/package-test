@@ -12,7 +12,7 @@ type BadgeProps = JSX.IntrinsicElements["div"] & {
 
 const Badge = ({ text, colorBadge, colorText, ...props }: BadgeProps) => {
   return (
-    <div className="container">
+    <div className="badge-wrapper">
       {props.children}
       <span
         className={["badge-container"].join(" ")}

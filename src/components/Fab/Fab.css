@@ -27,8 +27,8 @@
 }
 .fab-container .fab-button {
     background-color: var(--primary);
-    width: 24px;
-    min-height: 24px;
+    width: 52px;
+    min-height: 52px;
 }
 .fab-container .fab-button .fab-icon {
     width: 20px;

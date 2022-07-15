@@ -19,7 +19,7 @@ const Template: ComponentStory<typeof Pagination> = (args) => {
 
   const renderData = (data: any) => {
     return (
-      <ul style={{height: "200px"}}>
+      <ul>
         {data.map((d: any, index: number) => {
           return <li key={index}>{d.title}</li>;
         })}

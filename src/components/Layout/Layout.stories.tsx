@@ -47,20 +47,17 @@ SidebarComponent.args = {
   collapsible: true,
   title: "THE APP",
   items: [
-    { key: "1", label: "prova1", icon: "", children: [] },
+    {
+      key: "1",
+      label: "prova1",
+      icon: "https://cdn0.iconfinder.com/data/icons/ikonate/48/placeholder-512.png",
+      link: "",
+    },
     {
       key: "1",
       label: "prova2",
-      icon: "",
-      children: [
-        { key: "11", label: "sub1", icon: "", children: [] },
-        {
-          key: "12",
-          label: "sub2",
-          icon: "",
-          children: [{ key: "121", label: "sub21", icon: "", children: [] }],
-        },
-      ],
+      icon: "https://cdn0.iconfinder.com/data/icons/ikonate/48/placeholder-512.png",
+      link: "",
     },
   ],
 };
@@ -84,11 +81,34 @@ const LayoutTemplate: ComponentStory<typeof Layout> = (args) => (
       rightComponent={""}
     />
     <Content>
-      <div>content template</div>
+      <div style={{ height: "600px" }}>content template</div>
     </Content>
     <Footer>footer template</Footer>
   </Layout>
 );
 
 export const LayoutComponent = LayoutTemplate.bind({});
-LayoutComponent.args = {};
+LayoutComponent.args = {
+  sidebarComponent: (
+    <Sidebar
+      collapsible
+      title={"Bifrost"}
+      iconTitle="https://cdn0.iconfinder.com/data/icons/ikonate/48/placeholder-512.png"
+      items={[
+        {
+          key: "1",
+          label: "prova1",
+          icon: "https://cdn0.iconfinder.com/data/icons/ikonate/48/placeholder-512.png",
+          link: "",
+        },
+        {
+          key: "1",
+          label: "prova2",
+          icon: "https://cdn0.iconfinder.com/data/icons/ikonate/48/placeholder-512.png",
+          link: "",
+        },
+      ]}
+      footer={<>Biftost ©</>}
+    />
+  ),
+};

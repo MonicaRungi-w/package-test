@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import TabGroup from "./TabGroup";
+import { Button } from "..";
 
 export default {
   title: "ReactComponentLibrary/TabGroup",
@@ -22,7 +23,9 @@ TabGroupComponent.args = {
       content: (
         <div>
           PROVA 3 <input />
-          <button>SUBMIT</button>
+          <Button variant="primary" onClick={() => {}}>
+            SUBMIT
+          </Button>
           <div>CIAOOOOOOOOOOOOOOOOOOOOOOOOOO</div>
         </div>
       ),

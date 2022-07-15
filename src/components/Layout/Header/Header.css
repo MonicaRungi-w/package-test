@@ -1,6 +1,6 @@
 @import "../../../utils/colors.css";
 
-.header-custom {
+#header-custom {
     position: sticky;
     top: 0;
     display: flex;

@@ -3,12 +3,17 @@ import React from "react";
 import "./Layout.css";
 import "../common.css";
 
-type LayoutProps = JSX.IntrinsicElements["div"] & {};
+type LayoutProps = JSX.IntrinsicElements["div"] & {
+  sidebarComponent?: JSX.Element;
+};
 
-const Layout = ({ ...props }: LayoutProps) => {
+const Layout = ({ sidebarComponent, ...props }: LayoutProps) => {
   return (
     <div className="layout-container" {...props}>
-      {props.children}
+      {sidebarComponent}
+      <div className="content-container">
+        {props.children}
+      </div>
     </div>
   );
 };

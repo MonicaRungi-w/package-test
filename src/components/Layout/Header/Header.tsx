@@ -1,8 +1,9 @@
 import React, { PropsWithChildren, ReactNode } from "react";
 
 import "./Header.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-type HeaderProps = JSX.IntrinsicElements["header"] & {
+type HeaderProps = JSX.IntrinsicElements["div"] & {
   logoComponent: ReactNode;
   titleComponent: ReactNode;
   rightComponent: ReactNode;
@@ -15,13 +16,13 @@ const Header = ({
   ...props
 }: HeaderProps) => {
   return (
-    <header className="header-custom" {...props}>
+    <div id="header-custom" class="col-lg-12" {...props}>
       <div className="logo-title-container">
         <div>{logoComponent}</div>
         <div>{titleComponent}</div>
       </div>
       <div>{rightComponent}</div>
-    </header>
+    </div>
   );
 };
 

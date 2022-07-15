@@ -12,7 +12,7 @@
 }
 
 .date-picker-range {
-    max-width: 375px;
+    max-width: 460px;
 }
 
 .range-picker-container {
@@ -53,6 +53,7 @@
 
 .date-picker-text-field {
     border-width: 0px;
+    max-width: 90%;
 }
 
 .date-picker-text-field:-webkit-autofill,

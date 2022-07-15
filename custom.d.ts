@@ -4,3 +4,9 @@ declare module "*.svg" {
   const src: string;
   export default src;
 }
+
+declare namespace React {
+  interface HTMLAttributes<T> {
+    class?: string;
+  }
+}

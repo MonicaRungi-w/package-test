@@ -11,6 +11,12 @@ body {
     position: relative;
     display: flex;
     min-height: 100vh;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: flex-start;
+}
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }

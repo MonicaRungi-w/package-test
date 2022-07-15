@@ -19,7 +19,7 @@ const Button = (props: ButtonProps) => {
     <button
       type="button"
       className={[
-        "button",
+        "button-property",
         props.size ? `button--${props.size}` : "",
         `button--${props.variant}`,
         disable,

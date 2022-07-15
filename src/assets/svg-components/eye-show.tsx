@@ -1,6 +1,10 @@
 import React from "react";
 
-const EyeShow = ({ ...props }) => {
+type IconProps = JSX.IntrinsicElements["svg"] & {
+  fill: string;
+};
+
+const EyeShow = ({ fill, ...props }: IconProps) => {
   return (
     <svg
       width="24px"
@@ -12,14 +16,14 @@ const EyeShow = ({ ...props }) => {
     >
       <path
         d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12"
-        stroke={props.fill}
+        stroke={fill}
         stroke-width="2"
         stroke-linecap="round"
         stroke-linejoin="round"
       />
       <path
         d="M1 12C1 12 5 20 12 20C19 20 23 12 23 12"
-        stroke={props.fill}
+        stroke={fill}
         stroke-width="2"
         stroke-linecap="round"
         stroke-linejoin="round"
@@ -28,7 +32,7 @@ const EyeShow = ({ ...props }) => {
         cx="12"
         cy="12"
         r="3"
-        stroke={props.fill}
+        stroke={fill}
         stroke-width="2"
         stroke-linecap="round"
         stroke-linejoin="round"

@@ -1,6 +1,6 @@
 @import "../../utils/colors.css";
 
-.container {
+.badge-wrapper {
     display: inline-block;
     position: relative;
 }

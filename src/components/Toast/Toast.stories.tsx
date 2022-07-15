@@ -22,7 +22,7 @@ InfoComponent.args = {
     },
   ],
   position: "bottom-left",
-  autoDelete: true,
+  autoDelete: false,
 };
 
 export const ErrorComponent = Template.bind({});

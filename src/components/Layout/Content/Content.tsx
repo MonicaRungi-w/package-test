@@ -1,14 +1,20 @@
 import React, { PropsWithChildren } from "react";
 
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+
 import "./Content.css";
 
-type ContentProps = JSX.IntrinsicElements["div"] & {};
+export interface ContentProps extends PropsWithChildren {}
 
 const Content = ({ ...props }: ContentProps) => {
   return (
-    <article className="container" {...props}>
-      <div className="content">{props.children}</div>
-    </article>
+    <Container id="content" {...props}>
+      <Row>
+        <Col>{props.children}</Col>
+      </Row>
+    </Container>
   );
 };
 
