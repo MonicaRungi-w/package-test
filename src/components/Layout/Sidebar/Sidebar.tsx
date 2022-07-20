@@ -21,6 +21,8 @@ type SidebarProps = JSX.IntrinsicElements["div"] & {
     link: string;
   }[];
   footer?: JSX.Element;
+  isOpen: boolean;
+  setIsOpen: (b: boolean) => void;
 };
 
 const Sidebar = ({
@@ -29,48 +31,46 @@ const Sidebar = ({
   iconTitle,
   items,
   footer,
+  isOpen,
+  setIsOpen,
   ...props
 }: SidebarProps) => {
-  const [isSideMenu, setIsSideMenu] = useState(false);
-
   const open = () => {
-    setIsSideMenu(!isSideMenu);
+    setIsOpen(!isOpen);
   };
 
   return (
-    <div class={["sidebar", isSideMenu ? "active" : ""].join(" ")}>
-      <div class="logo-content">
-        <div class="logo">
+    <div className={["sidebar", isOpen ? "active" : ""].join(" ")}>
+      <div className="logo-content">
+        <div className="logo">
           <img src={iconTitle} />
-          {isSideMenu && <div class="logo-name">{title}</div>}
+          {isOpen && <div className="logo-name">{title}</div>}
           <AngleUp
             id="back-btn"
-            className={["back", isSideMenu ? "back-open" : "back-close"].join(
-              " "
-            )}
+            className={["back", isOpen ? "back-open" : "back-close"].join(" ")}
             onClick={() => open()}
             fill="white"
           />
         </div>
-        <ul class="nav_list">
+        <ul className="nav_list">
           {items?.map((item, idx) => (
             <>
               <li key={idx}>
                 <a
                   href={item.link}
                   style={{
-                    justifyContent: isSideMenu ? "flex-start" : "center",
+                    justifyContent: isOpen ? "flex-start" : "center",
                   }}
                 >
                   <img src={item.icon} />
-                  {isSideMenu && <span class="links-name">{item.label}</span>}
+                  {isOpen && <span className="links-name">{item.label}</span>}
                 </a>
               </li>
               <span></span>
             </>
           ))}
         </ul>
-        <div class="footer-content">{footer}</div>
+        <div className="footer-content">{footer}</div>
       </div>
     </div>
   );

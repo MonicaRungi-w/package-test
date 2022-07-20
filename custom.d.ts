@@ -7,6 +7,6 @@ declare module "*.svg" {
 
 declare namespace React {
   interface HTMLAttributes<T> {
-    class?: string;
+    className?: string;
   }
 }

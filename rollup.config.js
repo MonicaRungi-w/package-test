@@ -22,6 +22,9 @@ export default [
         sourcemap: true,
       },
     ],
+    external: [
+      ...Object.keys(packageJson.peerDependencies) || {}
+    ],
     plugins: [
       resolve(),
       commonjs(),

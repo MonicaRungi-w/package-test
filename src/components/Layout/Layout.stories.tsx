@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import Layout from "./Layout";
@@ -71,44 +71,51 @@ const ContentTemplate: ComponentStory<typeof Content> = (args) => (
 export const ContentComponent = ContentTemplate.bind({});
 ContentComponent.args = {};
 
-const LayoutTemplate: ComponentStory<typeof Layout> = (args) => (
-  <Layout {...args}>
-    <Header
-      logoComponent={""}
-      titleComponent={
-        <div style={{ height: "80px", color: "white" }}>Header Template</div>
+const LayoutTemplate: ComponentStory<typeof Layout> = (args) => {
+  const [open, setOpen] = useState(true);
+
+  return (
+    <Layout
+      {...args}
+      sidebarComponent={
+        <Sidebar
+          isOpen={open}
+          setIsOpen={setOpen}
+          collapsible
+          title={"Bifrost"}
+          iconTitle="https://cdn0.iconfinder.com/data/icons/ikonate/48/placeholder-512.png"
+          items={[
+            {
+              key: "1",
+              label: "prova1",
+              icon: "https://cdn0.iconfinder.com/data/icons/ikonate/48/placeholder-512.png",
+              link: "",
+            },
+            {
+              key: "1",
+              label: "prova2",
+              icon: "https://cdn0.iconfinder.com/data/icons/ikonate/48/placeholder-512.png",
+              link: "",
+            },
+          ]}
+          footer={<>Biftost ©</>}
+        />
       }
-      rightComponent={""}
-    />
-    <Content>
-      <div style={{ height: "600px" }}>content template</div>
-    </Content>
-    <Footer>footer template</Footer>
-  </Layout>
-);
+    >
+      <Header
+        logoComponent={""}
+        titleComponent={
+          <div style={{ height: "80px", color: "white" }}>Header Template</div>
+        }
+        rightComponent={""}
+      />
+      <Content>
+        <div style={{ height: "200px" }}>content template</div>
+      </Content>
+      <Footer>footer template</Footer>
+    </Layout>
+  );
+};
 
 export const LayoutComponent = LayoutTemplate.bind({});
-LayoutComponent.args = {
-  sidebarComponent: (
-    <Sidebar
-      collapsible
-      title={"Bifrost"}
-      iconTitle="https://cdn0.iconfinder.com/data/icons/ikonate/48/placeholder-512.png"
-      items={[
-        {
-          key: "1",
-          label: "prova1",
-          icon: "https://cdn0.iconfinder.com/data/icons/ikonate/48/placeholder-512.png",
-          link: "",
-        },
-        {
-          key: "1",
-          label: "prova2",
-          icon: "https://cdn0.iconfinder.com/data/icons/ikonate/48/placeholder-512.png",
-          link: "",
-        },
-      ]}
-      footer={<>Biftost ©</>}
-    />
-  ),
-};
+LayoutComponent.args = {};
