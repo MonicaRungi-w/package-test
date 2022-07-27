@@ -6,12 +6,12 @@ import Button from "../Button";
 import "./../common.css";
 import "./Modal.css";
 
-export interface ModalProps extends PropsWithChildren {
+type ModalProps = JSX.IntrinsicElements["div"] & {
   title: ReactNode;
   content: ReactNode;
   setOpen: (b: boolean) => void;
   onSubmit: () => void;
-}
+};
 
 const ModalContent = ({
   title,
@@ -36,7 +36,12 @@ const ModalContent = ({
   });
 
   return (
-    <div className="modal-content" ref={ref} id="modal-content" {...props}>
+    <div
+      ref={ref}
+      id="modal-content"
+      {...props}
+      className={["modal-content", props.className].join(" ")}
+    >
       <XIcon
         className="close-icon"
         fill="#2b468a"

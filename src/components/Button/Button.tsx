@@ -5,7 +5,7 @@ import "../common.css";
 
 type ButtonProps = JSX.IntrinsicElements["button"] & {
   children?: React.ReactNode;
-  variant: "primary" | "secondary";
+  variant: "primary" | "secondary" | "link";
   disable?: boolean;
   size?: "small" | "large";
   onClick: () => void;
@@ -18,14 +18,15 @@ const Button = (props: ButtonProps) => {
   return (
     <button
       type="button"
+      disabled={isDisabled}
+      {...props}
       className={[
         "button-property",
         props.size ? `button--${props.size}` : "",
         `button--${props.variant}`,
         disable,
+        props.className,
       ].join(" ")}
-      disabled={isDisabled}
-      {...props}
     >
       {props.children}
     </button>

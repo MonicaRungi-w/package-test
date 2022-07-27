@@ -31,7 +31,7 @@ const Pagination = ({
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
 
   useEffect(() => {
-    const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+    const currentItems = data?.slice(indexOfFirstItem, indexOfLastItem);
     setCurrent(currentItems);
   }, [data, indexOfLastItem, indexOfFirstItem]);
 

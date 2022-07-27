@@ -21,3 +21,6 @@ export { default as Tab } from "./Tab";
 export { default as Table } from "./Table";
 export { default as Toast } from "./Toast";
 export { default as Tooltip } from "./Tooltip";
+export { default as Col } from "./Col";
+export { default as Row } from "./Row";
+export { default as Grid } from "./Grid";

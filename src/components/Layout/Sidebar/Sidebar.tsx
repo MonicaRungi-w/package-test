@@ -35,6 +35,7 @@ const Sidebar = ({
   setIsOpen,
   ...props
 }: SidebarProps) => {
+  const [selected, setSelected] = useState<number>();
   const open = () => {
     setIsOpen(!isOpen);
   };
@@ -54,20 +55,22 @@ const Sidebar = ({
         </div>
         <ul className="nav_list">
           {items?.map((item, idx) => (
-            <>
-              <li key={idx}>
+            <div key={idx}>
+              <li>
                 <a
                   href={item.link}
+                  className={selected === idx ? "active" : ""}
                   style={{
                     justifyContent: isOpen ? "flex-start" : "center",
                   }}
+                  onClick={() => setSelected(idx)}
                 >
                   <img src={item.icon} />
                   {isOpen && <span className="links-name">{item.label}</span>}
                 </a>
               </li>
               <span></span>
-            </>
+            </div>
           ))}
         </ul>
         <div className="footer-content">{footer}</div>

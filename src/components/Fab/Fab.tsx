@@ -5,10 +5,11 @@ import "./../common.css";
 import "./Fab.css";
 
 type FabProps = JSX.IntrinsicElements["ul"] & {
-  actions: { label: string; icon: string; onClick: () => void }[];
+  actions?: { label: string; icon: string; onClick: () => void }[];
+  onClick?: () => void;
 };
 
-const Fab = ({ actions, ...props }: FabProps) => {
+const Fab = ({ actions, onClick, ...props }: FabProps) => {
   const [open, setOpen] = useState(false);
 
   const mouseEnter = () => setOpen(true);
@@ -17,15 +18,15 @@ const Fab = ({ actions, ...props }: FabProps) => {
 
   return (
     <ul
-      className="fab-container"
       onMouseEnter={mouseEnter}
       onMouseLeave={mouseLeave}
       {...props}
+      className={["fab-container", props.className].join(" ")}
     >
-      <li className="fab-button">
-        <Add className="fab-icon" fill="white"/>
+      <li className="fab-button" onClick={onClick ? onClick : () => {}}>
+        <Add className="fab-icon" fill="white" />
       </li>
-      {actions.map((action, index) => (
+      {actions?.map((action, index) => (
         <li
           style={{ transitionDelay: `${index * 25}ms` }}
           className={["fab-action", open ? "open" : ""].join(" ")}

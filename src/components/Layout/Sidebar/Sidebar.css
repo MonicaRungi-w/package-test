@@ -95,6 +95,13 @@
     border-radius: 8px;
 }
 
+.sidebar ul li .active {
+    background: var(--white);
+    color: var(--grey4);
+    border-radius: 8px;
+    width: 100%;
+}
+
 .footer-content {
     position: absolute;
     bottom: 0;

@@ -73,48 +73,53 @@ const Toast = ({
     <div className={`notification-container ${position}`}>
       {list?.map((toast, idx) => {
         return (
-          <div
-            key={idx}
-            className={`notification-content toast-item ${position} ${toast.type}`}
-            style={{
-              backgroundColor: toast.backgroundColor,
-              color: toast.textColor,
-            }}
-          >
+          <div className={`notification-wrapper ${position}`}>
             <div
-              className="img-close"
-              onClick={() => {
-                deleteToast(toast.id);
+              key={idx}
+              className={`notification-content toast-item  ${toast.type}`}
+              style={{
+                backgroundColor: toast.backgroundColor,
+                color: toast.textColor,
               }}
             >
-              <XIcon fill={toast.textColor} />
-            </div>
-            <div className="logo-title-wrapper">
-              <div className="notification-image">
-                {toast.type === "error" ? (
-                  <ErrorIcon
-                    className={`${toast.type}-filter`}
-                    fill="#bb2124"
-                  />
-                ) : toast.type === "info" ? (
-                  <InfoIcon className={`${toast.type}-filter`} fill="#2b468a" />
-                ) : toast.type === "warning" ? (
-                  <WarningIcon
-                    className={`${toast.type}-filter`}
-                    fill="#f0ad4e"
-                  />
-                ) : toast.type === "success" ? (
-                  <SuccessIcon
-                    className={`${toast.type}-filter`}
-                    fill="#22bb33"
-                  />
-                ) : (
-                  <img src={toast.icon} />
-                )}
+              <div
+                className="img-close"
+                onClick={() => {
+                  deleteToast(toast.id);
+                }}
+              >
+                <XIcon fill={toast.textColor} />
               </div>
-              <div>
-                <p className="notification-title">{toast.title}</p>
-                <p className="notification-message">{toast.description}</p>
+              <div className="logo-title-wrapper">
+                <div className="notification-image">
+                  {toast.type === "error" ? (
+                    <ErrorIcon
+                      className={`${toast.type}-filter`}
+                      fill="#bb2124"
+                    />
+                  ) : toast.type === "info" ? (
+                    <InfoIcon
+                      className={`${toast.type}-filter`}
+                      fill="#2b468a"
+                    />
+                  ) : toast.type === "warning" ? (
+                    <WarningIcon
+                      className={`${toast.type}-filter`}
+                      fill="#f0ad4e"
+                    />
+                  ) : toast.type === "success" ? (
+                    <SuccessIcon
+                      className={`${toast.type}-filter`}
+                      fill="#22bb33"
+                    />
+                  ) : (
+                    <img src={toast.icon} />
+                  )}
+                </div>
+                <div>
+                  <p className="notification-title">{toast.title}</p>
+                  <p className="notification-message">{toast.description}</p>
+                </div>
               </div>
             </div>
           </div>

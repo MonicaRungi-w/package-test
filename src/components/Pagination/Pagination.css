@@ -5,6 +5,7 @@
     display: flex;
     align-items: center;
     padding-left: 0px;
+    text-align: center;
 }
 
 .page-numbers li {
@@ -17,6 +18,7 @@
     background-color: var(--primary);
     border-radius: 8px;
     color: var(--white);
+    width: 30px;
 }
 
 .page-numbers li button {
