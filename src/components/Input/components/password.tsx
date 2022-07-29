@@ -10,6 +10,7 @@ export interface PasswordProps {
   icon: string;
   prefix?: ReactNode;
   suffix?: ReactNode;
+  disabled?: boolean;
 }
 
 const Password = ({
@@ -20,15 +21,18 @@ const Password = ({
   icon,
   prefix,
   suffix,
+  disabled = false,
   ...props
 }: PasswordProps) => {
   const [show, setShow] = useState(false);
 
   return (
     <div
-      className={["text-field-container", fullWidth ? "full-width" : ""].join(
-        " "
-      )}
+      className={[
+        "text-field-container",
+        fullWidth ? "full-width" : "",
+        disabled ? "disabled" : "",
+      ].join(" ")}
     >
       <input
         type={show ? "text" : "password"}
@@ -37,12 +41,19 @@ const Password = ({
         {...props}
         value={value}
         onChange={(e) => onChange(e.target.value)}
+        disabled={disabled}
       />
       <div className="password-image-container" onClick={() => setShow(!show)}>
         {show ? (
-          <EyeShow className="icon-img" fill="#2b468a" />
+          <EyeShow
+            className="icon-img"
+            fill={!disabled ? "#2b468a" : "#a1a1a1"}
+          />
         ) : (
-          <EyeHide className="icon-img" fill="#2b468a" />
+          <EyeHide
+            className="icon-img"
+            fill={!disabled ? "#2b468a" : "#a1a1a1"}
+          />
         )}
       </div>
     </div>

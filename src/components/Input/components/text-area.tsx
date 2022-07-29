@@ -7,6 +7,7 @@ export interface TextProps {
   fullWidth?: boolean;
   prefix?: ReactNode;
   suffix?: ReactNode;
+  disabled?: boolean;
 }
 
 const TextArea = ({
@@ -16,13 +17,16 @@ const TextArea = ({
   fullWidth = false,
   prefix,
   suffix,
+  disabled = false,
   ...props
 }: TextProps) => {
   return (
     <div
-      className={["text-area-container", fullWidth ? "full-width" : ""].join(
-        " "
-      )}
+      className={[
+        "text-area-container",
+        fullWidth ? "full-width" : "",
+        disabled ? "disabled" : "",
+      ].join(" ")}
     >
       <textarea
         className={["text-field", "text-area"].join(" ")}
@@ -30,6 +34,7 @@ const TextArea = ({
         {...props}
         value={value}
         onChange={(e) => onChange(e.target.value)}
+        disabled={disabled}
       />
     </div>
   );

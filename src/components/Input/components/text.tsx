@@ -7,6 +7,7 @@ export interface TextProps {
   fullWidth?: boolean;
   prefix?: ReactNode;
   suffix?: ReactNode;
+  disabled?: boolean;
 }
 
 const Text = ({
@@ -16,13 +17,16 @@ const Text = ({
   fullWidth = false,
   prefix,
   suffix,
+  disabled = false,
   ...props
 }: TextProps) => {
   return (
     <div
-      className={["text-field-container", fullWidth ? "full-width" : ""].join(
-        " "
-      )}
+      className={[
+        "text-field-container",
+        fullWidth ? "full-width" : "",
+        disabled ? "disabled" : "",
+      ].join(" ")}
     >
       <input
         type={"text"}
@@ -31,6 +35,7 @@ const Text = ({
         {...props}
         value={value}
         onChange={(e) => onChange(e.target.value)}
+        disabled={disabled}
       />
     </div>
   );

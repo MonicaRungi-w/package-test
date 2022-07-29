@@ -7,6 +7,7 @@ export interface EmailProps {
   onChange: (t: string) => void;
   fullWidth?: boolean;
   icon?: string;
+  disabled?: boolean;
 }
 
 const Email = ({
@@ -15,6 +16,7 @@ const Email = ({
   onChange,
   fullWidth = false,
   icon,
+  disabled = false,
   ...props
 }: EmailProps) => {
   const [isValid, setIsValid] = useState(false);
@@ -29,9 +31,11 @@ const Email = ({
 
   return (
     <div
-      className={["text-field-container", fullWidth ? "full-width" : ""].join(
-        " "
-      )}
+      className={[
+        "text-field-container",
+        fullWidth ? "full-width" : "",
+        disabled ? "disabled" : "",
+      ].join(" ")}
     >
       <input
         type={"text"}
@@ -40,9 +44,15 @@ const Email = ({
         {...props}
         value={value}
         onChange={(e) => emailValidator(e.target.value)}
+        disabled={disabled}
       />
       <div className="valid-image-container">
-        {isValid && <Check className="icon-img" />}
+        {isValid && (
+          <Check
+            className="icon-img"
+            fill={!disabled ? "#2b468a" : "#a1a1a1"}
+          />
+        )}
       </div>
     </div>
   );

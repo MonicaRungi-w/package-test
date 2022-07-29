@@ -1,9 +1,10 @@
 @import "../../utils/colors.css";
 
 .dd-wrapper {
-    width: 222px;
+    width: 220px;
     font-size: 15px;
     user-select: none;
+    position: relative;
 }
 
 .full-width {
@@ -16,17 +17,17 @@
     align-items: center;
     justify-content: space-between;
     position: relative;
-    border: 1px solid var(--grey0);
+    border: 1px solid var(--grey1);
     border-radius: 8px;
     background-color: var(--white);
     line-height: 38px;
     cursor: pointer;
-    padding-right: 15px;
+    padding: 5px;
+    height: 35px;
 }
 
 .dd-header-title {
-    margin-left: 15px;
-    margin-right: 15px;
+    height: 35px;
     font-weight: 300;
 }
 
@@ -73,6 +74,8 @@
     background-color: var(--white);
     text-align: left;
     font-weight: 200;
+    position: absolute;
+    width: inherit;
 }
 
 .dd-list-item {
@@ -97,9 +100,11 @@
     border-bottom: 0px;
 }
 
-.text-field {
+.dd-header-title .text-field {
     border-width: 0px;
     width: 100%;
+    background-color: transparent;
+    height: 20px;
 }
 
 .text-field:-webkit-autofill,

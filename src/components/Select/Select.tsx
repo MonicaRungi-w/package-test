@@ -6,10 +6,11 @@ import AngleUp from "../../assets/svg-components/angle-up";
 
 export interface SelectProps {
   placeholder: string;
-  selectedValue: { id: string; label: string };
+  selectedValue?: { id: string; label: string };
   values: { id: string; label: string }[];
-  onChange: (t: string) => void;
+  onChange: (sel: { id: string; label: string }) => void;
   fullWidth?: boolean;
+  disabled?: boolean;
 }
 
 const Select = ({
@@ -18,6 +19,7 @@ const Select = ({
   values,
   onChange,
   fullWidth = false,
+  disabled = false,
   ...props
 }: SelectProps) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -28,6 +30,12 @@ const Select = ({
     useState<{ id: string; label: string }[]>(values);
   const [emptyState, setEmptyState] = useState("");
   const [isSearching, setIsSearching] = useState(false);
+
+  useEffect(() => {
+    if (selected) {
+      onChange(selected);
+    }
+  }, [selected]);
 
   const toggleList = () => {
     setIsListOpen(!isListOpen);

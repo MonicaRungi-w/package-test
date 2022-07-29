@@ -73,7 +73,7 @@ const Toast = ({
     <div className={`notification-container ${position}`}>
       {list?.map((toast, idx) => {
         return (
-          <div className={`notification-wrapper ${position}`}>
+          <div key={idx} className={`notification-wrapper ${position}`}>
             <div
               key={idx}
               className={`notification-content toast-item  ${toast.type}`}

@@ -17,6 +17,7 @@ export interface InputProps {
   fullWidth?: boolean;
   icon?: string;
   searchValues?: { id: string; label: string }[];
+  disabled?: boolean;
 }
 
 const Input = ({
@@ -27,6 +28,7 @@ const Input = ({
   fullWidth = false,
   icon = "",
   searchValues,
+  disabled = false,
   ...props
 }: InputProps) => {
   const component = () => {
@@ -39,6 +41,7 @@ const Input = ({
             {...props}
             value={value}
             onChange={onChange}
+            disabled={disabled}
           />
         );
       case "number":
@@ -49,6 +52,7 @@ const Input = ({
             {...props}
             value={value}
             onChange={onChange}
+            disabled={disabled}
           />
         );
       case "password":
@@ -60,6 +64,7 @@ const Input = ({
             {...props}
             value={value}
             onChange={onChange}
+            disabled={disabled}
           />
         );
       case "search":
@@ -84,6 +89,7 @@ const Input = ({
             {...props}
             value={value}
             onChange={onChange}
+            disabled={disabled}
           />
         );
       case "email":
@@ -94,6 +100,7 @@ const Input = ({
             {...props}
             value={value}
             onChange={onChange}
+            disabled={disabled}
           />
         );
       default:

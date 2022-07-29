@@ -11,6 +11,7 @@ export interface NumberProps {
   fullWidth?: boolean;
   prefix?: ReactNode;
   suffix?: ReactNode;
+  disabled?: boolean;
 }
 
 const NumberInput = ({
@@ -20,6 +21,7 @@ const NumberInput = ({
   fullWidth = false,
   prefix,
   suffix,
+  disabled = false,
   ...props
 }: NumberProps) => {
   const [numberValue, setNumberValue] = useState(
@@ -59,6 +61,7 @@ const NumberInput = ({
         "text-field-container",
         "number-input-width",
         fullWidth ? "full-width" : "",
+        disabled ? "disabled" : "",
       ].join(" ")}
     >
       <input
@@ -68,19 +71,26 @@ const NumberInput = ({
         {...props}
         value={numberValue}
         onChange={(e) => onChangeInput(e.target.value)}
+        disabled={disabled}
       />
       <div className="number-arrows">
         <div
-          className="number-arrows-item up-arrow"
-          onClick={() => addNumber()}
+          className={[
+            "number-arrows-item up-arrow",
+            disabled ? "disabled-number" : "",
+          ].join(" ")}
+          onClick={disabled ? () => {} : () => addNumber()}
         >
-          <Arrow className="icon-img rotate-img" fill="white"/>
+          <Arrow className="icon-img rotate-img" fill="white" />
         </div>
         <div
-          className="number-arrows-item down-arrow"
-          onClick={() => subtractNumber()}
+          className={[
+            "number-arrows-item down-arrow",
+            disabled ? "disabled-number" : "",
+          ].join(" ")}
+          onClick={disabled ? () => {} : () => subtractNumber()}
         >
-          <Arrow className="icon-img" fill="white"/>
+          <Arrow className="icon-img" fill="white" />
         </div>
       </div>
     </div>
