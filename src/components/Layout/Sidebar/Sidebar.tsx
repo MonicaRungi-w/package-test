@@ -18,7 +18,7 @@ type SidebarProps = JSX.IntrinsicElements["div"] & {
     key: string;
     label: string;
     icon: string;
-    link: string;
+    link: () => void;
   }[];
   footer?: JSX.Element;
   isOpen: boolean;
@@ -58,12 +58,11 @@ const Sidebar = ({
             <div key={idx}>
               <li>
                 <a
-                  href={item.link}
                   className={selected === idx ? "active" : ""}
                   style={{
                     justifyContent: isOpen ? "flex-start" : "center",
                   }}
-                  onClick={() => setSelected(idx)}
+                  onClick={() => item.link()}
                 >
                   <img src={item.icon} />
                   {isOpen && <span className="links-name">{item.label}</span>}

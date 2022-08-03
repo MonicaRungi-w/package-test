@@ -25,11 +25,17 @@ const Select = ({
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [isListOpen, setIsListOpen] = useState(false);
   const [selected, setSelected] =
-    useState<{ id: string; label: string } | undefined>(selectedValue);
+    useState<{ id: string; label: string } | undefined>();
   const [valuesArray, setValuesArray] =
     useState<{ id: string; label: string }[]>(values);
   const [emptyState, setEmptyState] = useState("");
   const [isSearching, setIsSearching] = useState(false);
+
+  useEffect(() => {
+    if (selectedValue) {
+      setSelected(selectedValue);
+    }
+  }, [selectedValue]);
 
   useEffect(() => {
     if (selected) {

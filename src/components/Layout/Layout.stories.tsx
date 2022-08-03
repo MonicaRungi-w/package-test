@@ -6,6 +6,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Sidebar from "./Sidebar";
 import Content from "./Content";
+import Button from "../Button";
 
 export default {
   title: "ReactComponentLibrary/Layout",
@@ -51,13 +52,13 @@ SidebarComponent.args = {
       key: "1",
       label: "prova1",
       icon: "https://cdn0.iconfinder.com/data/icons/ikonate/48/placeholder-512.png",
-      link: "",
+      link: () => console.log("test"),
     },
     {
       key: "1",
       label: "prova2",
       icon: "https://cdn0.iconfinder.com/data/icons/ikonate/48/placeholder-512.png",
-      link: "",
+      link: () => console.log("test"),
     },
   ],
 };
@@ -89,13 +90,13 @@ const LayoutTemplate: ComponentStory<typeof Layout> = (args) => {
               key: "1",
               label: "prova1",
               icon: "https://cdn0.iconfinder.com/data/icons/ikonate/48/placeholder-512.png",
-              link: "",
+              link: () => console.log("test"),
             },
             {
               key: "1",
               label: "prova2",
               icon: "https://cdn0.iconfinder.com/data/icons/ikonate/48/placeholder-512.png",
-              link: "",
+              link: () => console.log("test"),
             },
           ]}
           footer={<>Biftost ©</>}
