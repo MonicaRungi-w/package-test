@@ -1,4 +1,5 @@
 @import "../../../utils/colors.css";
+@import '~bootstrap/dist/css/bootstrap.css';
 
 .container {
     flex-grow: 1;

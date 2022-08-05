@@ -1,4 +1,5 @@
 @import "../../../utils/colors.css";
+@import "~bootstrap/dist/css/bootstrap.css";
 
 #header-custom {
     position: sticky;
@@ -35,4 +36,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.text-alignment {
+    justify-content: end;
 }

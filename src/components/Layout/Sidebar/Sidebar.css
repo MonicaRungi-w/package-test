@@ -1,41 +1,72 @@
 @import "../../../utils/colors.css";
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~bootstrap/dist/css/bootstrap.min.css";
 
-.sidebar {
+#sidebar-container {
+    height: 100vh;
+    background-color: #333;
+    padding: 0;
     position: sticky;
     top: 0;
     left: 0;
-    height: 100vh;
-    width: 78px;
-    background: var(--grey4);
-    padding: 6px 14px;
-    transition: all 0.5s ease;
 }
 
-.active {
-    width: 300px;
+.sidebar-expanded {
+    width: 230px;
+    transition: all 800ms;
+}
+.sidebar-collapsed {
+    width: 80px;
+    transition: all 800ms;
 }
 
-.sidebar .logo-content .logo {
-    color: var(--white);
-    display: flex;
+@media (max-width: 576px){
+    .sidebar-expanded {
+        width: 80px
+    }
+}
+
+#sidebar-container .list-group a {
     height: 50px;
-    width: 100%;
-    align-items: center;
-    border-bottom: 0.5px solid var(--grey2);
+    color: white;
 }
 
-.logo-content .logo img {
-    width: 20px;
-    height: 20px;
+#sidebar-container .list-group .sidebar-submenu a {
+    height: 45px;
+    padding-left: 30px;
+}
+.sidebar-submenu {
+    font-size: 0.9rem;
 }
 
-.logo-content .logo .logo-name {
-    margin-left: 5px;
-    font-size: 20px;
-    font-weight: 400;
+.sidebar-separator-title {
+    background-color: #333;
+}
+.sidebar-separator {
+    background-color: #333;
+    height: 25px;
+}
+.logo-separator {
+    background-color: #333;
+    height: 60px;
 }
 
-.sidebar #back-btn {
+.title-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.separator {
+    margin-right: 15px;
+    transition: all 700ms;
+}
+
+.no-separator {
+    margin-right: 0px;
+    transition: all 700ms;
+}
+
+#back-btn {
     position: absolute;
     right: 5px;
     cursor: pointer;
@@ -43,7 +74,7 @@
 
 .back-open {
     transform: rotate(-90deg);
-    transition: all 0.3s ease-in;
+    transition: all 500ms linear;
 }
 
 .back {
@@ -54,58 +85,33 @@
 
 .back-close {
     transform: rotate(90deg);
-    transition: all 0.3s ease-in;
+    transition: all 500ms linear;
 }
 
-.sidebar ul {
-    margin-top: 20px;
-    padding-left: 0;
+.item {
+    cursor: pointer;
 }
 
-.sidebar li {
-    position: relative;
-    height: 50px;
-    width: 100%;
-    list-style: none;
-    line-height: 50px;
+.item:hover {
 }
 
-.sidebar ul li a img {
-    min-width: 30px;
-    height: 30px;
-    line-height: 50px;
+.item:active {
 }
 
-.sidebar ul li .links-name {
-    margin-left: 10px;
+.title-fade-out {
+    display: none;
+    margin-left: 0;
+    transition: all 700ms;
 }
 
-.sidebar ul li a {
-    color: var(--white);
+.title-fade-in {
     display: flex;
-    align-items: center;
-    height: 100%;
-    text-decoration: none;
-    padding: 0 5px;
+    margin-left: 10px;
+    transition: all 700ms;
 }
 
-.sidebar ul li a:hover {
-    background: var(--white);
-    color: var(--grey4);
-    border-radius: 8px;
-}
-
-.sidebar ul li .active {
-    background: var(--white);
-    color: var(--grey4);
-    border-radius: 8px;
-    width: 100%;
-}
-
-.footer-content {
+.sidebar-footer {
     position: absolute;
     bottom: 0;
-    left: 0;
-    color: var(--white);
-    padding: 10px 6px;
+    padding: 20px;
 }

@@ -22,12 +22,7 @@ export const HeaderComponent = HeaderTemplate.bind({});
 HeaderComponent.args = {
   logoComponent: <img src="" />,
   titleComponent: <div>Enter Title Here</div>,
-  rightComponent: (
-    <div style={{ display: "flex", justifyContent: "space-evenly" }}>
-      <div>RC1</div>
-      <div>RC2</div>
-    </div>
-  ),
+  navbarItems: [<div>RC1</div>, <div>RC2</div>],
 };
 
 const FooterTemplate: ComponentStory<typeof Footer> = (args) => (
@@ -102,18 +97,26 @@ const LayoutTemplate: ComponentStory<typeof Layout> = (args) => {
           footer={<>Biftost ©</>}
         />
       }
+      footerComponent={<Footer>footer template test</Footer>}
     >
       <Header
-        logoComponent={""}
-        titleComponent={
-          <div style={{ height: "80px", color: "white" }}>Header Template</div>
+        logoComponent={
+          <img
+            src={
+              "https://cdn0.iconfinder.com/data/icons/ikonate/48/placeholder-512.png"
+            }
+            style={{ width: "30px" }}
+          />
         }
-        rightComponent={""}
+        titleComponent={"Header Template"}
+        navbarItems={[
+          <div key="example-key-1">Test1</div>,
+          <div key="example-key-2">Test2</div>,
+        ]}
       />
       <Content>
-        <div style={{ height: "200px" }}>content template</div>
+        <div>content template</div>
       </Content>
-      <Footer>footer template</Footer>
     </Layout>
   );
 };
