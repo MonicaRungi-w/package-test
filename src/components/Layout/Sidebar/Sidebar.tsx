@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AngleUp from "../../../assets/svg-components/angle-up";
 import "bootstrap/dist/js/bootstrap.min.js";
 
@@ -36,6 +36,13 @@ const Sidebar = ({
   ...props
 }: SidebarProps) => {
   const [isActive, setIsActive] = useState(true);
+  const [selected, setSelected] =
+    useState<{
+      key: string;
+      label: string;
+      icon: string;
+      link: () => void;
+    }>();
 
   return (
     <div
@@ -43,6 +50,7 @@ const Sidebar = ({
       className={[isActive ? "sidebar-expanded" : "sidebar-collapsed"].join(
         " "
       )}
+      {...props}
     >
       <ul className="list-group">
         <li className="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
@@ -50,8 +58,8 @@ const Sidebar = ({
 
           <small
             className={[
-              isActive ? "title-fade-in" : "title-fade-out",
               "d-none d-sm-block",
+              isActive ? "title-fade-in" : "title-fade-out",
             ].join(" ")}
           >
             {title}
@@ -69,38 +77,55 @@ const Sidebar = ({
           </div>
         </li>
 
-        {items?.map((item, idx) => (
-          <a
-            key={idx}
-            data-toggle="collapse"
-            aria-expanded="false"
-            className="bg-dark list-group-item list-group-item-action flex-column align-items-start item"
-            onClick={item.link}
-          >
+        {items?.map((item, idx) => {
+          return (
             <div
-              className={[
-                "d-flex w-100",
-                "align-items-center",
-                isActive ? "justify-content-start" : "justify-content-center",
-              ].join(" ")}
+              key={idx}
+              id="item-container"
+              className="bg-dark"
+              style={{ position: "relative", display: "flex" }}
+              onClick={() => setSelected(item)}
             >
-              <span
-                className={[
-                  "fa fa-dashboard fa-fw mr-3 submenu-icon ml-auto",
-                  isActive ? "separator" : "no-separator",
-                ].join(" ")}
+              <div
+                id={"on-hover-transition"}
+                className={
+                  item.key === selected?.key
+                    ? "on-hover-transition-selected"
+                    : ""
+                }
+              ></div>
+              <a
+                className="bg-transparent list-group-item list-group-item-action flex-column align-items-start item"
+                onClick={item.link}
               >
-                {" "}
-                <img src={item.icon} className="title-icon" />{" "}
-              </span>
-              {isActive && (
-                <span className="menu-collapsed text-light d-none d-sm-block">
-                  {item.label}
-                </span>
-              )}
+                <div
+                  className={[
+                    "d-flex w-100",
+                    "align-items-center",
+                    isActive
+                      ? "justify-content-start"
+                      : "justify-content-center",
+                  ].join(" ")}
+                >
+                  <span
+                    className={[
+                      "fa fa-dashboard fa-fw mr-3 submenu-icon ml-auto",
+                      isActive ? "separator" : "no-separator",
+                    ].join(" ")}
+                  >
+                    {" "}
+                    <img src={item.icon} className="title-icon" />{" "}
+                  </span>
+                  {isActive && (
+                    <span className="menu-collapsed text-light d-none d-sm-block">
+                      {item.label}
+                    </span>
+                  )}
+                </div>
+              </a>
             </div>
-          </a>
-        ))}
+          );
+        })}
       </ul>
       {isActive && (
         <small className="text-light sidebar-footer d-none d-sm-block">

@@ -50,7 +50,7 @@ SidebarComponent.args = {
       link: () => console.log("test"),
     },
     {
-      key: "1",
+      key: "2",
       label: "prova2",
       icon: "https://cdn0.iconfinder.com/data/icons/ikonate/48/placeholder-512.png",
       link: () => console.log("test"),
@@ -88,7 +88,7 @@ const LayoutTemplate: ComponentStory<typeof Layout> = (args) => {
               link: () => console.log("test"),
             },
             {
-              key: "1",
+              key: "2",
               label: "prova2",
               icon: "https://cdn0.iconfinder.com/data/icons/ikonate/48/placeholder-512.png",
               link: () => console.log("test"),
