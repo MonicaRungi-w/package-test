@@ -6,11 +6,13 @@ import "../common.css";
 
 type LayoutProps = JSX.IntrinsicElements["div"] & {
   sidebarComponent?: ReactNode;
+  headerComponent?: ReactNode;
   footerComponent?: ReactNode;
 };
 
 const Layout = ({
   sidebarComponent,
+  headerComponent,
   footerComponent,
   ...props
 }: LayoutProps) => {
@@ -18,7 +20,11 @@ const Layout = ({
     <div className="container-fluid overflow-hidden">
       <div className="row vh-100 overflow-auto">
         {sidebarComponent}
-        <div className="col d-flex flex-column min-vh-100" style={{ padding: "0" }}>
+        <div
+          className="col d-flex flex-column min-vh-100"
+          style={{ padding: "0" }}
+        >
+          {headerComponent}
           {props.children}
           {footerComponent}
         </div>

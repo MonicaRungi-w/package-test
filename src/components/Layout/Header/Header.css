@@ -41,3 +41,14 @@
 .text-alignment {
     justify-content: end;
 }
+
+.navbar-toggler:focus {
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
+.navbar-toggler {
+    display: flex;
+    justify-content: right;
+    border: 0 !important;
+}

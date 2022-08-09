@@ -8,7 +8,7 @@ import { Container } from "react-bootstrap";
 type HeaderProps = JSX.IntrinsicElements["div"] & {
   logoComponent: ReactNode;
   titleComponent: ReactNode;
-  navbarItems: ReactNode[];
+  navbarItems?: ReactNode[];
 };
 
 const Header = ({
@@ -19,13 +19,15 @@ const Header = ({
 }: HeaderProps) => {
   return (
     <Navbar bg="dark" expand="lg" variant="dark" className="sticky-top">
-      <Container>
+      <Container style={{alignItems: "center"}}>
         <div className="logo-title-container">
-          <div>{logoComponent}</div>
-          <Navbar.Brand href="#">{titleComponent}</Navbar.Brand>
+          <div style={{marginRight: "10px"}}>{logoComponent}</div>
+          <Navbar.Brand href="/">{titleComponent}</Navbar.Brand>
         </div>
-        <Navbar.Toggle aria-controls="toggle-menu" color="light" />
-        <Navbar.Collapse className="text-alignment">
+        {navbarItems && navbarItems?.length > 0 && (
+          <Navbar.Toggle aria-controls="toggle-menu" color="light" className="col-sm"/>
+        )}
+        <Navbar.Collapse className="text-alignment col-sm">
           <ul className="navbar-nav ml-auto">
             {navbarItems?.map((item, idx) => (
               <li key={idx} className="navbar-item color-white text-light mx-2">

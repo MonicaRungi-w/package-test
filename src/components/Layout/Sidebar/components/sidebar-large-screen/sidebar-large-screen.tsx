@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import AngleUp from "../../../assets/svg-components/angle-up";
+import AngleUp from "../../../../../assets/svg-components/angle-up";
 import "bootstrap/dist/js/bootstrap.min.js";
 
-import "./Sidebar.css";
+import "./sidebar-large-screen.css";
 
 export type Item = {
   key: string;
@@ -10,7 +10,7 @@ export type Item = {
   icon: string;
 };
 
-type SidebarProps = JSX.IntrinsicElements["div"] & {
+type SidebarLargeScreenProps = JSX.IntrinsicElements["div"] & {
   collapsible?: boolean;
   title?: string;
   iconTitle?: string;
@@ -25,7 +25,7 @@ type SidebarProps = JSX.IntrinsicElements["div"] & {
   setIsOpen: (b: boolean) => void;
 };
 
-const Sidebar = ({
+const SidebarLargeScreen = ({
   collapsible = true,
   title,
   iconTitle,
@@ -34,7 +34,7 @@ const Sidebar = ({
   isOpen,
   setIsOpen,
   ...props
-}: SidebarProps) => {
+}: SidebarLargeScreenProps) => {
   const [isActive, setIsActive] = useState(true);
   const [selected, setSelected] =
     useState<{
@@ -47,9 +47,10 @@ const Sidebar = ({
   return (
     <div
       id="sidebar-container"
-      className={[isActive ? "sidebar-expanded" : "sidebar-collapsed"].join(
-        " "
-      )}
+      className={[
+        "d-none d-sm-block",
+        isActive ? "sidebar-expanded" : "sidebar-collapsed",
+      ].join(" ")}
       {...props}
     >
       <ul className="list-group">
@@ -58,7 +59,7 @@ const Sidebar = ({
 
           <small
             className={[
-              "d-none d-sm-block",
+              "d-none d-md-block",
               isActive ? "title-fade-in" : "title-fade-out",
             ].join(" ")}
           >
@@ -99,13 +100,7 @@ const Sidebar = ({
                 onClick={item.link}
               >
                 <div
-                  className={[
-                    "d-flex w-100",
-                    "align-items-center",
-                    isActive
-                      ? "justify-content-start"
-                      : "justify-content-center",
-                  ].join(" ")}
+                  className={["d-flex w-100", "align-items-center"].join(" ")}
                 >
                   <span
                     className={[
@@ -117,7 +112,7 @@ const Sidebar = ({
                     <img src={item.icon} className="title-icon" />{" "}
                   </span>
                   {isActive && (
-                    <span className="menu-collapsed text-light d-none d-sm-block">
+                    <span className="menu-collapsed text-light d-none d-md-block">
                       {item.label}
                     </span>
                   )}
@@ -128,7 +123,7 @@ const Sidebar = ({
         })}
       </ul>
       {isActive && (
-        <small className="text-light sidebar-footer d-none d-sm-block">
+        <small className="text-light sidebar-footer d-none d-md-block">
           {footer}
         </small>
       )}
@@ -136,4 +131,4 @@ const Sidebar = ({
   );
 };
 
-export default Sidebar;
+export default SidebarLargeScreen;

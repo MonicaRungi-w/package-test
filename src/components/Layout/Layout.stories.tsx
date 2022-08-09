@@ -4,14 +4,21 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Layout from "./Layout";
 import Header from "./Header";
 import Footer from "./Footer";
-import Sidebar from "./Sidebar";
+import { SidebarLargeScreen } from "./Sidebar";
+import { SidebarSmallScreen } from "./Sidebar";
 import Content from "./Content";
 import Button from "../Button";
 
 export default {
   title: "ReactComponentLibrary/Layout",
   component: Layout,
-  subcomponents: { Header, Footer, Sidebar, Content },
+  subcomponents: {
+    Header,
+    Footer,
+    SidebarLargeScreen,
+    SidebarSmallScreen,
+    Content,
+  },
 } as ComponentMeta<typeof Layout>;
 
 const HeaderTemplate: ComponentStory<typeof Header> = (args) => (
@@ -34,8 +41,8 @@ const FooterTemplate: ComponentStory<typeof Footer> = (args) => (
 export const FooterComponent = FooterTemplate.bind({});
 FooterComponent.args = {};
 
-const SidebarTemplate: ComponentStory<typeof Sidebar> = (args) => (
-  <Sidebar {...args}></Sidebar>
+const SidebarTemplate: ComponentStory<typeof SidebarLargeScreen> = (args) => (
+  <SidebarLargeScreen {...args}></SidebarLargeScreen>
 );
 
 export const SidebarComponent = SidebarTemplate.bind({});
@@ -74,7 +81,7 @@ const LayoutTemplate: ComponentStory<typeof Layout> = (args) => {
     <Layout
       {...args}
       sidebarComponent={
-        <Sidebar
+        <SidebarLargeScreen
           isOpen={open}
           setIsOpen={setOpen}
           collapsible

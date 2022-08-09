@@ -1,4 +1,4 @@
-@import "../../../utils/colors.css";
+@import "../../../../../utils/colors.css";
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~bootstrap/dist/css/bootstrap.min.css";
 
@@ -20,7 +20,7 @@
     transition: all 800ms;
 }
 
-@media (max-width: 576px) {
+@media (max-width: 768px) {
     .sidebar-expanded {
         width: 80px;
     }
