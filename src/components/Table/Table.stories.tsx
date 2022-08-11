@@ -14,12 +14,18 @@ export default {
 const Template: ComponentStory<typeof Table> = (args) => {
   const [data, setData] = useState();
   const [columns, setColumns] = useState<ColumnType[]>();
+  const [limit, setLimit] = useState(5);
+  const [start, setStart] = useState(0);
 
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
+    fetch(
+      `https://jsonplaceholder.typicode.com/photos?_start=${start}&_limit=${limit}`
+    )
       .then((response) => response.json())
-      .then((json) => setData(json));
-  }, []);
+      .then((json) => {
+        setData(json);
+      });
+  }, [limit, start]);
 
   useEffect(() => {
     const columns: ColumnType[] = [
@@ -29,48 +35,23 @@ const Template: ComponentStory<typeof Table> = (args) => {
         show: false,
       },
       {
-        id: "name",
-        fieldName: "Name",
+        id: "title",
+        fieldName: "Title",
         Cell: (row: any, idx: number) => {
-          return <h4 key={idx}>{row.name}</h4>;
+          return <h4 key={idx}>{row.title}</h4>;
         },
         sortable: true,
         show: true,
       },
       {
-        id: "username",
-        fieldName: "Username",
+        id: "albumId",
+        fieldName: "Album ID",
         show: true,
       },
       {
-        id: "email",
-        fieldName: "Email",
+        id: "url",
+        fieldName: "URL",
         show: true,
-      },
-      {
-        id: "address",
-        fieldName: "Address",
-        Cell: (row: any, idx: number) => {
-          return (
-            <div key={idx}>
-              {row.address.street + " - " + row.address.city}
-            </div>
-          );
-        },
-        show: false,
-      },
-      {
-        id: "company",
-        fieldName: "Company",
-        Cell: (row: any, idx: number) => {
-          return <div key={idx}>{row.company.name}</div>;
-        },
-        show: false,
-      },
-      {
-        id: "website",
-        fieldName: "Website",
-        show: false,
       },
       {
         id: "edit",
@@ -103,7 +84,16 @@ const Template: ComponentStory<typeof Table> = (args) => {
   return (
     <>
       {columns && data && (
-        <Table data={data} columns={columns} setColumns={setColumns} />
+        <Table
+          data={data}
+          columns={columns}
+          setColumns={setColumns}
+          limit={limit}
+          setLimit={setLimit}
+          offset={start}
+          setOffset={setStart}
+          dataSize={30}
+        />
       )}
     </>
   );

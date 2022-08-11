@@ -19,12 +19,27 @@ export interface TableProps extends PropsWithChildren {
   data: any[];
   columns: ColumnType[];
   setColumns: (c: ColumnType[]) => void;
+  limit: number;
+  setLimit: (n: number) => void;
+  offset: number;
+  setOffset: (n: number) => void;
+  dataSize: number;
 }
 
-const Table = ({ data, columns, setColumns, ...props }: TableProps) => {
+const Table = ({
+  data,
+  columns,
+  setColumns,
+  limit,
+  setLimit,
+  offset,
+  setOffset,
+  dataSize,
+  ...props
+}: TableProps) => {
   const [currentItems, setCurrentItems] = useState<any[]>([]);
   const [open, setOpen] = useState(false);
-  const [paginator, setPaginator] = useState(5);
+  const [limitPerPage, setLimitPerPage] = useState(limit);
 
   const content = () => (
     <>
@@ -34,8 +49,8 @@ const Table = ({ data, columns, setColumns, ...props }: TableProps) => {
           <Input
             type={"number"}
             placeholder="Page limit"
-            value={paginator.toString()}
-            onChange={(e: string) => setPaginator(Number(e))}
+            value={limitPerPage.toString()}
+            onChange={(e: string) => setLimitPerPage(Number(e))}
           />
         </div>
         <div>Columns:</div>
@@ -70,14 +85,17 @@ const Table = ({ data, columns, setColumns, ...props }: TableProps) => {
       <div className="table-paginator">
         <table className="table-container">
           <TableHead columns={columns} openOptions={() => setOpen(true)} />
-          <TableBody data={currentItems} columns={columns} />
+          <TableBody data={data} columns={columns} />
         </table>
         <div className="paginator">
           {data && (
             <Pagination
               data={data}
               setCurrent={setCurrentItems}
-              itemsPerPage={paginator}
+              itemsPerPage={limit}
+              dataSize={dataSize}
+              offset={offset}
+              setOffset={setOffset}
             />
           )}
         </div>
@@ -87,7 +105,12 @@ const Table = ({ data, columns, setColumns, ...props }: TableProps) => {
         content={content()}
         open={open}
         setOpen={setOpen}
-        onSubmit={() => setOpen(false)}
+        onSubmit={() => {
+          if (limitPerPage > 0) {
+            setOpen(false);
+            setLimit(limitPerPage);
+          }
+        }}
       />
     </>
   );
