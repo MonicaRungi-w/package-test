@@ -5,12 +5,12 @@ import "./Pagination.css";
 
 export interface PaginationProps extends PropsWithChildren {
   data: any[];
-  setCurrent: (data: any[]) => void;
+  setCurrent?: (data: any[]) => void;
   pageNumberLimit?: number;
   itemsPerPage?: number;
   dataSize: number;
-  offset: number;
-  setOffset: (n: number) => void;
+  offset?: number;
+  setOffset?: (n: number) => void;
 }
 
 const Pagination = ({
@@ -27,8 +27,20 @@ const Pagination = ({
   const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(pageNumberLimit);
   const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);
 
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+
   useEffect(() => {
-    setOffset(itemsPerPage * (currentPage - 1));
+    if (setCurrent) {
+      const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+      setCurrent(currentItems);
+    }
+  }, [data, indexOfLastItem, indexOfFirstItem]);
+
+  useEffect(() => {
+    if (setOffset) {
+      setOffset(itemsPerPage * (currentPage - 1));
+    }
   }, [currentPage]);
 
   const pages: number[] = [];

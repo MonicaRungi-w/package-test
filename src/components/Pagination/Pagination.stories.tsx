@@ -30,7 +30,7 @@ const Template: ComponentStory<typeof Pagination> = (args) => {
   return (
     <>
       {renderData(currentItems)}
-      <Pagination {...args} data={data} setCurrent={setCurrentItems} />
+      <Pagination {...args} data={data} />
     </>
   );
 };
@@ -38,5 +38,7 @@ const Template: ComponentStory<typeof Pagination> = (args) => {
 export const PaginationComponent = Template.bind({});
 PaginationComponent.args = {
   pageNumberLimit: 5,
-  itemsPerPage: 10
+  itemsPerPage: 10,
+  offset: 0,
+  setOffset: () => {},
 };

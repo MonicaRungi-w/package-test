@@ -19,10 +19,10 @@ export interface TableProps extends PropsWithChildren {
   data: any[];
   columns: ColumnType[];
   setColumns: (c: ColumnType[]) => void;
-  limit: number;
-  setLimit: (n: number) => void;
-  offset: number;
-  setOffset: (n: number) => void;
+  limit?: number;
+  setLimit?: (n: number) => void;
+  offset?: number;
+  setOffset?: (n: number) => void;
   dataSize: number;
 }
 
@@ -39,7 +39,7 @@ const Table = ({
 }: TableProps) => {
   const [currentItems, setCurrentItems] = useState<any[]>([]);
   const [open, setOpen] = useState(false);
-  const [limitPerPage, setLimitPerPage] = useState(limit);
+  const [limitPerPage, setLimitPerPage] = useState(limit ? limit : 5);
 
   const content = () => (
     <>
@@ -85,17 +85,20 @@ const Table = ({
       <div className="table-paginator">
         <table className="table-container">
           <TableHead columns={columns} openOptions={() => setOpen(true)} />
-          <TableBody data={data} columns={columns} />
+          <TableBody
+            data={limit && offset ? data : currentItems}
+            columns={columns}
+          />
         </table>
         <div className="paginator">
           {data && (
             <Pagination
               data={data}
-              setCurrent={setCurrentItems}
-              itemsPerPage={limit}
+              itemsPerPage={limit ? limit : limitPerPage}
               dataSize={dataSize}
               offset={offset}
               setOffset={setOffset}
+              setCurrent={limit && offset ? undefined : setCurrentItems}
             />
           )}
         </div>
@@ -108,7 +111,7 @@ const Table = ({
         onSubmit={() => {
           if (limitPerPage > 0) {
             setOpen(false);
-            setLimit(limitPerPage);
+            if (setLimit) setLimit(limitPerPage);
           }
         }}
       />

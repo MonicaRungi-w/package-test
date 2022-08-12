@@ -19,7 +19,7 @@ const Template: ComponentStory<typeof Table> = (args) => {
 
   useEffect(() => {
     fetch(
-      `https://jsonplaceholder.typicode.com/photos?_start=${start}&_limit=${limit}`
+      `https://jsonplaceholder.typicode.com/photos`
     )
       .then((response) => response.json())
       .then((json) => {
@@ -79,7 +79,7 @@ const Template: ComponentStory<typeof Table> = (args) => {
       },
     ];
     setColumns(columns);
-  }, [data]);
+  }, []);
 
   return (
     <>
@@ -88,10 +88,7 @@ const Template: ComponentStory<typeof Table> = (args) => {
           data={data}
           columns={columns}
           setColumns={setColumns}
-          limit={limit}
-          setLimit={setLimit}
-          offset={start}
-          setOffset={setStart}
+          
           dataSize={30}
         />
       )}
