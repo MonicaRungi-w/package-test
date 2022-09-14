@@ -9,7 +9,8 @@ export default {
 } as ComponentMeta<typeof Input>;
 
 const Template: ComponentStory<typeof Input> = (args) => {
-  return <Input {...args} />;
+  const [value, setValue] = useState("");
+  return <Input {...args} onChange={setValue} value={value}/>;
 };
 
 export const Text = Template.bind({});
@@ -40,6 +41,12 @@ export const Email = Template.bind({});
 Email.args = {
   placeholder: "Enter email",
   type: "email",
+};
+
+export const Phone = Template.bind({});
+Phone.args = {
+  placeholder: "Enter phone number",
+  type: "phone",
 };
 
 export const Search = Template.bind({});

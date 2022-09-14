@@ -16,6 +16,7 @@ import {
 import "../DatePicker.css";
 import "../../common.css";
 import DatePickerIcon from "../../../assets/svg-components/date-picker-icon";
+import { Col, Row } from "react-bootstrap";
 
 const months = moment.monthsShort();
 
@@ -30,6 +31,7 @@ export interface RangeProps {
   onChangeEnd: (date: Date) => void;
   icon?: string;
   dateformat: string[];
+  fullWidth?: boolean;
 }
 
 const Range = (props: RangeProps) => {
@@ -280,61 +282,77 @@ const Range = (props: RangeProps) => {
   };
 
   return (
-    <div className="date-picker date-picker-range" ref={wrapperRef}>
-      <div className="range-picker-container">
-        <div className="input-container">
-          <div
-            className="selected-date"
-            onClick={() => {
-              toggleDatePicker();
-              setIsStartOpen(true);
-            }}
-          >
-            <input
-              placeholder={props.placeholderStart}
-              type="text"
-              className="date-picker-text-field"
-              autoComplete="hidden"
-              {...props}
-              value={startDate ? startDate : ""}
-              onChange={(e) => handleStartInputString(e.target.value)}
-              onKeyPress={(e) => {
-                if (e.key === "Enter") {
-                  setIsOpen(false);
-                }
-              }}
-            />
-          </div>
-          <div className="date-divider" />
-          <div
-            className="selected-date"
-            onClick={() => {
-              toggleDatePicker();
-              setIsStartOpen(false);
-            }}
-          >
-            <input
-              placeholder={props.placeholderEnd}
-              type="text"
-              className="date-picker-text-field"
-              autoComplete="false"
-              {...props}
-              value={endDate ? endDate : ""}
-              onChange={(e) => handleEndInputString(e.target.value)}
-              onKeyPress={(e) => {
-                if (e.key === "Enter") {
-                  setIsOpen(false);
-                }
-              }}
-            />
-          </div>
-        </div>
-        {typeof Icon === "string" ? (
-          <img src={Icon} className="date-picker-icon" />
-        ) : (
-          <DatePickerIcon className="date-picker-icon" fill="#2b468a" />
-        )}
-      </div>
+    <div
+      className={`date-picker date-picker-range ${
+        props.fullWidth ? "date-picker-full-width" : ""
+      }`}
+      ref={wrapperRef}
+    >
+      <Row className="range-picker-container">
+        <Col className="col-10">
+          <Row className="input-container">
+            <Col className="col-6">
+              <div
+                className="selected-date"
+                onClick={() => {
+                  toggleDatePicker();
+                  setIsStartOpen(true);
+                }}
+              >
+                <input
+                  placeholder={props.placeholderStart}
+                  type="text"
+                  className="date-picker-text-field"
+                  autoComplete="hidden"
+                  {...props}
+                  value={startDate ? startDate : ""}
+                  onChange={(e) => handleStartInputString(e.target.value)}
+                  onKeyPress={(e) => {
+                    if (e.key === "Enter") {
+                      setIsOpen(false);
+                    }
+                  }}
+                />
+              </div>
+            </Col>
+            <Col className="col-6 second-half-input-container">
+              <div className="date-divider" />
+              <div
+                className="selected-date"
+                onClick={() => {
+                  toggleDatePicker();
+                  setIsStartOpen(false);
+                }}
+              >
+                <input
+                  placeholder={props.placeholderEnd}
+                  type="text"
+                  className="date-picker-text-field"
+                  autoComplete="false"
+                  {...props}
+                  value={endDate ? endDate : ""}
+                  onChange={(e) => handleEndInputString(e.target.value)}
+                  onKeyPress={(e) => {
+                    if (e.key === "Enter") {
+                      setIsOpen(false);
+                    }
+                  }}
+                />
+              </div>
+            </Col>
+          </Row>
+        </Col>
+        <Col
+          className="col-2"
+          style={{ display: "flex", justifyContent: "flex-end" }}
+        >
+          {typeof Icon === "string" ? (
+            <img src={Icon} className="date-picker-icon" />
+          ) : (
+            <DatePickerIcon className="date-picker-icon" fill="#2b468a" />
+          )}
+        </Col>
+      </Row>
       <div
         className={[
           isOpen ? "dates-open" : "dates-close",

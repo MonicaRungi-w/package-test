@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { ChangeEvent, ReactNode } from "react";
 
 import "./Input.css";
 import "../common.css";
@@ -8,16 +8,25 @@ import TextArea from "./components/text-area";
 import Password from "./components/password";
 import Search from "./components/search";
 import Email from "./components/email";
+import Phone from "./components/phone";
 
 export interface InputProps {
   placeholder: string;
   value: string;
-  onChange: (t: string) => void;
-  type?: "text" | "text-area" | "number" | "password" | "search" | "email";
+  onChange: (e: string) => void;
+  type?:
+    | "text"
+    | "text-area"
+    | "number"
+    | "password"
+    | "search"
+    | "email"
+    | "phone";
   fullWidth?: boolean;
   icon?: string;
   searchValues?: { id: string; label: string }[];
   disabled?: boolean;
+  step?: number;
 }
 
 const Input = ({
@@ -29,6 +38,7 @@ const Input = ({
   icon = "",
   searchValues,
   disabled = false,
+  step,
   ...props
 }: InputProps) => {
   const component = () => {
@@ -53,6 +63,7 @@ const Input = ({
             value={value}
             onChange={onChange}
             disabled={disabled}
+            step={step}
           />
         );
       case "password":
@@ -95,6 +106,17 @@ const Input = ({
       case "email":
         return (
           <Email
+            placeholder={placeholder}
+            fullWidth={fullWidth}
+            {...props}
+            value={value}
+            onChange={onChange}
+            disabled={disabled}
+          />
+        );
+      case "phone":
+        return (
+          <Phone
             placeholder={placeholder}
             fullWidth={fullWidth}
             {...props}

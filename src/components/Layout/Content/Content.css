@@ -1,9 +1,10 @@
 @import "../../../utils/colors.css";
 @import "~bootstrap/dist/css/bootstrap.css";
 
-.container {
+.main-content-container {
     flex-grow: 1;
     align-items: flex-start;
+    padding: 20px;
 }
 
 .content {
@@ -14,4 +15,8 @@
     padding: 20px;
     transition: all 0.3s;
     overflow-x: scroll;
+}
+
+.body-content {
+    display: contents;
 }

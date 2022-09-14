@@ -194,3 +194,16 @@
     cursor: default;
     background-color: var(--grey2);
 }
+
+.phone-text-field {
+    display: flex;
+}
+
+.text-field-prefix {
+    width: 50px;
+}
+
+.text-field-phone-divider {
+    border-left: 1px solid var(--grey1);
+    height: 20px;
+}

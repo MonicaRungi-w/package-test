@@ -52,3 +52,8 @@
     justify-content: right;
     border: 0 !important;
 }
+
+.li-item {
+    display: flex;
+    align-items: center;
+}

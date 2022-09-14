@@ -12,6 +12,7 @@ export interface NumberProps {
   prefix?: ReactNode;
   suffix?: ReactNode;
   disabled?: boolean;
+  step?: number;
 }
 
 const NumberInput = ({
@@ -22,6 +23,7 @@ const NumberInput = ({
   prefix,
   suffix,
   disabled = false,
+  step = 1,
   ...props
 }: NumberProps) => {
   const [numberValue, setNumberValue] = useState(
@@ -30,29 +32,33 @@ const NumberInput = ({
 
   const addNumber = () => {
     if (numberValue) {
-      onChangeInput((numberValue + 1).toString());
+      onChangeInput((numberValue + step).toFixed(3).toString());
     } else if (numberValue === -1) {
       onChangeInput("0");
     } else {
-      onChangeInput("1");
+      onChangeInput(step.toString());
     }
   };
 
   const subtractNumber = () => {
     if (numberValue) {
-      onChangeInput((numberValue - 1).toString());
-    } else if (numberValue === 1) {
-      onChangeInput("0");
+      onChangeInput((numberValue - step).toFixed(2).toString());
     } else {
-      onChangeInput("-1");
+      if (numberValue && numberValue - step === 0) {
+        onChangeInput("0");
+      } else {
+        onChangeInput("-" + step);
+      }
     }
   };
 
   const onChangeInput = (value: string) => {
+    const number = value;
+    //.replace(/[-+]?[^\d]/g, "");
     setNumberValue(
-      Number(value) || Number(value) === 0 ? Number(value) : undefined
+      Number(number) || Number(number) === 0 ? Number(number) : undefined
     );
-    onChange(value);
+    onChange(number);
   };
 
   return (

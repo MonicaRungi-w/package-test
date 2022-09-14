@@ -15,6 +15,7 @@ export interface DatePickerProps {
   onChangeEnd: (date: Date) => void;
   dateformat?: string[];
   type?: "simple" | "range";
+  fullWidth?: boolean;
 }
 
 const DatePicker = (props: DatePickerProps) => {
@@ -34,6 +35,7 @@ const DatePicker = (props: DatePickerProps) => {
           icon={icon}
           onChange={props.onChange}
           dateformat={dateFormat}
+          fullWidth={props.fullWidth}
         />
       ) : (
         <Range
@@ -45,6 +47,7 @@ const DatePicker = (props: DatePickerProps) => {
           onChangeEnd={props.onChangeEnd}
           icon={icon}
           dateformat={dateFormat}
+          fullWidth={props.fullWidth}
         />
       )}
     </>

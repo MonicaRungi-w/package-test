@@ -19,18 +19,25 @@ const Header = ({
 }: HeaderProps) => {
   return (
     <Navbar bg="dark" expand="lg" variant="dark" className="sticky-top">
-      <Container style={{alignItems: "center"}}>
+      <Container style={{ alignItems: "center" }}>
         <div className="logo-title-container">
-          <div style={{marginRight: "10px"}}>{logoComponent}</div>
+          <div style={{ marginRight: "10px" }}>{logoComponent}</div>
           <Navbar.Brand href="/">{titleComponent}</Navbar.Brand>
         </div>
         {navbarItems && navbarItems?.length > 0 && (
-          <Navbar.Toggle aria-controls="toggle-menu" color="light" className="col-sm"/>
+          <Navbar.Toggle
+            aria-controls="toggle-menu"
+            color="light"
+            className="col-sm"
+          />
         )}
         <Navbar.Collapse className="text-alignment col-sm">
           <ul className="navbar-nav ml-auto">
             {navbarItems?.map((item, idx) => (
-              <li key={idx} className="navbar-item color-white text-light mx-2">
+              <li
+                key={idx}
+                className="navbar-item color-white text-light mx-2 li-item"
+              >
                 {item}
               </li>
             ))}

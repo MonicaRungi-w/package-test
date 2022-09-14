@@ -3,14 +3,19 @@ import React, { useEffect, useRef, useState } from "react";
 import "./Select.css";
 import "../common.css";
 import AngleUp from "../../assets/svg-components/angle-up";
+import { Checkbox } from "..";
+import XIcon from "../../assets/svg-components/x-icon";
 
 export interface SelectProps {
   placeholder: string;
   selectedValue?: { id: string; label: string };
   values: { id: string; label: string }[];
-  onChange: (sel: { id: string; label: string }) => void;
+  onChange: (
+    sel: { id: string; label: string } | { id: string; label: string }[]
+  ) => void;
   fullWidth?: boolean;
   disabled?: boolean;
+  type?: "multi" | "single";
 }
 
 const Select = ({
@@ -20,16 +25,20 @@ const Select = ({
   onChange,
   fullWidth = false,
   disabled = false,
+  type,
   ...props
 }: SelectProps) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [isListOpen, setIsListOpen] = useState(false);
   const [selected, setSelected] =
     useState<{ id: string; label: string } | undefined>();
+  const [selectedList, setSelectedList] =
+    useState<{ id: string; label: string }[] | undefined>();
   const [valuesArray, setValuesArray] =
     useState<{ id: string; label: string }[]>(values);
   const [emptyState, setEmptyState] = useState("");
   const [isSearching, setIsSearching] = useState(false);
+  const [formattedList, setFormattedList] = useState("");
 
   useEffect(() => {
     if (selectedValue) {
@@ -43,12 +52,32 @@ const Select = ({
     }
   }, [selected]);
 
+  useEffect(() => {
+    if (selectedList) {
+      onChange(selectedList);
+    }
+  }, [selectedList]);
+
   const toggleList = () => {
     setIsListOpen(!isListOpen);
   };
 
   const selectItem = (item: { id: string; label: string }) => {
     setSelected(item);
+  };
+
+  const selectListItem = (item: { id: string; label: string }) => {
+    let list = selectedList ? selectedList : [];
+    const duplicate = list.filter((l) => l.id === item.id);
+    if (duplicate.length > 0) {
+      list = list.filter((l) => l.id !== item.id);
+    } else {
+      list.push(item);
+    }
+    setSelectedList(list);
+
+    const listFormatted = list?.map((l) => l.label).join(", ");
+    setFormattedList(listFormatted);
   };
 
   const search = (value: { id: string; label: string }) => {
@@ -95,6 +124,12 @@ const Select = ({
     };
   });
 
+  const checkSelectedItems = (value: { id: string; label: string }) => {
+    if (selectedList?.find((l) => l.id === value.id)) {
+      return true;
+    } else return false;
+  };
+
   return (
     <div
       className={["dd-wrapper", fullWidth && "full-width"].join(" ")}
@@ -108,7 +143,9 @@ const Select = ({
           ].join(" ")}
         >
           <input
-            value={selected ? selected.label : ""}
+            value={
+              type === "multi" ? formattedList : selected ? selected.label : ""
+            }
             placeholder={placeholder}
             className="text-field"
             onChange={(e) =>
@@ -116,6 +153,15 @@ const Select = ({
             }
           />
         </div>
+        {type === "multi" && formattedList && (
+          <XIcon
+            className={"x-icon-multi-select"}
+            onClick={() => {
+              setFormattedList("");
+              setSelectedList([]);
+            }}
+          />
+        )}
         <AngleUp
           className={["angle", isListOpen ? "angle-down" : "angle-up"].join(
             " "
@@ -129,18 +175,28 @@ const Select = ({
           isListOpen ? "dd-list-show" : "dd-list-hide",
         ].join(" ")}
       >
-        {valuesArray.map((value, idx) => (
-          <div
-            key={idx}
-            className="dd-list-item"
-            onClick={() => {
-              selectItem(value);
-              toggleList();
-            }}
-          >
-            {value.label}
-          </div>
-        ))}
+        {valuesArray.map((value, idx) =>
+          type === "multi" ? (
+            <div className="dd-list-item">
+              <Checkbox
+                label={value.label}
+                onClick={() => selectListItem(value)}
+                checked={checkSelectedItems(value)}
+              />
+            </div>
+          ) : (
+            <div
+              key={idx}
+              className="dd-list-item"
+              onClick={() => {
+                selectItem(value);
+                toggleList();
+              }}
+            >
+              {value.label}
+            </div>
+          )
+        )}
         {emptyState && (
           <div className="dd-list-item dd-empty-state">{emptyState}</div>
         )}

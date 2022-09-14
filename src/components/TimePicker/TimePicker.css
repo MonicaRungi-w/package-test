@@ -1,0 +1,77 @@
+@import "../../utils/colors.css";
+
+.time-picker {
+    width: 150px;
+    height: 40px;
+    background-color: var(--white);
+    border-radius: 8px;
+    border: 1px solid var(--grey1);
+    user-select: none;
+    display: block;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+}
+
+.time-picker .selected-time {
+    height: 100%;
+    cursor: text;
+    padding: 0 !important;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.time-picker .divider {
+    padding: 0 !important;
+    text-align: center;
+}
+
+.time-picker-text-field {
+    border-width: 0px;
+    max-width: 90%;
+}
+
+.time-picker-text-field:-webkit-autofill,
+.time-picker-text-field:-webkit-autofill:hover,
+.time-picker-text-field:-webkit-autofill:focus,
+.time-picker-text-field:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px var(--white) inset !important;
+}
+
+.time-selector {
+    width: 150px;
+    height: 200px;
+    background-color: var(--white);
+    border-radius: 8px;
+    border: 1px solid var(--grey1);
+    z-index: 10;
+    display: flex;
+    justify-content: space-around;
+    box-sizing: border-box;
+}
+
+.number-container {
+    width: 50%;
+    height: 198px;
+    overflow-y: scroll;
+    text-align: center;
+}
+
+.number-detail {
+    cursor: pointer;
+}
+
+.number-detail:hover {
+    background-color: var(--grey-transparent);
+}
+
+.number-detail:active {
+    transform: scale(0.9);
+}
+
+.time-picker-icon {
+    width: 20px;
+    height: 20px;
+}

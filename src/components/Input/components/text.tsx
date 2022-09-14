@@ -1,9 +1,9 @@
-import React, { ReactNode } from "react";
+import React, { ChangeEvent, ReactNode } from "react";
 
 export interface TextProps {
   placeholder: string;
   value: string;
-  onChange: (t: string) => void;
+  onChange: (e: string) => void;
   fullWidth?: boolean;
   prefix?: ReactNode;
   suffix?: ReactNode;

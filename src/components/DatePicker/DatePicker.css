@@ -2,17 +2,22 @@
 
 .date-picker {
     position: relative;
-    width: 100%;
-    max-width: 220px;
+    width: 220px;
     height: 40px;
     background-color: var(--white);
     border-radius: 8px;
     border: 1px solid var(--grey1);
     user-select: none;
+    padding-right: 5px;
+    padding-left: 5px;
 }
 
 .date-picker-range {
-    max-width: 460px;
+    width: 460px;
+}
+
+.date-picker-full-width {
+    width: 100%;
 }
 
 .range-picker-container {
@@ -20,11 +25,16 @@
     justify-content: space-between;
     align-items: center;
     overflow: hidden;
-    padding-right: 15px;
 }
 
 .input-container {
-    width: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.second-half-input-container {
     display: flex;
     align-items: center;
 }
@@ -39,11 +49,10 @@
 
 .date-picker .selected-date {
     height: 100%;
-    cursor: pointer;
     display: flex;
+    cursor: pointer;
     align-items: center;
     justify-content: space-between;
-    padding-inline: 15px;
 }
 
 .date-picker .date-picker-icon {
@@ -72,11 +81,14 @@
 }
 
 .date-picker .dates-open {
+    position: relative;
     display: block;
     border: 1px solid var(--grey1);
+    background-color: var(--white);
     border-radius: 15px;
     padding-left: 5px;
     padding-right: 5px;
+    z-index: 10;
 }
 
 .dates-open-range-start {

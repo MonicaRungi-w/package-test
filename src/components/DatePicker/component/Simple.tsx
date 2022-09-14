@@ -27,6 +27,7 @@ export interface SimpleProps {
   icon?: string;
   onChange: (value: Date) => void;
   dateformat: string[];
+  fullWidth?: boolean;
 }
 
 const Simple = (props: SimpleProps) => {
@@ -101,7 +102,12 @@ const Simple = (props: SimpleProps) => {
   };
 
   return (
-    <div className="date-picker" ref={wrapperRef}>
+    <div
+      className={`date-picker ${
+        props.fullWidth ? "date-picker-full-width" : ""
+      }`}
+      ref={wrapperRef}
+    >
       <div className="selected-date" onClick={() => toggleDatePicker()}>
         <input
           id={props.placeholder}

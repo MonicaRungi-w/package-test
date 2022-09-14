@@ -123,3 +123,12 @@
     background-color: transparent;
     color: var(--black);
 }
+
+.x-icon-multi-select {
+    width: 15px;
+    height: 15px;
+}
+
+.x-icon-multi-select:active {
+   transform: scale(0.9);
+}
