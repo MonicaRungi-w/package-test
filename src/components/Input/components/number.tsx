@@ -53,8 +53,7 @@ const NumberInput = ({
   };
 
   const onChangeInput = (value: string) => {
-    const number = value;
-    //.replace(/[-+]?[^\d]/g, "");
+    const number = value.replace(/[a-zA-Z]/g, "");
     setNumberValue(
       Number(number) || Number(number) === 0 ? Number(number) : undefined
     );
