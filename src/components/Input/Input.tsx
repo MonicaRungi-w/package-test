@@ -9,6 +9,8 @@ import Password from "./components/password";
 import Search from "./components/search";
 import Email from "./components/email";
 import Phone from "./components/phone";
+import FileUploader from "./components/file-uploader";
+import JSONEditor from "./components/JSONeditor";
 
 export interface InputProps {
   placeholder: string;
@@ -21,7 +23,9 @@ export interface InputProps {
     | "password"
     | "search"
     | "email"
-    | "phone";
+    | "phone"
+    | "file"
+    | "json";
   fullWidth?: boolean;
   icon?: string;
   searchValues?: { id: string; label: string }[];
@@ -125,6 +129,10 @@ const Input = ({
             disabled={disabled}
           />
         );
+      case "file":
+        return <FileUploader />;
+      case "json":
+        return <JSONEditor value={value} onChange={onChange} />;
       default:
         <></>;
     }

@@ -207,3 +207,9 @@
     border-left: 1px solid var(--grey1);
     height: 20px;
 }
+
+.json-editor-wrapper {
+    height: 200px;
+    width: "100%";
+    overflow-y: scroll;
+}

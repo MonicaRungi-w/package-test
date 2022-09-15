@@ -10,9 +10,8 @@ export interface SelectProps {
   placeholder: string;
   selectedValue?: { id: string; label: string };
   values: { id: string; label: string }[];
-  onChange: (
-    sel: { id: string; label: string } | { id: string; label: string }[]
-  ) => void;
+  onChange?: (sel: { id: string; label: string }) => void;
+  onChangeList?: (sel: { id: string; label: string }[]) => void;
   fullWidth?: boolean;
   disabled?: boolean;
   type?: "multi" | "single";
@@ -23,6 +22,7 @@ const Select = ({
   selectedValue,
   values,
   onChange,
+  onChangeList,
   fullWidth = false,
   disabled = false,
   type,
@@ -47,14 +47,14 @@ const Select = ({
   }, [selectedValue]);
 
   useEffect(() => {
-    if (selected) {
+    if (selected && onChange) {
       onChange(selected);
     }
   }, [selected]);
 
   useEffect(() => {
-    if (selectedList) {
-      onChange(selectedList);
+    if (selectedList && onChangeList) {
+      onChangeList(selectedList);
     }
   }, [selectedList]);
 

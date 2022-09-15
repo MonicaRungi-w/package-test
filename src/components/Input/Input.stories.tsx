@@ -10,7 +10,7 @@ export default {
 
 const Template: ComponentStory<typeof Input> = (args) => {
   const [value, setValue] = useState("");
-  return <Input {...args} onChange={setValue} value={value}/>;
+  return <Input {...args} onChange={setValue} value={value} />;
 };
 
 export const Text = Template.bind({});
@@ -58,4 +58,14 @@ Search.args = {
     { id: "2", label: "prova2" },
     { id: "3", label: "prova1" },
   ],
+};
+
+export const FileUploader = Template.bind({});
+FileUploader.args = {
+  type: "file",
+};
+
+export const JSONEditor = Template.bind({});
+JSONEditor.args = {
+  type: "json",
 };
