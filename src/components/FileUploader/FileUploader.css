@@ -1,0 +1,56 @@
+@import "../../utils/colors.css";
+
+.drop-zone-wrapper,
+.drop-zone-wrapper > div {
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    border-radius: 8px;
+    user-select: none;
+    padding: 5px;
+}
+
+.drop-zone-wrapper {
+    border: 1px dashed var(--primary);
+}
+
+.drop-zone-wrapper div {
+    flex-direction: column;
+    text-align: center;
+}
+
+.drop-zone-active {
+    background: var(--primary-transparent);
+    border-color: var(--primary);
+}
+
+.list-files li {
+    list-style-type: none;
+    font-size: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.list-files {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0;
+}
+
+.upload-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.file-uploader-text {
+    letter-spacing: 2px;
+    color: var(--black);
+}
+
+.text-file-span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    white-space: nowrap;
+}
