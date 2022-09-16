@@ -27,6 +27,13 @@ Secondary.args = {
   onClick: () => console.log("Secondary Button clicked!"),
 };
 
+export const Neutral = Template.bind({});
+Neutral.args = {
+  children: "Neutral button",
+  variant: "neutral",
+  onClick: () => console.log("Neutral Button clicked!"),
+};
+
 export const Large = Template.bind({});
 Large.args = {
   children: "Large Button",
@@ -46,5 +53,5 @@ Small.args = {
 export const Disabled = Template.bind({});
 Disabled.args = {
   children: "Disabled Button",
-  disable: true
+  disable: true,
 };

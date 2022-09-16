@@ -5,11 +5,6 @@
     width: 100%;
 }
 
-.text-area {
-    min-width: 100%;
-    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
-}
-
 .text-field:-webkit-autofill,
 .text-field:-webkit-autofill:hover,
 .text-field:-webkit-autofill:focus,
@@ -36,9 +31,6 @@
 
 .full-width {
     width: 100% !important;
-}
-
-.number-input-width {
 }
 
 .number-arrows {
@@ -85,19 +77,6 @@
 
 .rotate-img {
     transform: rotate(180deg);
-}
-
-.text-area-container {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 200px;
-    background-color: var(--white);
-    border-radius: 8px;
-    border: 1px solid var(--grey1);
-    user-select: none;
-    padding: 5px;
 }
 
 .valid-image-container {
@@ -206,10 +185,4 @@
 .text-field-phone-divider {
     border-left: 1px solid var(--grey1);
     height: 20px;
-}
-
-.json-editor-wrapper {
-    height: 200px;
-    width: "100%";
-    overflow-y: scroll;
 }

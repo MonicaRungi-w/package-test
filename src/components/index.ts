@@ -27,3 +27,5 @@ export { default as Row } from "./Row";
 export { default as Grid } from "./Grid";
 export { default as TimePicker } from "./TimePicker";
 export { default as FileUploader } from "./FileUploader";
+export { default as TextArea } from "./TextArea";
+export { default as CodeEditor } from "./CodeEditor";

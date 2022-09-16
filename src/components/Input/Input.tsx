@@ -1,34 +1,27 @@
-import React, { ChangeEvent, ReactNode } from "react";
+import React, { ReactElement, ReactNode, ReactSVGElement } from "react";
+
+import Text from "./components/text";
+import NumberInput from "./components/number";
+import Password from "./components/password";
+import Search from "./components/search";
+import Phone from "./components/phone";
 
 import "./Input.css";
 import "../common.css";
-import Text from "./components/text";
-import NumberInput from "./components/number";
-import TextArea from "./components/text-area";
-import Password from "./components/password";
-import Search from "./components/search";
-import Email from "./components/email";
-import Phone from "./components/phone";
-import JSONEditor from "./components/JSONeditor";
 
 export interface InputProps {
   placeholder: string;
   value: string;
   onChange: (e: string) => void;
-  type?:
-    | "text"
-    | "text-area"
-    | "number"
-    | "password"
-    | "search"
-    | "email"
-    | "phone"
-    | "json";
+  type?: "text" | "number" | "password" | "search" | "email" | "phone";
   fullWidth?: boolean;
   icon?: string;
   searchValues?: { id: string; label: string }[];
   disabled?: boolean;
   step?: number;
+  isValid?: boolean;
+  prefix?: ReactNode;
+  suffix?: ReactNode;
 }
 
 const Input = ({
@@ -41,6 +34,9 @@ const Input = ({
   searchValues,
   disabled = false,
   step,
+  isValid,
+  suffix,
+  prefix,
   ...props
 }: InputProps) => {
   const component = () => {
@@ -54,6 +50,9 @@ const Input = ({
             value={value}
             onChange={onChange}
             disabled={disabled}
+            isValid={isValid}
+            prefix={prefix}
+            suffix={suffix}
           />
         );
       case "number":
@@ -94,28 +93,6 @@ const Input = ({
             />
           )
         );
-      case "text-area":
-        return (
-          <TextArea
-            placeholder={placeholder}
-            fullWidth={fullWidth}
-            {...props}
-            value={value}
-            onChange={onChange}
-            disabled={disabled}
-          />
-        );
-      case "email":
-        return (
-          <Email
-            placeholder={placeholder}
-            fullWidth={fullWidth}
-            {...props}
-            value={value}
-            onChange={onChange}
-            disabled={disabled}
-          />
-        );
       case "phone":
         return (
           <Phone
@@ -127,8 +104,6 @@ const Input = ({
             disabled={disabled}
           />
         );
-      case "json":
-        return <JSONEditor value={value} onChange={onChange} />;
       default:
         <></>;
     }

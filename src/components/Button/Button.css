@@ -29,6 +29,14 @@
     border-style: solid;
 }
 
+.button--neutral {
+    background-color: var(--grey0);
+    color: var(--grey3);
+    border-width: 1px;
+    border-color: var(--grey0);
+    border-style: solid;
+}
+
 .button--link {
     background-color: transparent;
     color: var(--primary);
@@ -36,8 +44,13 @@
     padding: 0;
 }
 
+.button--underlined {
+    text-decoration: underline;
+}
+
 .button--disabled {
     opacity: 0.5;
+    cursor: default;
 }
 
 .button--small {

@@ -1,0 +1,50 @@
+@import "../../utils/colors.css";
+
+.text-area {
+    min-width: 100%;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+}
+
+.text-area-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    background-color: var(--white);
+    border-radius: 8px;
+    border: 1px solid var(--grey1);
+    user-select: none;
+    padding: 5px;
+}
+
+.full-width {
+    width: 100% !important;
+}
+
+.text-field {
+    border-width: 0px;
+    width: 100%;
+}
+
+.text-field:-webkit-autofill,
+.text-field:-webkit-autofill:hover,
+.text-field:-webkit-autofill:focus,
+.text-field:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px var(--white) inset !important;
+}
+
+.text-field:disabled {
+    background-color: transparent;
+}
+
+.disable-resize {
+    resize: none;
+}
+
+.text-area-counter {
+    position: absolute;
+    bottom: 1px;
+    right: 20px;
+    font-size: 10px;
+}

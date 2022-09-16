@@ -1,4 +1,5 @@
 import React, { ChangeEvent, ReactNode } from "react";
+import Check from "../../../assets/svg-components/check";
 
 export interface TextProps {
   placeholder: string;
@@ -8,6 +9,7 @@ export interface TextProps {
   prefix?: ReactNode;
   suffix?: ReactNode;
   disabled?: boolean;
+  isValid?: boolean;
 }
 
 const Text = ({
@@ -18,6 +20,7 @@ const Text = ({
   prefix,
   suffix,
   disabled = false,
+  isValid,
   ...props
 }: TextProps) => {
   return (
@@ -37,6 +40,17 @@ const Text = ({
         onChange={(e) => onChange(e.target.value)}
         disabled={disabled}
       />
+      <div className="valid-image-container">
+        {isValid &&
+          (suffix ? (
+            suffix
+          ) : (
+            <Check
+              className="icon-img"
+              fill={!disabled ? "#2b468a" : "#a1a1a1"}
+            />
+          ))}
+      </div>
     </div>
   );
 };

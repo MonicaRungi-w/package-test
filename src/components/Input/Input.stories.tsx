@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import Input from "./Input";
+import Check from "../../assets/svg-components/check";
 
 export default {
   title: "ReactComponentLibrary/Input",
@@ -17,18 +18,14 @@ export const Text = Template.bind({});
 Text.args = {
   placeholder: "Enter simple text",
   type: "text",
+  isValid: true,
+  suffix: <Check className="icon-img" fill={"#2b468a"} />,
 };
 
 export const Number = Template.bind({});
 Number.args = {
   placeholder: "Enter number",
   type: "number",
-};
-
-export const TextArea = Template.bind({});
-TextArea.args = {
-  placeholder: "Enter text",
-  type: "text-area",
 };
 
 export const Password = Template.bind({});
@@ -58,9 +55,4 @@ Search.args = {
     { id: "2", label: "prova2" },
     { id: "3", label: "prova1" },
   ],
-};
-
-export const JSONEditor = Template.bind({});
-JSONEditor.args = {
-  type: "json",
 };

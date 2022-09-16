@@ -4,35 +4,33 @@ import "../common.css";
 import "./Checkbox.css";
 
 type CheckboxProps = JSX.IntrinsicElements["input"] & {
-  label: string;
+  label?: string;
   disable?: boolean;
-  checked?: boolean;
+  checked: boolean;
   setChecked: (b: boolean) => void;
 };
 
-const Checkbox = (props: CheckboxProps) => {
-  const [value, setValue] = useState(props.checked ? props.checked : false);
-  const disable = props.disable ? "checkmark-disabled" : "";
-  const isDisabled = props.disable ? props.disable : false;
-
-  useEffect(() => {
-    props.setChecked(value);
-  }, [value]);
-
+const Checkbox = ({
+  label,
+  disable = false,
+  checked,
+  setChecked,
+  ...props
+}: CheckboxProps) => {
   return (
     <div className={["checkbox-container"].join(" ")}>
       <input
-        id={props.label}
+        id={label}
         type="checkbox"
         className={["check-box", disable].join(" ")}
-        disabled={isDisabled}
-        checked={value}
+        disabled={disable}
+        checked={checked}
         {...props}
-        onChange={() => setValue(!value)}
+        onChange={() => {
+          setChecked(!checked);
+        }}
       />
-      <label className={props.disable ? "label-disabled" : ""}>
-        {props.label}
-      </label>
+      <label className={disable ? "label-disabled" : ""}>{label}</label>
     </div>
   );
 };

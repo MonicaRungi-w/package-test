@@ -20,7 +20,6 @@ const Search = ({
   ...props
 }: SearchProps) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const [searchedValue, setSearchedValue] = useState(value);
   const [searchValuesArray, setSearchValuesArray] = useState(searchValues);
   const [isOpen, setIsOpen] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
@@ -43,15 +42,14 @@ const Search = ({
       setIsOpen(false);
       setEmptyState("");
     }
-    setSearchedValue(value);
     onChange(value);
   };
 
   useEffect(() => {
-    if (searchedValue && !isSearching) {
+    if (value && !isSearching) {
       setTimeout(() => setSearchValuesArray(searchValues), 300);
     }
-  }, [searchedValue]);
+  }, [value]);
 
   const handleClickOutside = (event: Event) => {
     if (
@@ -60,7 +58,7 @@ const Search = ({
     ) {
       setIsOpen(false);
       if (searchValuesArray.length === 0) {
-        setSearchedValue("");
+        onChange("");
       }
     }
   };
@@ -85,7 +83,7 @@ const Search = ({
           className="text-field"
           placeholder={placeholder}
           {...props}
-          value={searchedValue}
+          value={value}
           onChange={(e) => toggleSearch(e.target.value)}
         />
         <div className="">
@@ -103,14 +101,8 @@ const Search = ({
             isOpen ? "search-list-show" : "search-list-hide",
           ].join(" ")}
         >
-          {searchValuesArray.map((value) => (
-            <div
-              className="search-list-item"
-              // onClick={() => {
-              //   select(value);
-              //   toggleSearch();
-              // }}
-            >
+          {searchValuesArray.map((value, idx) => (
+            <div key={idx} className="search-list-item">
               {value.label}
             </div>
           ))}
