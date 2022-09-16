@@ -180,7 +180,7 @@ const Select = ({
             <div className="dd-list-item">
               <Checkbox
                 label={value.label}
-                onClick={() => selectListItem(value)}
+                setChecked={() => selectListItem(value)}
                 checked={checkSelectedItems(value)}
               />
             </div>

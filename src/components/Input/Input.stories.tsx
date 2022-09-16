@@ -60,11 +60,6 @@ Search.args = {
   ],
 };
 
-export const FileUploader = Template.bind({});
-FileUploader.args = {
-  type: "file",
-};
-
 export const JSONEditor = Template.bind({});
 JSONEditor.args = {
   type: "json",

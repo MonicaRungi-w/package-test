@@ -23,7 +23,6 @@ export interface InputProps {
     | "search"
     | "email"
     | "phone"
-    | "file"
     | "json";
   fullWidth?: boolean;
   icon?: string;

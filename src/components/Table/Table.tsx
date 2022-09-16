@@ -58,7 +58,7 @@ const Table = ({
           <Checkbox
             key={c.id}
             label={c.fieldName}
-            onClick={() => handleColumnVisible(c.id)}
+            setChecked={() => handleColumnVisible(c.id)}
             checked={c.show}
           />
         ))}

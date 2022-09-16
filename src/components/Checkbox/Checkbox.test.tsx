@@ -6,7 +6,7 @@ import Checkbox from "./Checkbox";
 describe("Checkbox", () => {
   test("renders the Checkbox component", () => {
     render(
-      <Checkbox label="Hello world!" onClick={() => console.log("click!")} />
+      <Checkbox label="Hello world!" setChecked={() => console.log("click!")} />
     );
   });
 });

@@ -5,6 +5,6 @@ import FileUploader from "./FileUploader";
 
 describe("FileUploader", () => {
   test("renders the FileUploader component", () => {
-    render(<FileUploader />);
+    render(<FileUploader files={[]} setFiles={() => {}} />);
   });
 });

@@ -5,6 +5,6 @@ import TimePicker from "./TimePicker";
 
 describe("TimePicker", () => {
   test("renders the TimePicker component", () => {
-    render(<TimePicker />);
+    render(<TimePicker onTimeChange={() => {}} />);
   });
 });

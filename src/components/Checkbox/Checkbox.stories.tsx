@@ -10,8 +10,13 @@ export default {
 
 const Template: ComponentStory<typeof Checkbox> = (args) => {
   const [value, setValue] = useState(false);
+
   return (
-    <Checkbox {...args} checked={value} onClick={() => setValue(!value)} />
+    <Checkbox
+      {...args}
+      checked={value}
+      setChecked={(e: boolean) => setValue(e)}
+    />
   );
 };
 
