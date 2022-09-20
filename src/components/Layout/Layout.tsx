@@ -22,7 +22,7 @@ const Layout = ({
         {sidebarComponent}
         <div
           className="col d-flex flex-column min-vh-100"
-          style={{ padding: "0" }}
+          style={{ padding: "0", overflowX: "scroll" }}
         >
           {headerComponent}
           {props.children}
