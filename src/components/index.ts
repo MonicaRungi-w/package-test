@@ -29,3 +29,5 @@ export { default as TimePicker } from "./TimePicker";
 export { default as FileUploader } from "./FileUploader";
 export { default as TextArea } from "./TextArea";
 export { default as CodeEditor } from "./CodeEditor";
+export { default as DateTimePicker } from "./DateTimePicker";
+export { default as Slider } from "./Slider";

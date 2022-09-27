@@ -9,9 +9,7 @@ export default {
 } as ComponentMeta<typeof CodeEditor>;
 
 const Template: ComponentStory<typeof CodeEditor> = (args) => {
-  const [value, setValue] = useState("");
-
-  console.log(value);
+  const [value, setValue] = useState<string | undefined>("");
 
   return <CodeEditor {...args} value={value} onChange={setValue} />;
 };
@@ -20,4 +18,5 @@ export const CodeEditorComponent = Template.bind({});
 CodeEditorComponent.args = {
   theme: "vs-dark",
   language: "json",
+  disabled: true,
 };

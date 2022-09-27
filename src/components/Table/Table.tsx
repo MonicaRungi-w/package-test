@@ -59,7 +59,7 @@ const Table = ({
             key={c.id}
             label={c.fieldName}
             setChecked={() => handleColumnVisible(c.id)}
-            checked={c.show}
+            checked={c.show ? c.show : false}
           />
         ))}
       </div>

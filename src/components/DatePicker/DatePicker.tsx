@@ -16,6 +16,7 @@ export interface DatePickerProps {
   dateformat?: string[];
   type?: "simple" | "range";
   fullWidth?: boolean;
+  disabled?: boolean;
 }
 
 const DatePicker = (props: DatePickerProps) => {
@@ -25,6 +26,7 @@ const DatePicker = (props: DatePickerProps) => {
     props.dateformat && props.dateformat?.length > 0
       ? props.dateformat
       : ["DD/MM/YYYY"];
+  const disabled = props.disabled ? props.disabled : false;
 
   return (
     <>
@@ -36,6 +38,7 @@ const DatePicker = (props: DatePickerProps) => {
           onChange={props.onChange}
           dateformat={dateFormat}
           fullWidth={props.fullWidth}
+          disabled={disabled}
         />
       ) : (
         <Range
@@ -48,6 +51,7 @@ const DatePicker = (props: DatePickerProps) => {
           icon={icon}
           dateformat={dateFormat}
           fullWidth={props.fullWidth}
+          disabled={disabled}
         />
       )}
     </>

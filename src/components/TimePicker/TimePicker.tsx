@@ -13,12 +13,14 @@ type TimePickerProps = JSX.IntrinsicElements["div"] & {
   value?: string;
   onTimeChange: (value: string) => void;
   icon?: string;
+  disabled?: boolean;
 };
 
 const TimePicker = ({
   value,
   onTimeChange,
   icon,
+  disabled = false,
   ...props
 }: TimePickerProps) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -56,10 +58,14 @@ const TimePicker = ({
   }, [hour, minute]);
 
   return (
-    <div ref={wrapperRef} style={{ width: "150px" }} {...props}>
+    <div
+      ref={wrapperRef}
+      style={{ width: "150px", position: "relative" }}
+      {...props}
+    >
       <Row
-        className="time-picker"
-        onClick={() => setToggleWindow(!toggleWindow)}
+        className={`time-picker ${disabled ? "time-picker-disabled" : ""}`}
+        onClick={() => !disabled && setToggleWindow(!toggleWindow)}
       >
         <Col className="col-3 selected-time">
           {hour ? hour?.padStart(2, "0") : "00"}
@@ -72,7 +78,10 @@ const TimePicker = ({
           {typeof Icon === "string" ? (
             <img src={Icon} className="date-picker-icon" />
           ) : (
-            <ClockIcon className="time-picker-icon" fill="#2b468a" />
+            <ClockIcon
+              className="time-picker-icon"
+              fill={disabled ? "#a1a1a1" : "#2b468a"}
+            />
           )}
         </Col>
       </Row>

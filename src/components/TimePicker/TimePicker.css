@@ -11,7 +11,12 @@
     padding: 5px;
     display: flex;
     justify-content: space-between;
-    margin: 0;
+    margin: 0 !important;
+}
+
+.time-picker-disabled {
+    background-color: var(--grey-transparent);
+    color: var(--grey2);
 }
 
 .time-picker .selected-time {
@@ -50,6 +55,7 @@
     display: flex;
     justify-content: space-around;
     box-sizing: border-box;
+    position: absolute;
 }
 
 .number-container {

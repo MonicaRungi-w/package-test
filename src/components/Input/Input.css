@@ -25,11 +25,15 @@
     padding: 5px;
 }
 
+.number-input-width {
+    width: 80px;
+}
+
 .text-field:disabled {
     background-color: transparent;
 }
 
-.full-width {
+.fullWidth {
     width: 100% !important;
 }
 
@@ -179,7 +183,7 @@
 }
 
 .text-field-prefix {
-    width: 50px;
+    width: 50px !important;
 }
 
 .text-field-phone-divider {

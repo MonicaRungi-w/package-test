@@ -4,29 +4,35 @@ import XIcon from "../../assets/svg-components/x-icon";
 
 import "./FileUploader.css";
 
-export interface FileUploaderProps {
+type FileUploaderProps = JSX.IntrinsicElements["div"] & {
   files: File[];
   setFiles: (files: File[]) => void;
-}
+  disabled?: boolean;
+};
 
-const FileUploader = ({ files, setFiles }: FileUploaderProps) => {
+const FileUploader = ({
+  files,
+  setFiles,
+  disabled,
+  ...props
+}: FileUploaderProps) => {
   const [isDropActive, setIsDropActive] = useState(false);
   const [isDragActive, setIsDragActive] = useState(false);
   const dropZoneRef = useRef<null | HTMLDivElement>(null);
+  const inputFile = useRef<HTMLInputElement | null>(null);
 
   const onDragStateChange = useCallback((dragActive: boolean) => {
     setIsDropActive(dragActive);
   }, []);
 
   const onFilesDrop = useCallback((newFiles: File[]) => {
-    const array = [...files, ...newFiles];
-    setFiles(array);
+    setFiles(newFiles);
   }, []);
 
   const mapFileListToArray = (filesNew: FileList) => {
     const array = [];
 
-    for (let i = 0; i < filesNew.length; i++) {
+    for (let i = 0; i < filesNew?.length; i++) {
       array.push(filesNew.item(i));
     }
 
@@ -37,7 +43,7 @@ const FileUploader = ({ files, setFiles }: FileUploaderProps) => {
     event.preventDefault();
     event.stopPropagation();
 
-    if (event.dataTransfer?.items && event.dataTransfer.items.length > 0) {
+    if (event.dataTransfer?.items && event.dataTransfer.items?.length > 0) {
       setIsDragActive(true);
     }
   }, []);
@@ -68,7 +74,7 @@ const FileUploader = ({ files, setFiles }: FileUploaderProps) => {
 
       setIsDragActive(false);
 
-      if (event.dataTransfer?.files && event.dataTransfer.files.length > 0) {
+      if (event.dataTransfer?.files && event.dataTransfer.files?.length > 0) {
         const files = mapFileListToArray(event.dataTransfer.files) as File[];
         onFilesDrop(files);
         event.dataTransfer.clearData();
@@ -83,7 +89,7 @@ const FileUploader = ({ files, setFiles }: FileUploaderProps) => {
 
   useEffect(() => {
     const tempZoneRef = dropZoneRef?.current;
-    if (tempZoneRef) {
+    if (tempZoneRef && disabled === false) {
       tempZoneRef.addEventListener("dragenter", handleDragIn);
       tempZoneRef.addEventListener("dragleave", handleDragOut);
       tempZoneRef.addEventListener("dragover", handleDrag);
@@ -95,11 +101,23 @@ const FileUploader = ({ files, setFiles }: FileUploaderProps) => {
       tempZoneRef?.removeEventListener("dragover", handleDrag);
       tempZoneRef?.removeEventListener("drop", handleDrop);
     };
-  }, []);
+  }, [disabled]);
 
   const handleRemove = (file: File) => {
     const newArray = files.filter((f) => f !== file);
     setFiles(newArray);
+  };
+
+  const onButtonClick = () => {
+    inputFile?.current?.click();
+  };
+
+  const handleFileChange = (event: any) => {
+    const fileObj = event.target.files && event.target.files[0];
+    if (!fileObj) {
+      return;
+    }
+    onFilesDrop([fileObj]);
   };
 
   return (
@@ -107,11 +125,28 @@ const FileUploader = ({ files, setFiles }: FileUploaderProps) => {
       className={[
         "drop-zone-wrapper",
         isDropActive ? "drop-zone-active" : "",
+        disabled ? "drop-zone-disabled" : "",
       ].join(" ")}
+      {...props}
     >
-      <div ref={dropZoneRef}>
-        <div className="file-uploader-text">Drop your files here</div>
-        <UploadIcon fill="#2b468a" className="upload-icon" />
+      <div ref={dropZoneRef} onClick={() => !disabled && onButtonClick}>
+        <input
+          style={{ display: "none" }}
+          ref={inputFile}
+          type="file"
+          onChange={handleFileChange}
+        />
+        <div
+          className={`file-uploader-text ${
+            disabled && "file-uploader-text-disabled"
+          }`}
+        >
+          Drop your files here
+        </div>
+        <UploadIcon
+          fill={!disabled ? "#2b468a" : "#a1a1a1"}
+          className="upload-icon"
+        />
       </div>
       <ul className="list-files">
         {files?.map((file: File) => (

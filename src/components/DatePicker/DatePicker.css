@@ -16,7 +16,11 @@
     width: 460px;
 }
 
-.date-picker-full-width {
+.date-picker-disabled {
+    background-color: var(--grey-transparent);
+}
+
+.date-picker-fullWidth {
     width: 100%;
 }
 
@@ -55,6 +59,10 @@
     justify-content: space-between;
 }
 
+.date-picker-disabled .selected-date {
+    cursor: default;
+}
+
 .date-picker .date-picker-icon {
     width: 20px;
     height: 20px;
@@ -70,6 +78,10 @@
 .date-picker-text-field:-webkit-autofill:focus,
 .date-picker-text-field:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0 30px var(--white) inset !important;
+}
+
+.date-picker-text-field:disabled {
+    background-color: transparent;
 }
 
 .date-picker .dates-close {

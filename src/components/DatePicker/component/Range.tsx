@@ -32,11 +32,13 @@ export interface RangeProps {
   icon?: string;
   dateformat: string[];
   fullWidth?: boolean;
+  disabled?: boolean;
 }
 
 const Range = (props: RangeProps) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const Icon = props.icon;
+  const disabled = props.disabled;
   const [selected, setSelected] = useState<"day" | "month" | "year">("day");
   const [startDate, setStartDate] = useState(props.startDate);
   const [endDate, setEndDate] = useState(props.endDate);
@@ -284,8 +286,8 @@ const Range = (props: RangeProps) => {
   return (
     <div
       className={`date-picker date-picker-range ${
-        props.fullWidth ? "date-picker-full-width" : ""
-      }`}
+        props.fullWidth ? "date-picker-fullWidth" : ""
+      } ${disabled ? "date-picker-disabled" : ""}`}
       ref={wrapperRef}
     >
       <Row className="range-picker-container">
@@ -295,8 +297,10 @@ const Range = (props: RangeProps) => {
               <div
                 className="selected-date"
                 onClick={() => {
-                  toggleDatePicker();
-                  setIsStartOpen(true);
+                  if (!disabled) {
+                    toggleDatePicker();
+                    setIsStartOpen(true);
+                  }
                 }}
               >
                 <input
@@ -312,6 +316,7 @@ const Range = (props: RangeProps) => {
                       setIsOpen(false);
                     }
                   }}
+                  disabled={disabled}
                 />
               </div>
             </Col>
@@ -320,8 +325,10 @@ const Range = (props: RangeProps) => {
               <div
                 className="selected-date"
                 onClick={() => {
-                  toggleDatePicker();
-                  setIsStartOpen(false);
+                  if (!disabled) {
+                    toggleDatePicker();
+                    setIsStartOpen(false);
+                  }
                 }}
               >
                 <input
@@ -337,6 +344,7 @@ const Range = (props: RangeProps) => {
                       setIsOpen(false);
                     }
                   }}
+                  disabled={disabled}
                 />
               </div>
             </Col>
@@ -349,7 +357,10 @@ const Range = (props: RangeProps) => {
           {typeof Icon === "string" ? (
             <img src={Icon} className="date-picker-icon" />
           ) : (
-            <DatePickerIcon className="date-picker-icon" fill="#2b468a" />
+            <DatePickerIcon
+              className="date-picker-icon"
+              fill={disabled ? "#a1a1a1" : "#2b468a"}
+            />
           )}
         </Col>
       </Row>

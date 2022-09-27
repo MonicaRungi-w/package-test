@@ -30,7 +30,7 @@ const TextArea = ({
     <div
       className={[
         "text-area-container",
-        fullWidth ? "full-width" : "",
+        fullWidth ? "fullWidth" : "",
         disabled ? "disabled" : "",
       ].join(" ")}
     >

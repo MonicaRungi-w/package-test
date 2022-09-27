@@ -9,7 +9,7 @@ import Phone from "./components/phone";
 import "./Input.css";
 import "../common.css";
 
-export interface InputProps {
+type InputProps = {
   placeholder: string;
   value: string;
   onChange: (e: string) => void;
@@ -22,7 +22,7 @@ export interface InputProps {
   isValid?: boolean;
   prefix?: ReactNode;
   suffix?: ReactNode;
-}
+};
 
 const Input = ({
   placeholder,

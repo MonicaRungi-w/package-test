@@ -1,23 +1,18 @@
-import Editor, { EditorProps } from "@monaco-editor/react";
 import React from "react";
+import Editor, { EditorProps } from "@monaco-editor/react";
 
-import "../common.css";
-import "./CodeEditor.css";
-
-type JSONEditorProps = EditorProps & {
+export interface JSONEditorProps {
   value: any;
   onChange: (data: any) => void;
   theme?: "vs-dark" | "light";
   language: string;
-  disabled?: boolean;
-};
+}
 
 const JSONEditor = ({
   theme = "light",
   language,
   value,
   onChange,
-  disabled = false,
   ...props
 }: JSONEditorProps) => {
   return (
@@ -32,10 +27,6 @@ const JSONEditor = ({
             value ? JSON.stringify(value, null, 2) : "//insert code here"
           }
           onChange={(value) => onChange(value)}
-          options={{
-            domReadOnly: disabled,
-            readOnly: disabled,
-          }}
         />
       </div>
     </>

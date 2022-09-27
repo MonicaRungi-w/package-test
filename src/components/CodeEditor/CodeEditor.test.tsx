@@ -5,6 +5,13 @@ import CodeEditor from "./CodeEditor";
 
 describe("CodeEditor", () => {
   test("renders the CodeEditor component", () => {
-    render(<CodeEditor />);
+    render(
+      <CodeEditor
+        theme="vs-dark"
+        language="json"
+        value=""
+        onChange={() => {}}
+      />
+    );
   });
 });

@@ -28,11 +28,13 @@ export interface SimpleProps {
   onChange: (value: Date) => void;
   dateformat: string[];
   fullWidth?: boolean;
+  disabled?: boolean;
 }
 
 const Simple = (props: SimpleProps) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const Icon = props.icon;
+  const disabled = props.disabled;
   const setDate = props.onChange;
   const [selected, setSelected] = useState<"day" | "month" | "year">("day");
   const [isOpen, setIsOpen] = useState(false);
@@ -104,11 +106,14 @@ const Simple = (props: SimpleProps) => {
   return (
     <div
       className={`date-picker ${
-        props.fullWidth ? "date-picker-full-width" : ""
-      }`}
+        props.fullWidth ? "date-picker-fullWidth" : ""
+      } ${disabled ? "date-picker-disabled" : ""}`}
       ref={wrapperRef}
     >
-      <div className="selected-date" onClick={() => toggleDatePicker()}>
+      <div
+        className="selected-date"
+        onClick={() => (!disabled ? toggleDatePicker() : {})}
+      >
         <input
           id={props.placeholder}
           type="text"
@@ -121,11 +126,15 @@ const Simple = (props: SimpleProps) => {
               setIsOpen(false);
             }
           }}
+          disabled={disabled}
         />
         {typeof Icon === "string" ? (
           <img src={Icon} className="date-picker-icon" />
         ) : (
-          <DatePickerIcon className="date-picker-icon" fill="#2b468a" />
+          <DatePickerIcon
+            className="date-picker-icon"
+            fill={disabled ? "#a1a1a1" : "#2b468a"}
+          />
         )}
       </div>
       <div className={isOpen ? "dates-open" : "dates-close"}>

@@ -11,6 +11,7 @@ type ModalProps = JSX.IntrinsicElements["div"] & {
   content: ReactNode;
   setOpen: (b: boolean) => void;
   onSubmit: () => void;
+  isSubmitDisabled?: boolean;
 };
 
 const ModalContent = ({
@@ -18,6 +19,7 @@ const ModalContent = ({
   content,
   setOpen,
   onSubmit,
+  isSubmitDisabled,
   ...props
 }: ModalProps) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -50,17 +52,14 @@ const ModalContent = ({
       <div className="header">
         <div className="title">{title}</div>
       </div>
-
-      <div className="wrapper-content">
-        <div className="content">{content}</div>
-        <div className="button-container">
-          <Button variant="primary" onClick={onSubmit}>
-            Submit
-          </Button>
-          <Button variant="secondary" onClick={() => setOpen(false)}>
-            Cancel
-          </Button>
-        </div>
+      <div className="wrapper-content">{content}</div>
+      <div className="button-container">
+        <Button variant="primary" onClick={onSubmit} disable={isSubmitDisabled}>
+          Submit
+        </Button>
+        <Button variant="secondary" onClick={() => setOpen(false)}>
+          Cancel
+        </Button>
       </div>
     </div>
   );

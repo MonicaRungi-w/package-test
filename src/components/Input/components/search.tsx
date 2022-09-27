@@ -72,11 +72,11 @@ const Search = ({
 
   return (
     <div
-      className={["search-wrapper", fullWidth && "full-width"].join(" ")}
+      className={["search-wrapper", fullWidth && "fullWidth"].join(" ")}
       ref={wrapperRef}
     >
       <div
-        className={["search-header", fullWidth ? "full-width" : ""].join(" ")}
+        className={["search-header", fullWidth ? "fullWidth" : ""].join(" ")}
       >
         <input
           type={"text"}

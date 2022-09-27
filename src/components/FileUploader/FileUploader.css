@@ -4,14 +4,19 @@
 .drop-zone-wrapper > div {
     justify-content: center;
     align-items: center;
-    width: 300px;
+    width: "100%";
     border-radius: 8px;
     user-select: none;
     padding: 5px;
 }
 
+.drop-zone-disabled {
+    background-color: var(--grey-transparent);
+}
+
 .drop-zone-wrapper {
     border: 1px dashed var(--primary);
+    cursor: pointer;
 }
 
 .drop-zone-wrapper div {
@@ -53,4 +58,8 @@
     text-overflow: ellipsis;
     display: block;
     white-space: nowrap;
+}
+
+.file-uploader-text-disabled {
+    color: var(--grey2);
 }

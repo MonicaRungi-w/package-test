@@ -30,7 +30,7 @@ const Password = ({
     <div
       className={[
         "text-field-container",
-        fullWidth ? "full-width" : "",
+        fullWidth ? "fullWidth" : "",
         disabled ? "disabled" : "",
       ].join(" ")}
     >

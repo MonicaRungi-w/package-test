@@ -63,7 +63,7 @@ const Phone = ({
     <div
       className={[
         "text-field-container phone-text-field",
-        fullWidth ? "full-width" : "",
+        fullWidth ? "fullWidth" : "",
         disabled ? "disabled" : "",
       ].join(" ")}
     >

@@ -65,7 +65,7 @@ const NumberInput = ({
       className={[
         "text-field-container",
         "number-input-width",
-        fullWidth ? "full-width" : "",
+        fullWidth ? "fullWidth" : "",
         disabled ? "disabled" : "",
       ].join(" ")}
     >
@@ -73,10 +73,10 @@ const NumberInput = ({
         type={"text"}
         className="text-field"
         placeholder={placeholder}
-        {...props}
         value={numberValue}
         onChange={(e) => onChangeInput(e.target.value)}
         disabled={disabled}
+        {...props}
       />
       <div className="number-arrows">
         <div

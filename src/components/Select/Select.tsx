@@ -132,7 +132,7 @@ const Select = ({
 
   return (
     <div
-      className={["dd-wrapper", fullWidth && "full-width"].join(" ")}
+      className={["dd-wrapper", fullWidth && "fullWidth"].join(" ")}
       ref={wrapperRef}
     >
       <div className="dd-header" onClick={() => toggleList()}>

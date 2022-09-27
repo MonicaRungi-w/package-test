@@ -11,6 +11,7 @@ type ModalProps = JSX.IntrinsicElements["div"] & {
   onSubmit: () => void;
   title: ReactNode;
   content: ReactNode;
+  isSubmitDisabled?: boolean;
 };
 
 const Modal = ({
@@ -19,6 +20,7 @@ const Modal = ({
   content,
   setOpen,
   onSubmit,
+  isSubmitDisabled,
   ...props
 }: ModalProps) => {
   return (
@@ -26,15 +28,14 @@ const Modal = ({
       {open
         ? ReactPortal(
             <div className="wrapper">
-              <div>
-                <ModalContent
-                  title={title}
-                  setOpen={setOpen}
-                  onSubmit={onSubmit}
-                  content={content}
-                  {...props}
-                />
-              </div>
+              <ModalContent
+                title={title}
+                setOpen={setOpen}
+                onSubmit={onSubmit}
+                content={content}
+                isSubmitDisabled={isSubmitDisabled}
+                {...props}
+              />
             </div>,
             "root"
           )

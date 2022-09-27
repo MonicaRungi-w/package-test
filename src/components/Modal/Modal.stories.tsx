@@ -22,6 +22,11 @@ const Template: ComponentStory<typeof Modal> = (args) => {
 export const ModalComponent = Template.bind({});
 ModalComponent.args = {
   title: "Prova Modale",
-  content: "Prova descrizione modale",
+  content: (
+    <div style={{ backgroundColor: "red", height: "400px" }}>
+      <div>test</div>
+      <div style={{ marginTop: "200px" }}>test</div>
+    </div>
+  ),
   onSubmit: () => console.log("submit action"),
 };

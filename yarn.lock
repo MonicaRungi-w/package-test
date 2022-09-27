@@ -7214,9 +7214,9 @@
   "resolved" "https://registry.npmjs.org/is-finite/-/is-finite-1.1.0.tgz"
   "version" "1.1.0"
 
-"is-fullwidth-code-point@^3.0.0":
+"is-fullWidth-code-point@^3.0.0":
   "integrity" "sha512-zymm5+u+sCsSWyD9qNaejV3DFvhCKclKdizYaJUuHA83RLjb7nSuGnddCHGv0hk+KY7BMAlsWeK4Ueg6EV6XQg=="
-  "resolved" "https://registry.npmjs.org/is-fullwidth-code-point/-/is-fullwidth-code-point-3.0.0.tgz"
+  "resolved" "https://registry.npmjs.org/is-fullWidth-code-point/-/is-fullWidth-code-point-3.0.0.tgz"
   "version" "3.0.0"
 
 "is-function@^1.0.2":
@@ -11322,7 +11322,7 @@
   "version" "4.2.3"
   dependencies:
     "emoji-regex" "^8.0.0"
-    "is-fullwidth-code-point" "^3.0.0"
+    "is-fullWidth-code-point" "^3.0.0"
     "strip-ansi" "^6.0.1"
 
 "string.prototype.matchall@^4.0.0 || ^3.0.1":
