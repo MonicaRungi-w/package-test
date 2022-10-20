@@ -129,7 +129,14 @@ const FileUploader = ({
       ].join(" ")}
       {...props}
     >
-      <div ref={dropZoneRef} onClick={() => !disabled && onButtonClick}>
+      <div
+        ref={dropZoneRef}
+        onClick={() => {
+          if (!disabled) {
+            onButtonClick();
+          }
+        }}
+      >
         <input
           style={{ display: "none" }}
           ref={inputFile}
