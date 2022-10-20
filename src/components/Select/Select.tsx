@@ -135,7 +135,10 @@ const Select = ({
       className={["dd-wrapper", fullWidth && "fullWidth"].join(" ")}
       ref={wrapperRef}
     >
-      <div className="dd-header" onClick={() => toggleList()}>
+      <div
+        className={`dd-header ${disabled ? "dd-header-disabled" : ""}`}
+        onClick={() => !disabled && toggleList()}
+      >
         <div
           className={[
             "dd-header-title",
@@ -151,6 +154,7 @@ const Select = ({
             onChange={(e) =>
               search({ id: e.target.value, label: e.target.value })
             }
+            disabled={disabled}
           />
         </div>
         {type === "multi" && formattedList && (

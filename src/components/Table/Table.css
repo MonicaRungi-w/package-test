@@ -5,8 +5,7 @@
 }
 
 .table-paginator .paginator {
-    position: absolute;
-    right: 0;
+    float: right;
 }
 
 .table-container {

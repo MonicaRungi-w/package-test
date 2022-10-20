@@ -3,11 +3,11 @@ import React, { PropsWithChildren, useState } from "react";
 import "./Tooltip.css";
 import "../common.css";
 
-export interface TooltipProps extends PropsWithChildren {
+type TooltipProps = JSX.IntrinsicElements["div"] & {
   delay?: number;
   direction?: "left" | "right" | "bottom" | "top";
   content: string;
-}
+};
 
 const Tooltip = ({
   delay,

@@ -6,7 +6,7 @@ import "../common.css";
 type CardProps = JSX.IntrinsicElements["div"] & {
   title?: string;
   caption?: string;
-  children?: React.ElementType;
+  children?: React.ReactNode;
   titleStyle?: React.CSSProperties;
   captionStyle?: React.CSSProperties;
   width?: string;

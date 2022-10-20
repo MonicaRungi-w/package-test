@@ -22,7 +22,7 @@ const Checkbox = ({
       <input
         id={label}
         type="checkbox"
-        className={["check-box", disable].join(" ")}
+        className={["check-box", disable ? "checkmark-disabled" : ""].join(" ")}
         disabled={disable}
         checked={checked}
         {...props}

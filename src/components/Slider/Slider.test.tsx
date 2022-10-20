@@ -5,6 +5,6 @@ import Slider from "./Slider";
 
 describe("Slider", () => {
   test("renders the Slider component", () => {
-    render(<Slider value={0} setValue={() => {}} />);
+    render(<Slider value={"0"} setValue={() => {}} />);
   });
 });

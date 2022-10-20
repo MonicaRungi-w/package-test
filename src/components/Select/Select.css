@@ -26,6 +26,11 @@
     height: 35px;
 }
 
+.dd-header-disabled {
+    cursor: default;
+    background-color: var(--grey-transparent);
+}
+
 .dd-header-title {
     height: 35px;
     font-weight: 300;

@@ -104,25 +104,27 @@ const LayoutTemplate: ComponentStory<typeof Layout> = (args) => {
           footer={<>Biftost ©</>}
         />
       }
+      headerComponent={
+        <Header
+          logoComponent={
+            <img
+              src={
+                "https://cdn0.iconfinder.com/data/icons/ikonate/48/placeholder-512.png"
+              }
+              style={{ width: "30px" }}
+            />
+          }
+          titleComponent={"Header Template"}
+          navbarItems={[
+            <div key="example-key-1">Test1</div>,
+            <div key="example-key-2">Test2</div>,
+          ]}
+        />
+      }
       footerComponent={<Footer>footer template test</Footer>}
     >
-      <Header
-        logoComponent={
-          <img
-            src={
-              "https://cdn0.iconfinder.com/data/icons/ikonate/48/placeholder-512.png"
-            }
-            style={{ width: "30px" }}
-          />
-        }
-        titleComponent={"Header Template"}
-        navbarItems={[
-          <div key="example-key-1">Test1</div>,
-          <div key="example-key-2">Test2</div>,
-        ]}
-      />
       <Content>
-        <div>content template</div>
+        <div style={{height: "2000px", width: "1000px", backgroundColor: "red"}}>content template</div>
       </Content>
     </Layout>
   );
