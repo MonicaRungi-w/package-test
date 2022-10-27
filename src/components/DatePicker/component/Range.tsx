@@ -106,7 +106,7 @@ const Range = (props: RangeProps) => {
     return () => {
       document.removeEventListener("click", handleClickOutside, true);
     };
-  });
+  }, []);
 
   const handlePrevClick = () => {
     if (isStartOpen) {
@@ -283,7 +283,7 @@ const Range = (props: RangeProps) => {
     return style;
   };
 
-  return (
+  return typeof window !== undefined ? (
     <div
       className={`date-picker date-picker-range ${
         props.fullWidth ? "date-picker-fullWidth" : ""
@@ -485,7 +485,7 @@ const Range = (props: RangeProps) => {
         )}
       </div>
     </div>
-  );
+  ) : null;
 };
 
 export default Range;

@@ -35,7 +35,7 @@ const ModalContent = ({
     return () => {
       document.removeEventListener("click", handleClickOutside, true);
     };
-  });
+  }, []);
 
   return (
     <div

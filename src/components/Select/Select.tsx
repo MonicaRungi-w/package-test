@@ -41,6 +41,12 @@ const Select = ({
   const [formattedList, setFormattedList] = useState("");
 
   useEffect(() => {
+    if (values) {
+      setValuesArray(values);
+    }
+  }, [values]);
+
+  useEffect(() => {
     if (selectedValue) {
       setSelected(selectedValue);
     }
@@ -51,12 +57,6 @@ const Select = ({
       onChange(selected);
     }
   }, [selected]);
-
-  useEffect(() => {
-    if (selectedList && onChangeList) {
-      onChangeList(selectedList);
-    }
-  }, [selectedList]);
 
   const toggleList = () => {
     setIsListOpen(!isListOpen);
@@ -75,6 +75,10 @@ const Select = ({
       list.push(item);
     }
     setSelectedList(list);
+
+    if (onChangeList) {
+      onChangeList(list);
+    }
 
     const listFormatted = list?.map((l) => l.label).join(", ");
     setFormattedList(listFormatted);
@@ -122,7 +126,7 @@ const Select = ({
     return () => {
       document.removeEventListener("click", handleClickOutside, true);
     };
-  });
+  }, []);
 
   const checkSelectedItems = (value: { id: string; label: string }) => {
     if (selectedList?.find((l) => l.id === value.id)) {
@@ -154,7 +158,7 @@ const Select = ({
             onChange={(e) =>
               search({ id: e.target.value, label: e.target.value })
             }
-            disabled={disabled}
+            disabled={disabled || type === "multi"}
           />
         </div>
         {type === "multi" && formattedList && (
@@ -181,7 +185,7 @@ const Select = ({
       >
         {valuesArray.map((value, idx) =>
           type === "multi" ? (
-            <div className="dd-list-item">
+            <div className="dd-list-item" key={idx}>
               <Checkbox
                 label={value.label}
                 setChecked={() => selectListItem(value)}

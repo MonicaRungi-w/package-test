@@ -82,7 +82,7 @@ const Simple = (props: SimpleProps) => {
     return () => {
       document.removeEventListener("click", handleClickOutside, true);
     };
-  });
+  }, []);
 
   const handleInputString = (text: string) => {
     setValue(text);

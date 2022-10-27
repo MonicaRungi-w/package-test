@@ -30,12 +30,12 @@ const Text = ({
         fullWidth ? "fullWidth" : "",
         disabled ? "disabled" : "",
       ].join(" ")}
+      {...props}
     >
       <input
         type={"text"}
         className="text-field"
         placeholder={placeholder}
-        {...props}
         value={value}
         onChange={(e) => onChange(e.target.value)}
         disabled={disabled}

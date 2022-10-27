@@ -8,12 +8,14 @@ type FileUploaderProps = JSX.IntrinsicElements["div"] & {
   files: File[];
   setFiles: (files: File[]) => void;
   disabled?: boolean;
+  showList?: boolean;
 };
 
 const FileUploader = ({
   files,
   setFiles,
   disabled,
+  showList = true,
   ...props
 }: FileUploaderProps) => {
   const [isDropActive, setIsDropActive] = useState(false);
@@ -148,7 +150,7 @@ const FileUploader = ({
             disabled && "file-uploader-text-disabled"
           }`}
         >
-          Drop your files here
+          Drop your file here
         </div>
         <UploadIcon
           fill={!disabled ? "#2b468a" : "#a1a1a1"}
@@ -156,16 +158,17 @@ const FileUploader = ({
         />
       </div>
       <ul className="list-files">
-        {files?.map((file: File) => (
-          <li key={`${file.name}_${file.lastModified}`}>
-            <span className="text-file-span">
-              {file.name} ({Math.round(file.size / 1000)}kb)
-            </span>
-            <span onClick={() => handleRemove(file)}>
-              <XIcon fill="#2b468a" />
-            </span>
-          </li>
-        ))}
+        {showList &&
+          files?.map((file: File) => (
+            <li key={`${file.name}_${file.lastModified}`}>
+              <span className="text-file-span">
+                {file.name} ({Math.round(file.size / 1000)}kb)
+              </span>
+              <span onClick={() => handleRemove(file)}>
+                <XIcon fill="#2b468a" />
+              </span>
+            </li>
+          ))}
       </ul>
     </div>
   );

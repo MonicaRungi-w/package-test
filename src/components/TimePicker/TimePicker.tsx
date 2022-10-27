@@ -49,7 +49,7 @@ const TimePicker = ({
     return () => {
       document.removeEventListener("click", handleClickOutside, true);
     };
-  });
+  }, []);
 
   useEffect(() => {
     if (hour && minute) {
